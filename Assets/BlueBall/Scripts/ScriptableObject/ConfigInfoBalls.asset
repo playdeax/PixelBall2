@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f53bb0e6020c454b8646dd1935e9caf, type: 3}
+  m_Name: ConfigInfoBalls
+  m_EditorClassIdentifier: 
+  infoBalls:
+  - id: 1
+    name: ball red
+    animatorOverrideController: {fileID: 22100000, guid: 9fecd350dd29c9046ae2cc7b21f42ccb,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: e49281cba37ed454fa34d7cfe4409b46,
+      type: 2}
+    price: 0
+  - id: 2
+    name: ball blue
+    animatorOverrideController: {fileID: 22100000, guid: a2ad47ed45463fd4bb747fe2909df018,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: 162790a34be449a46886ce92ef504426,
+      type: 2}
+    price: 100
+  - id: 3
+    name: ball cat
+    animatorOverrideController: {fileID: 22100000, guid: dcd99d1062f335242b421d2268db993c,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: 59f6d5688b36cc149ba00fd502544762,
+      type: 2}
+    price: 200
+  - id: 4
+    name: ball imposter
+    animatorOverrideController: {fileID: 22100000, guid: 1c8eb760d0e82a942b7a209d50219376,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: 85e777d155cc2364ab5e18c80ecbdfbb,
+      type: 2}
+    price: 300
+  - id: 100
+    name: amongus
+    animatorOverrideController: {fileID: 22100000, guid: e1e0ebb6b9870dd41a3ebc862d5c50a7,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: a818bfd5cee1efd4ba4d5d4e66563be0,
+      type: 2}
+    price: 1000
+  - id: 101
+    name: captain
+    animatorOverrideController: {fileID: 22100000, guid: 1de178a32ea2abf43898f7e49ccc54de,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: 25eeaaeb99f984241b1158e7dae9fc57,
+      type: 2}
+    price: 1000
+  - id: 102
+    name: cop
+    animatorOverrideController: {fileID: 22100000, guid: 132ec9f42da43a64a8f086564571df57,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: b40f9e6a79f861347a28dbd522d3d55d,
+      type: 2}
+    price: 1000
+  - id: 103
+    name: ironman
+    animatorOverrideController: {fileID: 22100000, guid: fd55d2af07aa75c41ae1ae15a14e290c,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: c88e325e4f6a0c94b85767c7b7e5ff16,
+      type: 2}
+    price: 1000
+  - id: 104
+    name: panther
+    animatorOverrideController: {fileID: 22100000, guid: 3d9750f5e4f63104996522099b4addfd,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: 8720c18b025c2b7428bbe4945d4a7980,
+      type: 2}
+    price: 1000
