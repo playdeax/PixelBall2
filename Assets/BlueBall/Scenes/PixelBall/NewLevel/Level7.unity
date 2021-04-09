@@ -755,6 +755,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2663980670521149035, guid: 063f2570ed69a45a38c7bb76fa45efde,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2663980670521149038, guid: 063f2570ed69a45a38c7bb76fa45efde,
         type: 3}
       propertyPath: m_Camera
@@ -868,12 +873,12 @@ PrefabInstance:
     - target: {fileID: 8661787012377704618, guid: 063f2570ed69a45a38c7bb76fa45efde,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -164.00002
+      value: -164
       objectReference: {fileID: 0}
     - target: {fileID: 8661787012377704618, guid: 063f2570ed69a45a38c7bb76fa45efde,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -78.000015
+      value: -78
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063f2570ed69a45a38c7bb76fa45efde, type: 3}
@@ -8395,6 +8400,8 @@ MonoBehaviour:
   maxStar: 3
   currStar: 0
   countAddCoin: 0
+  isPlayerBehit: 0
+  currCheckPoint: {fileID: 0}
 --- !u!4 &1512593753
 Transform:
   m_ObjectHideFlags: 0
