@@ -434,6 +434,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2663980670521149035, guid: 063f2570ed69a45a38c7bb76fa45efde,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2663980670521149038, guid: 063f2570ed69a45a38c7bb76fa45efde,
         type: 3}
       propertyPath: m_Camera
@@ -9898,6 +9903,8 @@ MonoBehaviour:
   maxStar: 3
   currStar: 0
   countAddCoin: 0
+  isPlayerBehit: 0
+  currCheckPoint: {fileID: 0}
 --- !u!4 &1512593753
 Transform:
   m_ObjectHideFlags: 0
