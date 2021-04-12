@@ -4622,12 +4622,12 @@ PrefabInstance:
     - target: {fileID: 3728342154731039218, guid: fd0d27571ee2fec4c8cb885db30faf3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.57
+      value: 0.69
       objectReference: {fileID: 0}
     - target: {fileID: 3728342155802375213, guid: fd0d27571ee2fec4c8cb885db30faf3d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.14
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 3728342155908529030, guid: fd0d27571ee2fec4c8cb885db30faf3d,
         type: 3}
@@ -7559,6 +7559,8 @@ MonoBehaviour:
   maxStar: 3
   currStar: 0
   countAddCoin: 0
+  isPlayerBehit: 0
+  currCheckPoint: {fileID: 0}
 --- !u!4 &1512593753
 Transform:
   m_ObjectHideFlags: 0
