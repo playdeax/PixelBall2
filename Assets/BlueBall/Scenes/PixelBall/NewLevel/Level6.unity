@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedAddBall: {x: -20, y: 10}
+  isWater: 0
 --- !u!1001 &58005424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -833,7 +834,7 @@ GameObject:
   - component: {fileID: 359604997}
   m_Layer: 11
   m_Name: WaterCollider
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -891,6 +892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedAddBall: {x: -30, y: 10}
+  isWater: 1
 --- !u!1001 &405822346
 PrefabInstance:
   m_ObjectHideFlags: 0

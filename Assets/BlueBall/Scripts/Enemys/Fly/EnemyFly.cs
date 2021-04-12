@@ -21,7 +21,7 @@ public class EnemyFly : EnemyBase
     public override void CollisionWithBall()
     {
         base.CollisionWithBall();
-        GameLevelManager.Ins.SetBallBeHit(speedAddBall);
+        GameLevelManager.Ins.SetBallBeHit(speedAddBall,1 );
     }
 
 
