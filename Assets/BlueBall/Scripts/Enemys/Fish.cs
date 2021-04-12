@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Fish : EnemyBase
 {
-    // Start is called before the first frame update
+    public bool isWater;
     void Start()
     {
         
@@ -19,7 +19,15 @@ public class Fish : EnemyBase
     public override void CollisionWithBall()
     {
         base.CollisionWithBall();
-        GameLevelManager.Ins.SetBallBeHit(speedAddBall);
+        if (isWater)
+        {
+            GameLevelManager.Ins.SetBallBeHit(speedAddBall, 3);
+        }
+        else
+        {
+            GameLevelManager.Ins.SetBallBeHit(speedAddBall, 1);
+        }
+        
     }
 
 

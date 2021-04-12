@@ -74,7 +74,7 @@ public class EnemyBasicShoot_Bullet : MonoBehaviour
         {
 
             BulletExpolsion();
-            GameLevelManager.Ins.SetBallBeHit(forceAddBall2);
+            GameLevelManager.Ins.SetBallBeHit(forceAddBall2, 1);
         }
     }
 }

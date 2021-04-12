@@ -123,7 +123,7 @@ public class GameLevelManager : MonoBehaviour
 
     #region SPIKE
     public void SetBallSpike(ItemSpike _itemSpike) {
-        SetBallBeHit(_itemSpike.speedAddBall);
+        SetBallBeHit(_itemSpike.speedAddBall, 1);
     }
     #endregion
 
@@ -138,14 +138,14 @@ public class GameLevelManager : MonoBehaviour
 
     #region BEHIT
     public bool isPlayerBehit = false;
-    public void SetBallBeHit(Vector2 _speedAddBall) {
+    public void SetBallBeHit(Vector2 _speedAddBall, int damage) {
         if (Config.currGameState == Config.GAMESTATE.PLAYING)
         {
             playerMovement.SetBallBeHit(_speedAddBall);
             if (!isPlayerBehit)
             {
                 isPlayerBehit = true;
-                GamePlayManager.Ins.SetBeHit();
+                GamePlayManager.Ins.SetBeHit(damage);
                 StartCoroutine(BallBeHit_Sheild());
             }
         }
