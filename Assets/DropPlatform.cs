@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class DropPlatform : MonoBehaviour
 {
-    // Start is called before the first frame update
+    Vector3 oldPos;
+    public bool isBack;
     void Start()
     {
-        
+        oldPos = transform.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,5 +27,12 @@ public class DropPlatform : MonoBehaviour
         transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         transform.GetComponent<Rigidbody2D>().gravityScale = 2;
        transform.GetComponent<Collider2D>().enabled = false;
+        yield return new WaitForSeconds(2f);
+        if (isBack)
+        {
+            transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            transform.GetComponent<Collider2D>().enabled = true;
+            transform.position = oldPos;
+        }
     }
 }
