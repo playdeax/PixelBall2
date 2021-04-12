@@ -6,6 +6,7 @@ public class DropPlatform : MonoBehaviour
 {
     Vector3 oldPos;
     public bool isBack;
+    public float timeBack = 2f;
     void Start()
     {
         oldPos = transform.position;
@@ -27,7 +28,7 @@ public class DropPlatform : MonoBehaviour
         transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         transform.GetComponent<Rigidbody2D>().gravityScale = 2;
        transform.GetComponent<Collider2D>().enabled = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(timeBack);
         if (isBack)
         {
             transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;

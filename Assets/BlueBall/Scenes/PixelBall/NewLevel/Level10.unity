@@ -5343,6 +5343,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 808066672}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &808066674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7527692748546822460, guid: ab7e541fa741f954896003a03c367837,
+    type: 3}
+  m_PrefabInstance: {fileID: 808066672}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb99fa7e019931645945acedb5028469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &883417015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8246,6 +8258,8 @@ MonoBehaviour:
   maxStar: 3
   currStar: 0
   countAddCoin: 0
+  isPlayerBehit: 0
+  currCheckPoint: {fileID: 808066674}
 --- !u!4 &1512593753
 Transform:
   m_ObjectHideFlags: 0
