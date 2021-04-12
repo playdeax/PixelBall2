@@ -163,10 +163,14 @@ public class GameLevelManager : MonoBehaviour
             StartCoroutine(BallRevive_IEnumerator());
         }
         else {
+            StartCoroutine(Wait(1.5f));
             GamePlayManager.Ins.ShowLosePopup();
         }
     }
-
+    public IEnumerator Wait(float _time)
+    {
+        yield return new WaitForSeconds(_time);
+    }
     public IEnumerator BallRevive_IEnumerator() {
         yield return new WaitForSeconds(2f);
         Debug.Log("BallRevive_IEnumeratorBallRevive_IEnumeratorBallRevive_IEnumerator");
