@@ -122,8 +122,8 @@ public class GameLevelManager : MonoBehaviour
 
 
     #region SPIKE
-    public void SetBallSpike(ItemSpike _itemSpike) {
-        SetBallBeHit(_itemSpike.speedAddBall, 1);
+    public void SetBallSpike(ItemSpike _itemSpike, int damage) {
+        SetBallBeHit(_itemSpike.speedAddBall, damage);
     }
     #endregion
 
