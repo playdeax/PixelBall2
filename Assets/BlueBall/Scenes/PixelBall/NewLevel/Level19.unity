@@ -8858,11 +8858,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7471347144275590, guid: b5b44010651f7a145a3af0c8b7ef13c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 34.02099
+      value: 33.07
       objectReference: {fileID: 0}
     - target: {fileID: 7471347144275590, guid: b5b44010651f7a145a3af0c8b7ef13c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.422409
+      value: -5.77
       objectReference: {fileID: 0}
     - target: {fileID: 7471347144275590, guid: b5b44010651f7a145a3af0c8b7ef13c6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8900,59 +8900,87 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7471347144275590, guid: b5b44010651f7a145a3af0c8b7ef13c6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7471347144275590, guid: b5b44010651f7a145a3af0c8b7ef13c6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7471347144275641, guid: b5b44010651f7a145a3af0c8b7ef13c6, type: 3}
       propertyPath: m_Name
       value: Fly
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
+      propertyPath: wps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.wpLengths.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.wps.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.timesTable.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
       propertyPath: path.wpLengths.Array.data[1]
-      value: 15.235347
+      value: 14.278176
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[0].x
-      value: 55.74034
+      value: 54.789352
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[0].y
-      value: 2.82
+      value: 2.4724088
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.length
-      value: 76.593575
+      value: 28.616997
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[1]
-      value: 0.19891155
+      value: 0.4989404
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[2]
-      value: 0.3994403
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[3]
-      value: 0.6014766
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[4]
-      value: 0.8008099
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: lastSrcPosition.x
-      value: 55.74034
+      value: 54.789352
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: lastSrcPosition.y
-      value: 2.82
+      value: 2.4724088
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -8967,7 +8995,7 @@ PrefabInstance:
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wpLengths.Array.data[2]
-      value: 15.359213
+      value: 14.3388195
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -8982,7 +9010,7 @@ PrefabInstance:
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[1].x
-      value: 55.870415
+      value: 54.85
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -8997,7 +9025,7 @@ PrefabInstance:
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[2].x
-      value: 55.870415
+      value: 54.85
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -9073,6 +9101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: path.wps.Array.data[5].y
       value: 2.2848148
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.subdivisions
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5b44010651f7a145a3af0c8b7ef13c6, type: 3}
