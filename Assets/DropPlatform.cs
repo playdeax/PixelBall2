@@ -7,6 +7,7 @@ public class DropPlatform : MonoBehaviour
     Vector3 oldPos;
     public bool isBack;
     public float timeBack = 2f;
+    public float timeHold = 0.5f;
     void Start()
     {
         oldPos = transform.position;
@@ -15,7 +16,7 @@ public class DropPlatform : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag.EndsWith("Ball")) {
-            StartCoroutine(WaitAndDrop(0.3f));
+            StartCoroutine(WaitAndDrop(timeHold));
         }
     }
     void Update()
