@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 1962057365}
   - component: {fileID: 8770420169664101864}
   - component: {fileID: 3214839978441291554}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DropPlatform
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -184,3 +184,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad818ddfbe22c674e8ee0dffc69f55c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBack: 1
+  timeBack: 2
