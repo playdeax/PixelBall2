@@ -62,7 +62,7 @@ public class HomeManager : MonoBehaviour
         txtLevel.gameObject.GetComponent<BBUIView>().ShowView();
 
         yield return new WaitForSeconds(0.5f);
-        btnBall.gameObject.SetActive(true);
+       /* btnBall.gameObject.SetActive(true);
         btnBall.GetComponent<BBUIView>().ShowView();
         btnFreeCoin.gameObject.SetActive(true);
         btnFreeCoin.GetComponent<BBUIView>().ShowView();
@@ -78,7 +78,7 @@ public class HomeManager : MonoBehaviour
         btnAddHeart.gameObject.SetActive(true);
         btnAddHeart.GetComponent<BBUIView>().ShowView();
         btnShop.gameObject.SetActive(true);
-        btnShop.GetComponent<BBUIView>().ShowView();
+        btnShop.GetComponent<BBUIView>().ShowView();*/
 
         yield return new WaitForSeconds(0.2f);
         ballAnimator.gameObject.SetActive(true);

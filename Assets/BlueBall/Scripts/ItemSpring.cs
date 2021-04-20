@@ -24,5 +24,6 @@ public class ItemSpring : ItemBase
         animatorSpring.SetTrigger("jump");
 
         GameLevelManager.Ins.SetBallSpring(this);
+        SoundManager.instance.SFX_Loxo();
     }
 }
