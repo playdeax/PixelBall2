@@ -21,6 +21,7 @@ public class EnemyFly : EnemyBase
     public override void CollisionWithBall()
     {
         base.CollisionWithBall();
+        SoundManager.instance.SFX_EnemyPock();
         GameLevelManager.Ins.SetBallBeHit(speedAddBall,1 );
     }
 

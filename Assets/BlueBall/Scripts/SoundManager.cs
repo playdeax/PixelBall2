@@ -41,6 +41,41 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    [Header("JumpLoxo")]
+    public AudioClip jumpLoxo;
+
+
+    public void SFX_Loxo()
+    {
+        if (Config.isSound)
+        {
+            audioSound.PlayOneShot(jumpLoxo);
+        }
+    }
+
+    [Header("OpenDoor")]
+    public AudioClip openDoor;
+
+
+    public void SFX_OpenDoor()
+    {
+        if (Config.isSound)
+        {
+            audioSound.PlayOneShot(openDoor);
+        }
+    }
+    [Header("Enemy Pock")]
+    public AudioClip enemyPock;
+
+
+    public void SFX_EnemyPock()
+    {
+        if (Config.isSound)
+        {
+            audioSound.PlayOneShot(enemyPock);
+        }
+    }
+
     [Header("Jump")]
     public AudioClip jump;
 

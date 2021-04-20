@@ -23,11 +23,13 @@ public class ItemDoor : MonoBehaviour
     }
 
     public void SetOpenDoor() {
+        SoundManager.instance.SFX_OpenDoor();
         objUp.transform.DOLocalMove(up_end.localPosition, 0.5f).SetEase(Ease.OutQuad);
         objDown.transform.DOLocalMove(down_end.localPosition, 0.5f).SetEase(Ease.OutQuad);
     }
     public void SetCloseDoor()
     {
+        SoundManager.instance.SFX_OpenDoor();
         objUp.transform.DOLocalMove(up_start.localPosition, 0.5f).SetEase(Ease.OutQuad);
         objDown.transform.DOLocalMove(down_start.localPosition, 0.5f).SetEase(Ease.OutQuad);
     }
