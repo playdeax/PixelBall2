@@ -137,11 +137,33 @@ public class PremiumPreview : MonoBehaviour
     }
 
     public void TouchTry() {
-        Config.currInfoBall_Try = currPreviewInfoBall;
-        ShopPopUp.Ins.CloseShop();
+        
+        
+        if (AdmobManager.instance.isRewardAds_Avaiable())
+        {
+            lockPopup.gameObject.SetActive(true);
+            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                {
+                    Debug.Log("AddHeartAddHeartAddHeartAddHeartAddHeart");
+                    lockPopup.gameObject.SetActive(false);
+                    Config.currInfoBall_Try = currPreviewInfoBall;
+                    ShopPopUp.Ins.CloseShop();
 
-        if (HomeManager.Ins != null) {
-            HomeManager.Ins.ShowBallPreview();
+                    if (HomeManager.Ins != null) {
+                        HomeManager.Ins.ShowBallPreview();
+                    }
+                }
+                else
+                {
+                    lockPopup.gameObject.SetActive(false);
+                }
+            });
+        }
+        else
+        {
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 
@@ -206,7 +228,7 @@ public class PremiumPreview : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 }

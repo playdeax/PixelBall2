@@ -35,6 +35,37 @@ public class Config
         }
     }
     #endregion
+    
+    #region VIBRATION
+    public const string VIBRATION = "vibration";
+    public static bool isVibration = true;
+    public static void SetVibration(bool _isVibration)
+    {
+        isVibration = _isVibration;
+        if (_isVibration)
+        {
+            PlayerPrefs.SetInt(VIBRATION, 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(VIBRATION, 0);
+        }
+        PlayerPrefs.Save();
+    }
+
+    public static void GetVibration()
+    {
+        int vibrationInt = PlayerPrefs.GetInt(VIBRATION, 1);
+        if (vibrationInt == 1)
+        {
+            isVibration = true;
+        }
+        else
+        {
+            isVibration = false;
+        }
+    }
+    #endregion
 
     #region MUSIC
     public const string MUSIC = "music";

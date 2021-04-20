@@ -194,7 +194,7 @@ public class WinPopup : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
         
     }
@@ -232,7 +232,7 @@ public class WinPopup : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 
@@ -273,7 +273,7 @@ public class WinPopup : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 }

@@ -39,10 +39,17 @@ public class HomeManager : MonoBehaviour
         btnDailyReward.OnPointerClickCallBack_Completed.AddListener(TouchDailyReward);
         btnFreeCoin.OnPointerClickCallBack_Completed.AddListener(TouchFreeCoin);
         btnAddHeart.OnPointerClickCallBack_Completed.AddListener(TouchFreeHeart);
-
-
+        
+        //BallPreview
+        btnNext.OnPointerClickCallBack_Completed.AddListener(TouchNextBallPreview);
+        btnPrev.OnPointerClickCallBack_Completed.AddListener(TouchPrevBallPreview);
+        btnTry.OnPointerClickCallBack_Completed.AddListener(TouchTryBallPreview);
+        btnSelect.OnPointerClickCallBack_Completed.AddListener(TouchSelectBallPreview);
+        
         ShowBallPreview();
         StartCoroutine(Start_IEnumerator());
+
+        InitIndexBallPreview();
     }
 
     public IEnumerator Start_IEnumerator() {
@@ -56,6 +63,11 @@ public class HomeManager : MonoBehaviour
         btnAddHeart.gameObject.SetActive(false);
         btnShopCoin.gameObject.SetActive(false);
         txtLevel.gameObject.SetActive(false);
+        
+        btnNext.gameObject.SetActive(false);
+        btnPrev.gameObject.SetActive(false);
+        btnSelect.gameObject.SetActive(false);
+        btnTry.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(0.1f);
         txtLevel.gameObject.SetActive(true);
@@ -83,10 +95,14 @@ public class HomeManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         ballAnimator.gameObject.SetActive(true);
         ballAnimator.GetComponent<BBUIView>().ShowView();
+        
         /*btnDailyReward.gameObject.SetActive(true);
         btnDailyReward.GetComponent<BBUIView>().ShowView();*/
         btnPlay.gameObject.SetActive(true);
         btnPlay.GetComponent<BBUIView>().ShowView();
+        
+        btnNext.GetComponent<BBUIView>().ShowView();
+        btnPrev.GetComponent<BBUIView>().ShowView();
 
         if (Config.CheckDailyReward())
         {
@@ -166,7 +182,7 @@ public class HomeManager : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 
@@ -195,7 +211,7 @@ public class HomeManager : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 
@@ -328,6 +344,109 @@ public class HomeManager : MonoBehaviour
     public void OpenPremiumPackPopup()
     {
         premiumPackPopup.OpenPopup();
+    }
+    #endregion
+
+
+
+    #region BALL_PREVIEW
+    [Header("BALL_PREVIEW")]
+    public List<int> listIDPreview = new List<int>();
+    public BBUIButton btnNext;
+    public BBUIButton btnPrev;
+    public BBUIButton btnTry;
+    public BBUIButton btnSelect;
+    
+    
+    public int idBallPreview = 1;
+    public int indexBallPreview = 0;
+
+    public void InitIndexBallPreview()
+    {
+        for (int i = 0; i < listIDPreview.Count; i++)
+        {
+            if (listIDPreview[i] == Config.GetBallActive())
+            {
+                indexBallPreview = i;
+                return;
+            }
+        }
+    }
+    public void ShowBallPreview(int idBall)
+    {
+        idBallPreview = idBall;
+        if (idBallPreview == Config.GetBallActive())
+        {
+            btnTry.gameObject.SetActive(false);
+            btnSelect.gameObject.SetActive(false);
+        }
+        else if (Config.GetInfoBallUnlock(idBallPreview))
+        {
+            btnTry.gameObject.SetActive(false);
+            btnSelect.gameObject.SetActive(true);
+        }
+        else
+        {
+            btnTry.gameObject.SetActive(true);
+            btnSelect.gameObject.SetActive(false);
+        }
+        
+        ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(idBallPreview).animatorImgOverrideController;
+    }
+
+    public void TouchNextBallPreview()
+    {
+        indexBallPreview++;
+        if (indexBallPreview == listIDPreview.Count)
+        {
+            indexBallPreview = 0;
+        }
+        
+        ShowBallPreview(listIDPreview[indexBallPreview]);
+    }
+
+    public void TouchPrevBallPreview()
+    {
+        indexBallPreview--;
+        if (indexBallPreview == -1)
+        {
+            indexBallPreview = listIDPreview.Count - 1;
+        }
+        
+        ShowBallPreview(listIDPreview[indexBallPreview]);
+    }
+
+    public void TouchTryBallPreview()
+    {
+        if (AdmobManager.instance.isRewardAds_Avaiable())
+        {
+            lockObj.gameObject.SetActive(true);
+            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                {
+                    Debug.Log("AddHeartAddHeartAddHeartAddHeartAddHeart");
+                    // lockObj.gameObject.SetActive(false);
+                    Config.currInfoBall_Try = Config.GetInfoBallFromID(idBallPreview);
+                    SceneManager.LoadScene("Level" + Config.GetLevel());
+                }
+                else
+                {
+                    lockObj.gameObject.SetActive(false);
+                }
+            });
+        }
+        else
+        {
+            NotificationPopup.instance.AddNotification("No Video Available!");
+        }
+    }
+
+    public void TouchSelectBallPreview()
+    {
+        Config.SetBallActive(idBallPreview);
+        Config.currBallID = Config.GetBallActive();
+        Config.currInfoBall = Config.GetInfoBallFromID(Config.currBallID);
     }
     #endregion
 }
