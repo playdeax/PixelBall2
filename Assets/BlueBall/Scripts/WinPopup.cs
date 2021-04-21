@@ -200,13 +200,18 @@ public class WinPopup : MonoBehaviour
     }
 
     public void SetNextLevel() {
-        LoadingGamePopup.Ins.ShowLoading_OutGame(() =>
+        // LoadingGamePopup.Ins.ShowLoading_OutGame(() =>
+        // {
+        //     Config.SetLevel(Config.GetLevel() + 1);
+        //     SceneManager.LoadScene("Level" + Config.GetLevel());
+        //     Config.currInfoBall_Try = null;
+        // });
+        GamePlayManager.Ins.SetLoading_EndGame(() =>
         {
             Config.SetLevel(Config.GetLevel() + 1);
             SceneManager.LoadScene("Level" + Config.GetLevel());
             Config.currInfoBall_Try = null;
         });
-        
     }
 
     public void TouchFreeCoin() {

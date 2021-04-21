@@ -176,7 +176,12 @@ public class LosePopup : MonoBehaviour
     }
 
     public void SetLoadingGame() {
-        LoadingGamePopup.Ins.ShowLoading_OutGame(() =>
+        // LoadingGamePopup.Ins.ShowLoading_OutGame(() =>
+        // {
+        //     SceneManager.LoadScene("Level" + Config.GetLevel());
+        //     Config.currInfoBall_Try = null;
+        // });
+        GamePlayManager.Ins.SetLoading_EndGame(() =>
         {
             SceneManager.LoadScene("Level" + Config.GetLevel());
             Config.currInfoBall_Try = null;

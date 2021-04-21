@@ -22,10 +22,12 @@ public class GamePlayManager : MonoBehaviour
         //ShowWinPopup();
         //ShowLosePopup();
 
-        LoadingGamePopup.Ins.ShowLoading_InGame(() =>
-        {
-            Config.currGameState = Config.GAMESTATE.PLAYING;
-        });
+        // LoadingGamePopup.Ins.ShowLoading_InGame(() =>
+        // {
+        //     
+        // });
+
+        SetLoading_StartGame();
     }
 
     private void OnDestroy()
@@ -324,4 +326,30 @@ public class GamePlayManager : MonoBehaviour
     }
     #endregion
 
+    #region SCENE_TRANSITION
+    [Header("SCENE TRANSITION")]
+    public SceneTransitionController sceneTransitionController;
+
+    public void SetLoading_StartGame()
+    {
+        sceneTransitionController.gameObject.SetActive(true);
+        sceneTransitionController.ShowLoading_Out(() =>
+        {
+            sceneTransitionController.gameObject.SetActive(false);
+            Config.currGameState = Config.GAMESTATE.PLAYING;
+        });
+    }
+    
+    public void SetLoading_EndGame(Action actionEndGame)
+        {
+            sceneTransitionController.gameObject.SetActive(true);
+            sceneTransitionController.ShowLoading_In(() =>
+            {
+                actionEndGame.Invoke();
+            });
+        }
+
+    #endregion
+    
+    
 }
