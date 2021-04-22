@@ -10,7 +10,7 @@ public class EnemyBase2 : EnemyBase
     public override void CollisionWithBall()
     {
         base.CollisionWithBall();
-        GameLevelManager.Ins.SetBallBeHit(speedAddBall, 1);
+        GameLevelManager.Ins.SetBallBeHit(speedAddBall);
     }
 
 
@@ -27,7 +27,7 @@ public class EnemyBase2 : EnemyBase
         spriteEnemy.DOFade(0f, 0.2f).SetEase(Ease.OutQuart);
         efxBeHit.gameObject.SetActive(true);
         efxBeHit.Play();
-       
+
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }

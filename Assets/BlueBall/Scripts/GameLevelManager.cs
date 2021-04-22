@@ -122,8 +122,8 @@ public class GameLevelManager : MonoBehaviour
 
 
     #region SPIKE
-    public void SetBallSpike(ItemSpike _itemSpike, int damage) {
-        SetBallBeHit(_itemSpike.speedAddBall, damage);
+    public void SetBallSpike(ItemSpike _itemSpike) {
+        SetBallBeHit(_itemSpike.speedAddBall);
     }
     #endregion
 
@@ -138,14 +138,14 @@ public class GameLevelManager : MonoBehaviour
 
     #region BEHIT
     public bool isPlayerBehit = false;
-    public void SetBallBeHit(Vector2 _speedAddBall, int damage) {
+    public void SetBallBeHit(Vector2 _speedAddBall) {
         if (Config.currGameState == Config.GAMESTATE.PLAYING)
         {
             playerMovement.SetBallBeHit(_speedAddBall);
             if (!isPlayerBehit)
             {
                 isPlayerBehit = true;
-                GamePlayManager.Ins.SetBeHit(damage);
+                GamePlayManager.Ins.SetBeHit();
                 StartCoroutine(BallBeHit_Sheild());
             }
         }
@@ -163,14 +163,10 @@ public class GameLevelManager : MonoBehaviour
             StartCoroutine(BallRevive_IEnumerator());
         }
         else {
-            StartCoroutine(Wait(1.5f));
             GamePlayManager.Ins.ShowLosePopup();
         }
     }
-    public IEnumerator Wait(float _time)
-    {
-        yield return new WaitForSeconds(_time);
-    }
+
     public IEnumerator BallRevive_IEnumerator() {
         yield return new WaitForSeconds(2f);
         Debug.Log("BallRevive_IEnumeratorBallRevive_IEnumeratorBallRevive_IEnumerator");

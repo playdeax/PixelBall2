@@ -180,12 +180,11 @@ public class GamePlayManager : MonoBehaviour
     public HeartGroup heartGroup;
     public List<Image> listHealthIcons = new List<Image>();
 
-    public void SetBeHit(int damage) {
-        countHealth-= damage;
+    public void SetBeHit() {
+        countHealth--;
         //ballHealth.DOFillAmount(countHealth * 1f / 3f, 0.2f).SetEase(Ease.OutQuart);
         UpdateHealth();
         if (countHealth <= 0) {
-            countHealth = 0;
             //SceneManager.LoadScene("Level" + GameLevelManager.Ins.level);
             GameLevelManager.Ins.SetBallDead();
         }
