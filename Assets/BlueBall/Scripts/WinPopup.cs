@@ -166,7 +166,20 @@ public class WinPopup : MonoBehaviour
 
 
     public void TouchNoThank() {
-        SetNextLevel();
+
+        if (Config.interstitialAd_countWin % 2 == 0 && AdmobManager.instance.isInterstititalAds_Avaiable())
+        {
+            AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                Config.interstitialAd_countWin++;
+                SetNextLevel();
+            });
+        }
+        else
+        {
+            SetNextLevel();
+        }
+       
     }
 
     public void TouchReward() {
