@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource audioSoundLoop;
     private void Awake()
     {
-        instance = this; 
+        instance = this;
         audioSound = transform.GetComponent<AudioSource>();
         DontDestroyOnLoad(this);
 
@@ -22,7 +22,7 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void StopPlay()
@@ -41,11 +41,47 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    [Header("JumpLoxo")]
+    public AudioClip jumpLoxo;
+
+
+    public void SFX_Loxo()
+    {
+        if (Config.isSound)
+        {
+            audioSound.PlayOneShot(jumpLoxo);
+        }
+    }
+
+    [Header("OpenDoor")]
+    public AudioClip openDoor;
+
+
+    public void SFX_OpenDoor()
+    {
+        if (Config.isSound)
+        {
+            audioSound.PlayOneShot(openDoor);
+        }
+    }
+    [Header("Enemy Pock")]
+    public AudioClip enemyPock;
+
+
+    public void SFX_EnemyPock()
+    {
+        if (Config.isSound)
+        {
+            audioSound.PlayOneShot(enemyPock);
+        }
+    }
+
     [Header("Jump")]
     public AudioClip jump;
 
 
-    public void SFX_Jump() {
+    public void SFX_Jump()
+    {
         if (Config.isSound)
         {
             audioSound.PlayOneShot(jump);

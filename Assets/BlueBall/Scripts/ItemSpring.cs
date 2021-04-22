@@ -9,13 +9,13 @@ public class ItemSpring : ItemBase
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public override void CollisionWithBall()
@@ -24,5 +24,6 @@ public class ItemSpring : ItemBase
         animatorSpring.SetTrigger("jump");
 
         GameLevelManager.Ins.SetBallSpring(this);
+        SoundManager.instance.SFX_Loxo();
     }
 }
