@@ -70,7 +70,7 @@ public class WinPopup : MonoBehaviour
         
     }
     private int coinReward;
-    public void ShowPopup(int _coinReward) {
+    public void ShowPopup(int _coinReward, int _level) {
         lockPopup.SetActive(true);
         coinReward = _coinReward;
         gameObject.SetActive(true);
@@ -78,7 +78,7 @@ public class WinPopup : MonoBehaviour
         txtReward.text = "+" + coinReward;
         txtLevel.text = "LEVEL " + Config.GetLevel();
 
-        
+        FirebaseManager.instance.LogLevelWin(_level);
 
         StartCoroutine(ShowPopup_IEnumerator(coinReward));
         

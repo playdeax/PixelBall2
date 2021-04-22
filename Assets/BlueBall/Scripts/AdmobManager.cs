@@ -14,10 +14,10 @@ public class AdmobManager : MonoBehaviour
     public static AdmobManager instance;
     [Header("COnfig")]
     [Header("Interstitial ADS")]
-    private string InterstitialAd_Android_ID = "ca-app-pub-9179752697212712/1557102985";
+    private string InterstitialAd_Android_ID = "ca-app-pub-9179752697212712/1739728907";
     private string InterstitialAd_IOS_ID = "ca-app-pub-9179752697212712/6636601519";
     [Header("Reward ADS")]
-    private string RewardedAd_Android_ID = "ca-app-pub-9179752697212712/9655084855";
+    private string RewardedAd_Android_ID = "ca-app-pub-9179752697212712/4174320554";
     private string RewardedAd_IOS_ID = "ca-app-pub-9179752697212712/9070181442";
     [Header("Native ADS")]
     private string NativeAd_Android_ID = "ca-app-pub-9179752697212712/4654027937";

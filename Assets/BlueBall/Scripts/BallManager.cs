@@ -26,7 +26,7 @@ public class BallManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy")) {
-            GamePlayManager.Ins.ShowLosePopup();
+            GameLevelManager.Ins.SetBallDead();
         }
     }
 }

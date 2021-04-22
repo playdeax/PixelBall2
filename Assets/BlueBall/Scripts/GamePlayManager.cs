@@ -128,9 +128,9 @@ public class GamePlayManager : MonoBehaviour
     [Header("WIN POPUP")]
     public WinPopup winPopup;
 
-    public void ShowWinPopup()
+    public void ShowWinPopup(int _level)
     {
-        winPopup.ShowPopup(1000);
+        winPopup.ShowPopup(1000, _level) ;
     }
 
     #endregion
@@ -139,10 +139,10 @@ public class GamePlayManager : MonoBehaviour
     [Header("LOSE POPUP")]
     public LosePopup losePopup;
 
-    public void ShowLosePopup()
+    public void ShowLosePopup(int _level)
     {
         Config.currGameState = Config.GAMESTATE.GAMEOVER;
-        losePopup.ShowPopup();
+        losePopup.ShowPopup(_level);
     }
 
     #endregion
@@ -180,12 +180,11 @@ public class GamePlayManager : MonoBehaviour
     public HeartGroup heartGroup;
     public List<Image> listHealthIcons = new List<Image>();
 
-    public void SetBeHit(int damage) {
-        countHealth-= damage;
+    public void SetBeHit() {
+        countHealth--;
         //ballHealth.DOFillAmount(countHealth * 1f / 3f, 0.2f).SetEase(Ease.OutQuart);
         UpdateHealth();
         if (countHealth <= 0) {
-            countHealth = 0;
             //SceneManager.LoadScene("Level" + GameLevelManager.Ins.level);
             GameLevelManager.Ins.SetBallDead();
         }

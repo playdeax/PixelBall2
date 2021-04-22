@@ -30,8 +30,15 @@ public class HomeManager : MonoBehaviour
     public GameObject lockObj;
 
     // Start is called before the first frame update
+
+
     void Start()
     {
+        if(Config.GetLevel() == 1)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+
         btnPlay.OnPointerClickCallBack_Completed.AddListener(TouchPlay);
         btnShop.OnPointerClickCallBack_Completed.AddListener(TouchOpenShopPopup);
         txtLevel.text = "LEVEL " + Config.GetLevel();
@@ -39,7 +46,6 @@ public class HomeManager : MonoBehaviour
         btnDailyReward.OnPointerClickCallBack_Completed.AddListener(TouchDailyReward);
         btnFreeCoin.OnPointerClickCallBack_Completed.AddListener(TouchFreeCoin);
         btnAddHeart.OnPointerClickCallBack_Completed.AddListener(TouchFreeHeart);
-
 
         ShowBallPreview();
         StartCoroutine(Start_IEnumerator());
