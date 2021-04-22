@@ -206,7 +206,7 @@ public class WinPopup : MonoBehaviour
         //     SceneManager.LoadScene("Level" + Config.GetLevel());
         //     Config.currInfoBall_Try = null;
         // });
-        GamePlayManager.Ins.SetLoading_EndGame(() =>
+        GamePlayManager.Ins.SetLoading_In(() =>
         {
             Config.SetLevel(Config.GetLevel() + 1);
             SceneManager.LoadScene("Level" + Config.GetLevel());

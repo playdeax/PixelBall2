@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using Sirenix.OdinInspector;
 public class PausePopup : MonoBehaviour
 {
     public BBUIView popup;
@@ -47,10 +47,10 @@ public class PausePopup : MonoBehaviour
         toggleMusic.onValueChanged.RemoveAllListeners();
         toggleVibration.onValueChanged.RemoveAllListeners();
     }
+
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void InitToogle()
@@ -59,15 +59,17 @@ public class PausePopup : MonoBehaviour
         toggleMusic.isOn = Config.isMusic;
         toggleVibration.isOn = Config.isVibration;
     }
-    
+
     public void TouchSound(bool isSound)
     {
         Config.SetSound(isSound);
     }
+
     public void TouchMusic(bool isMusic)
     {
         Config.SetMusic(isMusic);
-        if(isMusic){
+        if (isMusic)
+        {
             MusicManager.instance.PlayMusicBG();
         }
         else
@@ -75,7 +77,7 @@ public class PausePopup : MonoBehaviour
             MusicManager.instance.StopMusicBG();
         }
     }
-    
+
     public void TouchVibration(bool isVibration)
     {
         Config.SetVibration(isVibration);
@@ -83,19 +85,21 @@ public class PausePopup : MonoBehaviour
 
     private Config.POPUP_ACTION popupActionType = Config.POPUP_ACTION.NONE;
 
-    public void ShowPopup() {
+    public void ShowPopup()
+    {
         gameObject.SetActive(true);
         lockPopup.SetActive(true);
         popup.ShowView();
     }
 
-    public void PopupShowView_Finished() {
+    public void PopupShowView_Finished()
+    {
         lockPopup.SetActive(false);
-        
     }
 
 
-    public void HidePopup() {
+    public void HidePopup()
+    {
         lockPopup.SetActive(true);
         popup.HideView();
     }
@@ -105,27 +109,40 @@ public class PausePopup : MonoBehaviour
         if (popupActionType == Config.POPUP_ACTION.CONTINUE)
         {
             GamePlayManager.Ins.SetUnPause();
+            gameObject.SetActive(false);
         }
-        else if (popupActionType == Config.POPUP_ACTION.RESTART) {
-            SceneManager.LoadScene("Level"+Config.GetLevel());
-        }
-        else if (popupActionType == Config.POPUP_ACTION.SKIPLEVEL)
-        { 
+        else
+        {
+            GamePlayManager.Ins.SetLoading_In(() =>
+            {
+                Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                gameObject.SetActive(false);
             
-            Config.SetLevel(Config.GetLevel()+1);
-            SceneManager.LoadScene("Level"+Config.GetLevel());
+                if (popupActionType == Config.POPUP_ACTION.RESTART)
+                {
+                    SceneManager.LoadScene("Level" + Config.GetLevel());
+                }
+                else if (popupActionType == Config.POPUP_ACTION.SKIPLEVEL)
+                {
+                    Config.SetLevel(Config.GetLevel() + 1);
+                    SceneManager.LoadScene("Level" + Config.GetLevel());
+                }
+            });
         }
-        gameObject.SetActive(false);
     }
 
 
-    public void TouchContinue() {
+    public void TouchContinue()
+    {
         popupActionType = Config.POPUP_ACTION.CONTINUE;
         HidePopup();
     }
 
 
-    public void TouchRestart() {
+    [Button("TouchRestart")]
+    public void TouchRestart()
+    {
+        Debug.Log("TouchRestartTouchRestart");
         popupActionType = Config.POPUP_ACTION.RESTART;
         HidePopup();
     }
@@ -140,7 +157,6 @@ public class PausePopup : MonoBehaviour
             {
                 if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
                 {
-                    
                     lockPopup.gameObject.SetActive(false);
                     popupActionType = Config.POPUP_ACTION.SKIPLEVEL;
                     HidePopup();

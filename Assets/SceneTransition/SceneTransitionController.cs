@@ -4,9 +4,13 @@ using UnityEngine;
 using System;
 using DG.Tweening;
 using UnityEngine.UI;
+
 public class SceneTransitionController : MonoBehaviour
 {
     public Image imgLoading;
+
+    public Slider sliderValue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,34 +24,50 @@ public class SceneTransitionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public float _smoothing = 0.5f;
+
+    float _loadingOut = 1.1f;
+    Tween t_In;
+
     public void ShowLoading_In(Action actionIn)
     {
-        float _loadingOut = 1.1f;
-        DOTween.To(() => _loadingOut, x => _loadingOut = x, -0.1f - _smoothing, 1f).SetEase(Ease.InQuad)
-            .OnUpdate(() => {
-                imgLoading.material.SetFloat("_cutoff",_loadingOut);
-            })
-            .OnComplete(() =>
-            {
-                actionIn.Invoke();
-            });
-        
+        Debug.Log("ShowLoading_InShowLoading_In");
+        sliderValue.value = sliderValue.maxValue;
+        imgLoading.material.SetFloat("_cutoff", sliderValue.value);
+        Debug.Log("ShowLoading_InShowLoading_In 3333333333");
+        DOTween.Kill(sliderValue);
+        sliderValue.DOValue(sliderValue.minValue, 1f).SetEase(Ease.OutQuad).SetUpdate(true).OnUpdate(() =>
+        {
+            Debug.Log("ShowLoading_InShowLoading_In 22222");
+            imgLoading.material.SetFloat("_cutoff", sliderValue.value);
+        }).OnComplete(() =>
+        {
+            Debug.Log("ShowLoading_InShowLoading_In 2222222");
+            actionIn.Invoke();
+        });
     }
-    
+
+    float _loadingIn = -0.1f;
+
     public void ShowLoading_Out(Action actionOut)
     {
-        float _loadingIn = -0.1f - _smoothing;
-        DOTween.To(() => _loadingIn, x => _loadingIn = x, 1.1f, 1.5f).SetEase(Ease.InQuart)
-            .OnUpdate(() => {
-                imgLoading.material.SetFloat("_cutoff",_loadingIn);
-            })
-            .OnComplete(() =>
-            {
-                actionOut.Invoke();
-            });
+        sliderValue.value = sliderValue.minValue;
+        imgLoading.material.SetFloat("_cutoff", sliderValue.value);
+        sliderValue.DOValue(sliderValue.maxValue, 1f).SetEase(Ease.OutQuad).SetUpdate(true)
+            .OnUpdate(() => { imgLoading.material.SetFloat("_cutoff", sliderValue.value); })
+            .OnComplete(() => { actionOut.Invoke(); });
+    }
+
+
+    public void SetLoadin_ON()
+    {
+        imgLoading.material.SetFloat("_cutoff", sliderValue.minValue);
+    }
+    public void SetLoadin_OFF()
+    {
+        imgLoading.material.SetFloat("_cutoff", sliderValue.maxValue);
     }
 }

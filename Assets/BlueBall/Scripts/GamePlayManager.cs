@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using System;
+using Sirenix.OdinInspector;
 public class GamePlayManager : MonoBehaviour
 {
     public static GamePlayManager Ins;
@@ -17,6 +18,7 @@ public class GamePlayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         btnPasue.OnPointerClickCallBack_Completed.AddListener(TouchPause);
         Config.currGameState = Config.GAMESTATE.PRESTART;
         //ShowWinPopup();
@@ -27,7 +29,7 @@ public class GamePlayManager : MonoBehaviour
         //     
         // });
 
-        SetLoading_StartGame();
+        StartCoroutine(SetLoading_Start());
     }
 
     private void OnDestroy()
@@ -330,24 +332,54 @@ public class GamePlayManager : MonoBehaviour
     [Header("SCENE TRANSITION")]
     public SceneTransitionController sceneTransitionController;
 
-    public void SetLoading_StartGame()
+    public IEnumerator SetLoading_Start()
     {
         sceneTransitionController.gameObject.SetActive(true);
+        sceneTransitionController.SetLoadin_ON();
+        yield return new WaitForSeconds(0.1f);
+        Debug.Log("SetLoading_StartSetLoading_Start");
         sceneTransitionController.ShowLoading_Out(() =>
         {
             sceneTransitionController.gameObject.SetActive(false);
             Config.currGameState = Config.GAMESTATE.PLAYING;
         });
     }
-    
-    public void SetLoading_EndGame(Action actionEndGame)
+    public void SetLoading_In(Action actionIn)
+    {
+        Debug.Log("SetLoading_InAAAAAAAAAAAAAAAAAAAA");
+        sceneTransitionController.gameObject.SetActive(true);
+        sceneTransitionController.ShowLoading_In(() =>
         {
-            sceneTransitionController.gameObject.SetActive(true);
-            sceneTransitionController.ShowLoading_In(() =>
-            {
-                actionEndGame.Invoke();
-            });
-        }
+            actionIn.Invoke();
+        });
+    }  
+    public void SetLoading_Out(Action actionOut)
+    {
+        sceneTransitionController.gameObject.SetActive(true);
+        sceneTransitionController.ShowLoading_Out(() =>
+        {
+            actionOut.Invoke();
+        });
+    }
+    
+    [Button("TestLoading_In")]
+    public void TestLoading_In()
+    {
+        SetLoading_In(() => { });
+    }
+
+    [Button("TestLoading_Out")]
+    public void TestLoading_Out()
+    {
+        StartCoroutine(TestLoading_Out_IEnumerator());
+    }
+
+    public IEnumerator TestLoading_Out_IEnumerator()
+    {
+        yield return new WaitForSeconds(0.1f);
+        SetLoading_Out(() => { });
+    }
+
 
     #endregion
     
