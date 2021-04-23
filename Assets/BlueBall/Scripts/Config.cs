@@ -341,6 +341,7 @@ public class Config
     #endregion
 
     public static float TIME_START_PACK = 2 * 60 * 60 + 30 * 60 + 30f;
+    public static int interstitialAd_countWin = 1;
 
     public static string FormatTime(int time)
     {

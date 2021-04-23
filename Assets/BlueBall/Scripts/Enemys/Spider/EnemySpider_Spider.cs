@@ -21,7 +21,7 @@ public class EnemySpider_Spider : EnemyBase
     public override void CollisionWithBall()
     {
         base.CollisionWithBall();
-        GameLevelManager.Ins.SetBallBeHit(enemySpider.speedAddBall,1 );
+        GameLevelManager.Ins.SetBallBeHit(enemySpider.speedAddBall);
     }
 
     public void SetAnimator() { 

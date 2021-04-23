@@ -6,7 +6,6 @@ public class ItemSpike : ItemBase
 {
     public SpriteRenderer icon;
     public Vector2 speedAddBall;
-    public int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +22,7 @@ public class ItemSpike : ItemBase
     {
         base.CollisionWithBall();
 
-        GameLevelManager.Ins.SetBallSpike(this, damage);
+        GameLevelManager.Ins.SetBallSpike(this);
     }
 
 }

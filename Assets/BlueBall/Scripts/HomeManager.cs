@@ -4,16 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
-
 public class HomeManager : MonoBehaviour
 {
     public static HomeManager Ins;
-
     private void Awake()
     {
         Ins = this;
     }
-
     public BBUIButton btnPlay;
     public BBUIButton btnShop;
     public ShopPopUp shopPopup;
@@ -33,8 +30,15 @@ public class HomeManager : MonoBehaviour
     public GameObject lockObj;
 
     // Start is called before the first frame update
+
+
     void Start()
     {
+        if(Config.GetLevel() == 1)
+        {
+            SceneManager.LoadScene("Level1");
+        }
+
         btnPlay.OnPointerClickCallBack_Completed.AddListener(TouchPlay);
         btnShop.OnPointerClickCallBack_Completed.AddListener(TouchOpenShopPopup);
         txtLevel.text = "LEVEL " + Config.GetLevel();
@@ -43,20 +47,11 @@ public class HomeManager : MonoBehaviour
         btnFreeCoin.OnPointerClickCallBack_Completed.AddListener(TouchFreeCoin);
         btnAddHeart.OnPointerClickCallBack_Completed.AddListener(TouchFreeHeart);
 
-        //BallPreview
-        btnNext.OnPointerClickCallBack_Completed.AddListener(TouchNextBallPreview);
-        btnPrev.OnPointerClickCallBack_Completed.AddListener(TouchPrevBallPreview);
-        btnTry.OnPointerClickCallBack_Completed.AddListener(TouchTryBallPreview);
-        btnSelect.OnPointerClickCallBack_Completed.AddListener(TouchSelectBallPreview);
-
         ShowBallPreview();
         StartCoroutine(Start_IEnumerator());
-
-        InitIndexBallPreview();
     }
 
-    public IEnumerator Start_IEnumerator()
-    {
+    public IEnumerator Start_IEnumerator() {
         btnPlay.gameObject.SetActive(false);
         btnShop.gameObject.SetActive(false);
         ballAnimator.gameObject.SetActive(false);
@@ -67,11 +62,6 @@ public class HomeManager : MonoBehaviour
         btnAddHeart.gameObject.SetActive(false);
         btnShopCoin.gameObject.SetActive(false);
         txtLevel.gameObject.SetActive(false);
-
-        btnNext.gameObject.SetActive(false);
-        btnPrev.gameObject.SetActive(false);
-        btnSelect.gameObject.SetActive(false);
-        btnTry.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(0.1f);
         txtLevel.gameObject.SetActive(true);
@@ -87,7 +77,6 @@ public class HomeManager : MonoBehaviour
             btnChest.gameObject.SetActive(true);
             btnChest.GetComponent<BBUIView>().ShowView();
         }
-
         btnShopCoin.gameObject.SetActive(true);
         btnShopCoin.GetComponent<BBUIView>().ShowView();
         btnBall.gameObject.SetActive(true);
@@ -100,14 +89,10 @@ public class HomeManager : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         ballAnimator.gameObject.SetActive(true);
         ballAnimator.GetComponent<BBUIView>().ShowView();
-
         /*btnDailyReward.gameObject.SetActive(true);
         btnDailyReward.GetComponent<BBUIView>().ShowView();*/
         btnPlay.gameObject.SetActive(true);
         btnPlay.GetComponent<BBUIView>().ShowView();
-
-        btnNext.GetComponent<BBUIView>().ShowView();
-        btnPrev.GetComponent<BBUIView>().ShowView();
 
         if (Config.CheckDailyReward())
         {
@@ -119,13 +104,19 @@ public class HomeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
-
     public int forceLevel = 0;
-
-    public void TouchPlay()
-    {
-        SetLoading_ToGame();
+    public void TouchPlay() {
+        if (forceLevel > 0)
+        {
+            SceneManager.LoadScene("Level" + forceLevel);
+        }
+        else
+        {
+            SceneManager.LoadScene("Level" + Config.GetLevel());
+        }
+        
     }
 
 
@@ -136,35 +127,29 @@ public class HomeManager : MonoBehaviour
 
 
     #region BALL PREVIEW
-
-    public void ShowBallPreview()
-    {
+    public void ShowBallPreview() {
         if (Config.currInfoBall_Try != null)
         {
             ballAnimator.runtimeAnimatorController = Config.currInfoBall_Try.animatorImgOverrideController;
         }
-        else
-        {
-            ballAnimator.runtimeAnimatorController =
-                Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+        else {
+            ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
         }
-    }
 
+
+    }
     #endregion
 
-    public void TouchChest()
-    {
+    public void TouchChest() {
         OpenStarterPackPopup();
     }
 
-    public void TouchDailyReward()
-    {
+    public void TouchDailyReward() {
         OpenDailyRewardPopup();
     }
 
 
-    public void TouchFreeCoin()
-    {
+    public void TouchFreeCoin() {
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
             lockObj.gameObject.SetActive(true);
@@ -174,8 +159,10 @@ public class HomeManager : MonoBehaviour
                 {
                     lockObj.gameObject.SetActive(false);
                     btnFreeCoin.Interactable = false;
-                    AddCoin(Config.FREE_COIN_REWARD, ballAnimator.transform.position, posAddCoin.position,
-                        () => { btnFreeCoin.Interactable = false; });
+                    AddCoin(Config.FREE_COIN_REWARD, ballAnimator.transform.position, posAddCoin.position, () => {
+                        btnFreeCoin.Interactable = false;
+                    });
+
                 }
                 else
                 {
@@ -185,12 +172,11 @@ public class HomeManager : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Available!");
+            NotificationPopup.instance.AddNotification("No Video Avaiable!");
         }
     }
 
-    public void TouchFreeHeart()
-    {
+    public void TouchFreeHeart() {
         Debug.Log("TouchFreeHeart");
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
@@ -202,8 +188,10 @@ public class HomeManager : MonoBehaviour
                     Debug.Log("AddHeartAddHeartAddHeartAddHeartAddHeart");
                     lockObj.gameObject.SetActive(false);
                     btnAddHeart.Interactable = false;
-                    AddHeart(Config.FREE_HEART_REWARD, ballAnimator.transform.position, btnBall.transform.position,
-                        () => { btnAddHeart.Interactable = false; });
+                    AddHeart(Config.FREE_HEART_REWARD, ballAnimator.transform.position, btnBall.transform.position, () => {
+                        btnAddHeart.Interactable = false;
+                    });
+
                 }
                 else
                 {
@@ -213,21 +201,19 @@ public class HomeManager : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Available!");
+            NotificationPopup.instance.AddNotification("No Video Avaiable!");
         }
     }
 
 
     #region ADD COIN
-
     public ItemCoinReward itemCoinRewardPrefab;
     public Transform coinTranfromParent;
 
     int indexAddCoin = 0;
     int countIndexAddCoin = 0;
 
-    public Action AddCoin_CallBack = delegate() { };
-
+    public Action AddCoin_CallBack = delegate () { };
     public void AddCoin(int _countAddCoin, Vector3 posStart, Vector3 posEnd, Action _addCoin_CallBack)
     {
         AddCoin_CallBack = _addCoin_CallBack;
@@ -239,7 +225,6 @@ public class HomeManager : MonoBehaviour
             countIndexAddCoin = 25;
             valueReward = _countAddCoin / 25f;
         }
-
         lockObj.SetActive(true);
         StartCoroutine(AddCoin_IEnumerator(posStart, posEnd, valueReward));
     }
@@ -260,19 +245,16 @@ public class HomeManager : MonoBehaviour
         lockObj.SetActive(false);
         AddCoin_CallBack.Invoke();
     }
-
     #endregion
 
 
     #region ADD HEART
-
     public ItemHeartReward itemHeartRewardPrefab;
 
     int indexAddHeart = 0;
     int countIndexAddHeart = 0;
 
-    public Action AddHeart_CallBack = delegate() { };
-
+    public Action AddHeart_CallBack = delegate () { };
     public void AddHeart(int _countAddHeart, Vector3 posStart, Vector3 posEnd, Action _addHeart_CallBack)
     {
         AddHeart_CallBack = _addHeart_CallBack;
@@ -300,12 +282,11 @@ public class HomeManager : MonoBehaviour
         lockObj.SetActive(false);
         AddHeart_CallBack.Invoke();
     }
-
     #endregion
 
     #region NEWSKIN
-
-    [Header("NEW SKIN POPUP")] public RescuePopup rescuePopup;
+    [Header("NEW SKIN POPUP")]
+    public RescuePopup rescuePopup;
 
     public void OpenNewSkinPopup(int _idBallNewSkin)
     {
@@ -319,14 +300,12 @@ public class HomeManager : MonoBehaviour
             ShowDailyReward_Day7();
         }
     }
-
     #endregion
 
 
     #region DAILY_REWARD
-
-    [Header("DAILY_REWARD POPUP")] public DailyRewardPopup dailyRewardPopup;
-
+    [Header("DAILY_REWARD POPUP")]
+    public DailyRewardPopup dailyRewardPopup;
     public void ShowDailyReward_Day7()
     {
         dailyRewardPopup.ShowReward_Day7();
@@ -336,155 +315,25 @@ public class HomeManager : MonoBehaviour
     {
         dailyRewardPopup.OpenPopup();
     }
-
     #endregion
 
     #region STARTER_PACK
-
-    [Header("STARTER_PACK POPUP")] public StarterPackPopup starterPackPopup;
+    [Header("STARTER_PACK POPUP")]
+    public StarterPackPopup starterPackPopup;
 
     public void OpenStarterPackPopup()
     {
         starterPackPopup.OpenPopup();
     }
-
     #endregion
 
     #region PREMIUM_PACK
-
-    [Header("PREMIUM_PACK POPUP")] public PremiumPackPopup premiumPackPopup;
+    [Header("PREMIUM_PACK POPUP")]
+    public PremiumPackPopup premiumPackPopup;
 
     public void OpenPremiumPackPopup()
     {
         premiumPackPopup.OpenPopup();
     }
-
-    #endregion
-
-
-    #region BALL_PREVIEW
-
-    [Header("BALL_PREVIEW")] public List<int> listIDPreview = new List<int>();
-    public BBUIButton btnNext;
-    public BBUIButton btnPrev;
-    public BBUIButton btnTry;
-    public BBUIButton btnSelect;
-
-
-    public int idBallPreview = 1;
-    public int indexBallPreview = 0;
-
-    public void InitIndexBallPreview()
-    {
-        for (int i = 0; i < listIDPreview.Count; i++)
-        {
-            if (listIDPreview[i] == Config.GetBallActive())
-            {
-                indexBallPreview = i;
-                return;
-            }
-        }
-    }
-
-    public void ShowBallPreview(int idBall)
-    {
-        idBallPreview = idBall;
-        if (idBallPreview == Config.GetBallActive())
-        {
-            btnTry.gameObject.SetActive(false);
-            btnSelect.gameObject.SetActive(false);
-        }
-        else if (Config.GetInfoBallUnlock(idBallPreview))
-        {
-            btnTry.gameObject.SetActive(false);
-            btnSelect.gameObject.SetActive(true);
-        }
-        else
-        {
-            btnTry.gameObject.SetActive(true);
-            btnSelect.gameObject.SetActive(false);
-        }
-
-        ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(idBallPreview).animatorImgOverrideController;
-    }
-
-    public void TouchNextBallPreview()
-    {
-        indexBallPreview++;
-        if (indexBallPreview == listIDPreview.Count)
-        {
-            indexBallPreview = 0;
-        }
-
-        ShowBallPreview(listIDPreview[indexBallPreview]);
-    }
-
-    public void TouchPrevBallPreview()
-    {
-        indexBallPreview--;
-        if (indexBallPreview == -1)
-        {
-            indexBallPreview = listIDPreview.Count - 1;
-        }
-
-        ShowBallPreview(listIDPreview[indexBallPreview]);
-    }
-
-    public void TouchTryBallPreview()
-    {
-        if (AdmobManager.instance.isRewardAds_Avaiable())
-        {
-            lockObj.gameObject.SetActive(true);
-            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
-            {
-                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
-                {
-                    Debug.Log("AddHeartAddHeartAddHeartAddHeartAddHeart");
-                    // lockObj.gameObject.SetActive(false);
-                    Config.currInfoBall_Try = Config.GetInfoBallFromID(idBallPreview);
-                    // SceneManager.LoadScene("Level" + Config.GetLevel());
-                    SetLoading_ToGame();
-                }
-                else
-                {
-                    lockObj.gameObject.SetActive(false);
-                }
-            });
-        }
-        else
-        {
-            NotificationPopup.instance.AddNotification("No Video Available!");
-        }
-    }
-
-    public void TouchSelectBallPreview()
-    {
-        Config.SetBallActive(idBallPreview);
-        Config.currBallID = Config.GetBallActive();
-        Config.currInfoBall = Config.GetInfoBallFromID(Config.currBallID);
-    }
-
-    #endregion
-
-    #region SCENE_LOADING
-
-    public SceneTransitionController sceneTransitionController;
-
-    public void SetLoading_ToGame()
-    {
-        sceneTransitionController.gameObject.SetActive(true);
-        sceneTransitionController.ShowLoading_In(() =>
-        {
-            if (forceLevel > 0)
-            {
-                SceneManager.LoadScene("Level" + forceLevel);
-            }
-            else
-            {
-                SceneManager.LoadScene("Level" + Config.GetLevel());
-            }
-        });
-    }
-
     #endregion
 }

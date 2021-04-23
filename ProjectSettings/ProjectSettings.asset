@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: CLA
-  productName: Pixel Ball
+  companyName: Super Classic Game
+  productName: 'Pixel Ball '
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -121,7 +121,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.51
+  bundleVersion: 0.94
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -164,9 +164,10 @@ PlayerSettings:
   resolutionScalingMode: 0
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
-  applicationIdentifier: {}
+  applicationIdentifier:
+    Android: com.pixel.red.bounce.ball
   buildNumber: {}
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 94
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -240,18 +241,18 @@ PlayerSettings:
   clonedFromGUID: 5f34be1353de5cf4398729fda238591b
   templatePackageId: com.unity.template.2d@3.3.1
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: '{inproject}: key.keystore'
+  AndroidKeyaliasName: cla
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -638,19 +639,20 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
   scriptingDefineSymbols:
-    1: dUI_MANAGER;ODIN_INSPECTOR;UNITY_POST_PROCESSING_STACK_V2
+    1: dUI_MANAGER;ODIN_INSPECTOR
     4: dUI_MANAGER
-    7: ODIN_INSPECTOR;dUI_MANAGER;UNITY_POST_PROCESSING_STACK_V2
-    13: dUI_MANAGER;UNITY_POST_PROCESSING_STACK_V2
+    7: ODIN_INSPECTOR;dUI_MANAGER
+    13: dUI_MANAGER
     14: dUI_MANAGER
-    19: dUI_MANAGER;UNITY_POST_PROCESSING_STACK_V2
-    21: dUI_MANAGER;UNITY_POST_PROCESSING_STACK_V2
-    25: dUI_MANAGER;UNITY_POST_PROCESSING_STACK_V2
-    27: dUI_MANAGER;UNITY_POST_PROCESSING_STACK_V2
-    28: dUI_MANAGER;UNITY_POST_PROCESSING_STACK_V2
-    29: dUI_MANAGER;UNITY_POST_PROCESSING_STACK_V2
+    19: dUI_MANAGER
+    21: dUI_MANAGER
+    25: dUI_MANAGER
+    27: dUI_MANAGER
+    28: dUI_MANAGER
+    29: dUI_MANAGER
   platformArchitecture: {}
-  scriptingBackend: {}
+  scriptingBackend:
+    Android: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
@@ -659,7 +661,8 @@ PlayerSettings:
   scriptingRuntimeVersion: 1
   gcIncremental: 0
   gcWBarrierValidation: 0
-  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevelPerPlatform:
+    Android: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Template_2D

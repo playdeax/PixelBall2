@@ -64,10 +64,12 @@ public class LosePopup : MonoBehaviour
 
     }
 
-    public void ShowPopup()
+    public void ShowPopup(int _level)
     {
         gameObject.SetActive(true);
         lockPopup.SetActive(true);
+
+        FirebaseManager.instance.LogLevelLose(_level) ;
 
         StartCoroutine(ShowPopup_IEnumerator());
     }

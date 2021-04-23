@@ -19,10 +19,11 @@ public class ItemDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void SetOpenDoor() {
+    public void SetOpenDoor()
+    {
         SoundManager.instance.SFX_OpenDoor();
         objUp.transform.DOLocalMove(up_end.localPosition, 0.5f).SetEase(Ease.OutQuad);
         objDown.transform.DOLocalMove(down_end.localPosition, 0.5f).SetEase(Ease.OutQuad);

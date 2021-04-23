@@ -9,7 +9,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource audioSoundLoop;
     private void Awake()
     {
-        instance = this; 
+        instance = this;
         audioSound = transform.GetComponent<AudioSource>();
         DontDestroyOnLoad(this);
 
@@ -22,7 +22,7 @@ public class SoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void StopPlay()
@@ -80,7 +80,8 @@ public class SoundManager : MonoBehaviour
     public AudioClip jump;
 
 
-    public void SFX_Jump() {
+    public void SFX_Jump()
+    {
         if (Config.isSound)
         {
             audioSound.PlayOneShot(jump);

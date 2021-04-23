@@ -22,7 +22,7 @@ public class EnemyBasic : EnemyBase
     public override void CollisionWithBall()
     {
         base.CollisionWithBall();
-        GameLevelManager.Ins.SetBallBeHit(speedAddBall, 1);
+        GameLevelManager.Ins.SetBallBeHit(speedAddBall);
     }
 
 

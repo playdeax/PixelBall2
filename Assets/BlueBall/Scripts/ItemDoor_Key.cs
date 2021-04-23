@@ -16,24 +16,25 @@ public class ItemDoor_Key : ItemBase
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
         Debug.Log("" + collision.name);
-       // SetCollier_Enable(false);
+        // SetCollier_Enable(false);
         if (collision.GetComponent<PlayerMovement>().isMoveLeft)
         {
             key.transform.DOLocalRotate(new Vector3(0f, 0f, 35f), 0.3f).SetEase(Ease.OutQuart);
             itemDoor.SetCloseDoor();
         }
-        else {
+        else
+        {
             key.transform.DOLocalRotate(new Vector3(0f, 0f, -35f), 0.3f).SetEase(Ease.OutQuart);
             itemDoor.SetOpenDoor();
         }
-        
+
     }
 
 

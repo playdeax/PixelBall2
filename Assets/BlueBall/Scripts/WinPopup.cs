@@ -70,7 +70,7 @@ public class WinPopup : MonoBehaviour
         
     }
     private int coinReward;
-    public void ShowPopup(int _coinReward) {
+    public void ShowPopup(int _coinReward, int _level) {
         lockPopup.SetActive(true);
         coinReward = _coinReward;
         gameObject.SetActive(true);
@@ -78,7 +78,7 @@ public class WinPopup : MonoBehaviour
         txtReward.text = "+" + coinReward;
         txtLevel.text = "LEVEL " + Config.GetLevel();
 
-        
+        FirebaseManager.instance.LogLevelWin(_level);
 
         StartCoroutine(ShowPopup_IEnumerator(coinReward));
         
@@ -159,14 +159,27 @@ public class WinPopup : MonoBehaviour
             rescuePopup.OpenRescuePopup();
         }
         else if (Config.CheckDailyReward()) {
-            dailyRewardPopup.OpenPopup();
+          //  dailyRewardPopup.OpenPopup();
         }
     }
 
 
 
     public void TouchNoThank() {
-        SetNextLevel();
+
+        if (Config.interstitialAd_countWin % 2 == 0 && AdmobManager.instance.isInterstititalAds_Avaiable())
+        {
+            AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                Config.interstitialAd_countWin++;
+                SetNextLevel();
+            });
+        }
+        else
+        {
+            SetNextLevel();
+        }
+       
     }
 
     public void TouchReward() {
