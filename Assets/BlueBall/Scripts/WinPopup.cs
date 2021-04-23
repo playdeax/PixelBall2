@@ -207,19 +207,24 @@ public class WinPopup : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
         
     }
 
     public void SetNextLevel() {
-        LoadingGamePopup.Ins.ShowLoading_OutGame(() =>
+        // LoadingGamePopup.Ins.ShowLoading_OutGame(() =>
+        // {
+        //     Config.SetLevel(Config.GetLevel() + 1);
+        //     SceneManager.LoadScene("Level" + Config.GetLevel());
+        //     Config.currInfoBall_Try = null;
+        // });
+        GamePlayManager.Ins.SetLoading_In(() =>
         {
             Config.SetLevel(Config.GetLevel() + 1);
             SceneManager.LoadScene("Level" + Config.GetLevel());
             Config.currInfoBall_Try = null;
         });
-        
     }
 
     public void TouchFreeCoin() {
@@ -245,7 +250,7 @@ public class WinPopup : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 
@@ -286,7 +291,7 @@ public class WinPopup : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 }
