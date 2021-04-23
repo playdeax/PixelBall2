@@ -159,7 +159,7 @@ public class WinPopup : MonoBehaviour
             rescuePopup.OpenRescuePopup();
         }
         else if (Config.CheckDailyReward()) {
-            dailyRewardPopup.OpenPopup();
+          //  dailyRewardPopup.OpenPopup();
         }
     }
 
