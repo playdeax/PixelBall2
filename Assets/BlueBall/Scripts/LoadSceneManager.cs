@@ -13,6 +13,10 @@ public class LoadSceneManager : MonoBehaviour
     // Start is called before the first frame update
     public virtual void Start()
     {
+        Config.GetSound();
+        Config.GetMusic();
+        Config.GetVibration();
+        
         Config.currCoin = Config.GetCoin();
         Config.currHeart = Config.GetHeart();
         //Config.SetLevel(6);

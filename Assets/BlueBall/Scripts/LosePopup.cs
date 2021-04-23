@@ -168,7 +168,7 @@ public class LosePopup : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 
@@ -178,7 +178,12 @@ public class LosePopup : MonoBehaviour
     }
 
     public void SetLoadingGame() {
-        LoadingGamePopup.Ins.ShowLoading_OutGame(() =>
+        // LoadingGamePopup.Ins.ShowLoading_OutGame(() =>
+        // {
+        //     SceneManager.LoadScene("Level" + Config.GetLevel());
+        //     Config.currInfoBall_Try = null;
+        // });
+        GamePlayManager.Ins.SetLoading_Out(() =>
         {
             SceneManager.LoadScene("Level" + Config.GetLevel());
             Config.currInfoBall_Try = null;
@@ -210,7 +215,7 @@ public class LosePopup : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 
@@ -254,7 +259,7 @@ public class LosePopup : MonoBehaviour
         }
         else
         {
-            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+            NotificationPopup.instance.AddNotification("No Video Available!");
         }
     }
 }
