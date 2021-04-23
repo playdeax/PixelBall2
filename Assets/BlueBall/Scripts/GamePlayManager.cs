@@ -335,7 +335,7 @@ public class GamePlayManager : MonoBehaviour
     public IEnumerator SetLoading_Start()
     {
         sceneTransitionController.gameObject.SetActive(true);
-        sceneTransitionController.SetLoadin_ON();
+        sceneTransitionController.SetLoadin_OFF();
         yield return new WaitForSeconds(0.1f);
         Debug.Log("SetLoading_StartSetLoading_Start");
         sceneTransitionController.ShowLoading_Out(() =>

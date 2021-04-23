@@ -7,10 +7,11 @@ using UnityEngine.UI;
 
 public class SceneTransitionController : MonoBehaviour
 {
-    public Image imgLoading;
+    /*public Image imgLoading;
 
-    public Slider sliderValue;
-
+    public Slider sliderValue;*/
+    public RectTransform topMask;
+    public RectTransform bottomMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +28,15 @@ public class SceneTransitionController : MonoBehaviour
 
     }
 
-    public float _smoothing = 0.5f;
+    // private float _smoothing = 0.5f;
+    //
+    // float _loadingOut = 1.1f;
+    // Tween t_In;
 
-    float _loadingOut = 1.1f;
-    Tween t_In;
-
+    public float timeMove = 1.2f;
     public void ShowLoading_In(Action actionIn)
     {
-        Debug.Log("ShowLoading_InShowLoading_In");
+        /*Debug.Log("ShowLoading_InShowLoading_In");
         sliderValue.value = sliderValue.maxValue;
         imgLoading.material.SetFloat("_cutoff", sliderValue.value);
         Debug.Log("ShowLoading_InShowLoading_In 3333333333");
@@ -47,27 +49,40 @@ public class SceneTransitionController : MonoBehaviour
         {
             Debug.Log("ShowLoading_InShowLoading_In 2222222");
             actionIn.Invoke();
-        });
+        });*/
+        SetLoadin_ON();
+        topMask.DOAnchorPosY(440f, timeMove).SetEase(Ease.InQuad).SetUpdate(true).OnComplete(() => { actionIn.Invoke(); });
+        bottomMask.DOAnchorPosY(-440f, timeMove).SetEase(Ease.InQuad).SetUpdate(true);
     }
 
-    float _loadingIn = -0.1f;
+    // float _loadingIn = -0.1f;
 
     public void ShowLoading_Out(Action actionOut)
     {
-        sliderValue.value = sliderValue.minValue;
+        
+        /*sliderValue.value = sliderValue.minValue;
         imgLoading.material.SetFloat("_cutoff", sliderValue.value);
         sliderValue.DOValue(sliderValue.maxValue, 1f).SetEase(Ease.OutQuad).SetUpdate(true)
             .OnUpdate(() => { imgLoading.material.SetFloat("_cutoff", sliderValue.value); })
-            .OnComplete(() => { actionOut.Invoke(); });
+            .OnComplete(() => { actionOut.Invoke(); });*/
+        
+        SetLoadin_OFF();
+        topMask.DOAnchorPosY(1080f, timeMove).SetEase(Ease.OutQuad).SetUpdate(true).OnComplete(() => { actionOut.Invoke(); });
+        bottomMask.DOAnchorPosY(-1080f, timeMove).SetEase(Ease.OutQuad).SetUpdate(true);    
     }
 
 
     public void SetLoadin_ON()
     {
-        imgLoading.material.SetFloat("_cutoff", sliderValue.minValue);
+        /*imgLoading.material.SetFloat("_cutoff", sliderValue.minValue);*/
+        
+        topMask.anchoredPosition = new Vector2(0,1080f);
+        bottomMask.anchoredPosition = new Vector2(0,-1080f);
     }
     public void SetLoadin_OFF()
     {
-        imgLoading.material.SetFloat("_cutoff", sliderValue.maxValue);
+        /*imgLoading.material.SetFloat("_cutoff", sliderValue.maxValue);*/
+        topMask.anchoredPosition = new Vector2(0,440f);
+        bottomMask.anchoredPosition = new Vector2(0,-440f);
     }
 }
