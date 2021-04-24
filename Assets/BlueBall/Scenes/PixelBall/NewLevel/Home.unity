@@ -1727,9 +1727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124fa9c855fc65c4fa29e32b3720d97c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imgLoading: {fileID: 373989461}
-  sliderValue: {fileID: 621136829}
-  _smoothing: 0.5
+  topMask: {fileID: 0}
+  bottomMask: {fileID: 0}
+  timeMove: 1.2
 --- !u!1 &381017784
 GameObject:
   m_ObjectHideFlags: 0
@@ -9563,7 +9563,7 @@ MonoBehaviour:
   posAddCoin: {fileID: 2134560223}
   txtLevel: {fileID: 174706471}
   lockObj: {fileID: 1246691898}
-  forceLevel: 5
+  forceLevel: 0
   itemCoinRewardPrefab: {fileID: 3716525341508150580, guid: 3e5a7841435376f489f087f4c2e73724,
     type: 3}
   coinTranfromParent: {fileID: 354151568}
@@ -9573,14 +9573,6 @@ MonoBehaviour:
   dailyRewardPopup: {fileID: 1933243715}
   starterPackPopup: {fileID: 135349921}
   premiumPackPopup: {fileID: 2121393076}
-  listIDPreview: 010000000200000003000000040000006400000065000000660000006700000068000000
-  btnNext: {fileID: 602388103}
-  btnPrev: {fileID: 1443423372}
-  btnTry: {fileID: 1857665209}
-  btnSelect: {fileID: 1514451560}
-  idBallPreview: 1
-  indexBallPreview: 0
-  sceneTransitionController: {fileID: 373989463}
 --- !u!1 &2084992741
 GameObject:
   m_ObjectHideFlags: 0
