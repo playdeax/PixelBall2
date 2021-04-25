@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
-
+using UnityEngine.SceneManagement;
 public class GameSceneManager : MonoBehaviour
 {
     public static GameSceneManager Ins;
@@ -26,6 +26,12 @@ public class GameSceneManager : MonoBehaviour
     {
         
     }
-    
-    
+
+
+    [Button("Reset SCENE")]
+    public void TouchResetScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }
