@@ -16,6 +16,9 @@
           <e p="Medieval_pixel_art_asset_FREE" t="Include">
             <e p="pixel_snapping_README.txt" t="Include" />
           </e>
+          <e p="Volcano_pixel_art_environment" t="Include">
+            <e p="pixel_snapping_README.txt" t="Include" />
+          </e>
         </e>
         <e p="BlueBall" t="Include">
           <e p="Prefab" t="Include">
@@ -1140,6 +1143,7 @@
             <e p="GoogleRegistries.xml" t="Include" />
           </e>
         </e>
+        <e p="FirebaseManager.cs" t="Include" />
         <e p="GoogleMobileAds" t="Include">
           <e p="Api" t="Include">
             <e p="AdLoader.cs" t="Include" />
@@ -1396,6 +1400,24 @@
         </e>
         <e p="Plugins" t="Include">
           <e p="Android" t="Include">
+            <e p="AndroidManifest.xml" t="Include" />
+            <e p="FirebaseApp.androidlib" t="Include">
+              <e p="AndroidManifest.xml" t="Include" />
+              <e p="res" t="Include">
+                <e p="values" t="Include">
+                  <e p="google-services.xml" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="FirebaseCrashlytics.androidlib" t="Include">
+              <e p="AndroidManifest.xml" t="Include" />
+              <e p="res" t="Include">
+                <e p="values" t="Include">
+                  <e p="crashlytics_build_id.xml" t="Include" />
+                  <e p="crashlytics_unity_version.xml" t="Include" />
+                </e>
+              </e>
+            </e>
             <e p="GoogleMobileAdsPlugin.androidlib" t="Include">
               <e p="AndroidManifest.xml" t="Include" />
             </e>
@@ -2148,6 +2170,7 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
+        <e p="UpPlatform.cs" t="Include" />
       </e>
       <e p="GoogleMobileAds.csproj" t="IncludeRecursive" />
       <e p="GoogleMobileAds.Editor.csproj" t="IncludeRecursive" />
