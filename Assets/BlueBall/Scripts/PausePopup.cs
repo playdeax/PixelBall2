@@ -143,6 +143,7 @@ public class PausePopup : MonoBehaviour
     public void TouchRestart()
     {
         Debug.Log("TouchRestartTouchRestart");
+        SceneManager.LoadScene("Level" + GameLevelManager.Ins.level);
         popupActionType = Config.POPUP_ACTION.RESTART;
         HidePopup();
     }
