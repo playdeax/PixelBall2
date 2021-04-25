@@ -108,6 +108,8 @@ public class HomeManager : MonoBehaviour
     }
     public int forceLevel = 0;
     public void TouchPlay() {
+        if(!Config.isFinished_AddCoin) return;
+        
         if (forceLevel > 0)
         {
             SceneManager.LoadScene("Level" + forceLevel);
@@ -225,7 +227,8 @@ public class HomeManager : MonoBehaviour
             countIndexAddCoin = 25;
             valueReward = _countAddCoin / 25f;
         }
-        lockObj.SetActive(true);
+        // lockObj.SetActive(true);
+        Config.isFinished_AddCoin = false;
         StartCoroutine(AddCoin_IEnumerator(posStart, posEnd, valueReward));
     }
 
@@ -243,6 +246,7 @@ public class HomeManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         lockObj.SetActive(false);
+        Config.isFinished_AddCoin = true;
         AddCoin_CallBack.Invoke();
     }
     #endregion

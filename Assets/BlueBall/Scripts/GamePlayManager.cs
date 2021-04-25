@@ -223,7 +223,8 @@ public class GamePlayManager : MonoBehaviour
             countIndexAddCoin = 25;
             valueReward = _countAddCoin / 25f;
         }
-        lockObj.SetActive(true);
+        // lockObj.SetActive(true);
+        Config.isFinished_AddCoin = false;
         StartCoroutine(AddCoin_IEnumerator(posStart, posEnd, valueReward));
     }
 
@@ -239,6 +240,7 @@ public class GamePlayManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         lockObj.SetActive(false);
+        Config.isFinished_AddCoin = true;
         AddCoin_CallBack.Invoke();
     }
     #endregion

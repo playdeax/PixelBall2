@@ -1143,6 +1143,32 @@
             <e p="GoogleRegistries.xml" t="Include" />
           </e>
         </e>
+        <e p="Firebase" t="Include">
+          <e p="Editor" t="Include">
+            <e p="AnalyticsDependencies.xml" t="Include" />
+            <e p="AppDependencies.xml" t="Include" />
+            <e p="FirebaseAnalytics_version-6.15.2_manifest.txt" t="Include" />
+            <e p="FirebaseMessaging_version-6.15.2_manifest.txt" t="Include" />
+            <e p="MessagingDependencies.xml" t="Include" />
+          </e>
+          <e p="m2repository" t="Include">
+            <e p="com" t="Include">
+              <e p="google" t="Include">
+                <e p="Firebase" t="Include">
+                  <e p="firebase-analytics-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                  <e p="firebase-app-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                  <e p="firebase-messaging-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
         <e p="FirebaseManager.cs" t="Include" />
         <e p="GoogleMobileAds" t="Include">
           <e p="Api" t="Include">
@@ -1401,6 +1427,14 @@
         <e p="Plugins" t="Include">
           <e p="Android" t="Include">
             <e p="AndroidManifest.xml" t="Include" />
+            <e p="Firebase" t="Include">
+              <e p="AndroidManifest.xml" t="Include" />
+              <e p="res" t="Include">
+                <e p="values" t="Include">
+                  <e p="google-services.xml" t="Include" />
+                </e>
+              </e>
+            </e>
             <e p="FirebaseApp.androidlib" t="Include">
               <e p="AndroidManifest.xml" t="Include" />
               <e p="res" t="Include">
