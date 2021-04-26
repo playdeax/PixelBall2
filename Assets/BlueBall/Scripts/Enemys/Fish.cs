@@ -19,7 +19,7 @@ public class Fish : EnemyBase
     public override void CollisionWithBall()
     {
         base.CollisionWithBall();
-        GameLevelManager.Ins.SetBallBeHit(speedAddBall);
+        GameLevelManager.Ins.SetBallFall();
     }
 
 

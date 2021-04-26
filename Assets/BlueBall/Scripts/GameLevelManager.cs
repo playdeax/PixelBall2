@@ -151,9 +151,21 @@ public class GameLevelManager : MonoBehaviour
             if (!isPlayerBehit)
             {
                 isPlayerBehit = true;
-                GamePlayManager.Ins.SetBeHit();
+                GamePlayManager.Ins.SetBeHit(1);
                 StartCoroutine(BallBeHit_Sheild());
             }
+        }
+    }
+
+    public void SetBallFall()
+    {
+        if (Config.currGameState == Config.GAMESTATE.PLAYING)
+        {
+           
+                isPlayerBehit = true;
+                GamePlayManager.Ins.SetBeHit(3);
+                StartCoroutine(BallBeHit_Sheild());
+     
         }
     }
 

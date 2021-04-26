@@ -184,8 +184,8 @@ public class GamePlayManager : MonoBehaviour
     public HeartGroup heartGroup;
     public List<Image> listHealthIcons = new List<Image>();
 
-    public void SetBeHit() {
-        countHealth--;
+    public void SetBeHit(int damage) {
+        countHealth-= damage;
         //ballHealth.DOFillAmount(countHealth * 1f / 3f, 0.2f).SetEase(Ease.OutQuart);
         UpdateHealth();
         if (countHealth <= 0) {

@@ -5,7 +5,7 @@ using DG.Tweening;
 public class EnemyBasicShoot_Bullet : MonoBehaviour
 {
     private EnemyBasicShoot enemyBasicShoot;
-    public float distance = 10f;
+    public float distance = 5f;
     public float time = 1f;
     public SpriteRenderer spriteBullet;
     public ParticleSystem efxBullet;
