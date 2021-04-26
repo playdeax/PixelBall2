@@ -98,7 +98,7 @@ public class Config
     }
     #endregion
 
-    public static int currLevel = 1;
+    
     public enum GAMESTATE { 
         NONE,
         PRESTART,
@@ -218,6 +218,7 @@ public class Config
     public const string COIN = "coin";
     public static event Action<float> OnChangeCoin = delegate (float _coin) { };
     public static float currCoin;
+    public static bool isFinished_AddCoin = true;
     public static void SetCoin(int coinValue)
     {
         PlayerPrefs.SetInt(COIN, coinValue);
@@ -362,14 +363,18 @@ public class Config
 
 
     #region LEVEL
+    public static int currLevel = 1;
     public const string LEVEL = "level";
-    public static void SetLevel(int _level) {
+    public static void SetLevel(int _level)
+    {
+        currLevel = _level;
         PlayerPrefs.SetInt(LEVEL, _level);
         PlayerPrefs.Save();
     }
 
     public static int GetLevel() {
-        return PlayerPrefs.GetInt(LEVEL, 1);
+        currLevel = PlayerPrefs.GetInt(LEVEL, 1);
+        return currLevel;
     }
     #endregion
 }

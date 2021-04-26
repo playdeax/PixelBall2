@@ -167,6 +167,8 @@ public class WinPopup : MonoBehaviour
 
     public void TouchNoThank() {
 
+        if(!Config.isFinished_AddCoin) return;
+        
         if (Config.interstitialAd_countWin % 2 == 0 && AdmobManager.instance.isInterstititalAds_Avaiable())
         {
             AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
@@ -184,6 +186,7 @@ public class WinPopup : MonoBehaviour
 
     public void TouchReward() {
         //SceneManager.LoadScene("Level1");
+        if(!Config.isFinished_AddCoin) return;
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
             lockPopup.gameObject.SetActive(true);

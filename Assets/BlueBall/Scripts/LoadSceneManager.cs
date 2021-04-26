@@ -16,11 +16,13 @@ public class LoadSceneManager : MonoBehaviour
         Config.GetSound();
         Config.GetMusic();
         Config.GetVibration();
+        Config.GetLevel();
         
         Config.currCoin = Config.GetCoin();
         Config.currHeart = Config.GetHeart();
         //Config.SetLevel(6);
-    
+        Debug.Log("Config.currLevel");
+        Debug.Log(Config.currLevel);
         StartCoroutine(LoadMenuScene_IEnumerator());
     }
 

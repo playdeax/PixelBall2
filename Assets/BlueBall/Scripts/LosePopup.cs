@@ -146,7 +146,7 @@ public class LosePopup : MonoBehaviour
 
     public void TouchSkip()
     {
-       
+        if(!Config.isFinished_AddCoin) return;
 
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
@@ -174,6 +174,8 @@ public class LosePopup : MonoBehaviour
 
     public void TouchPlay()
     {
+        if(!Config.isFinished_AddCoin) return;
+        
         SetLoadingGame();
     }
 
