@@ -43,11 +43,6 @@ public class HomeManager : MonoBehaviour
 
     void Start()
     {
-        if(Config.GetLevel() == 1)
-        {
-            SceneManager.LoadScene("Level1");
-        }
-
         btnPlay.OnPointerClickCallBack_Completed.AddListener(TouchPlay);
         btnShop.OnPointerClickCallBack_Completed.AddListener(TouchOpenShopPopup);
         txtLevel.text = "LEVEL " + Config.GetLevel();
@@ -62,6 +57,10 @@ public class HomeManager : MonoBehaviour
             
         ShowBallPreview();
         StartCoroutine(Start_IEnumerator());
+        if (Config.currLevel == 0)
+        {
+            SceneManager.LoadSceneAsync("Level0");
+        }
     }
 
     public IEnumerator Start_IEnumerator() {
