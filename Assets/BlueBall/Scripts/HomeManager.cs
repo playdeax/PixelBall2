@@ -46,7 +46,7 @@ public class HomeManager : MonoBehaviour
         StartCoroutine(Start_IEnumerator());
         if (Config.currLevel == 0)
         {
-            SceneManager.LoadScene("Level0");
+            SceneManager.LoadSceneAsync("Level0");
         }
     }
 
