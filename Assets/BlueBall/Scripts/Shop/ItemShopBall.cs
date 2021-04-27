@@ -11,7 +11,7 @@ public class ItemShopBall : MonoBehaviour
     public Image img;
     public BBUIButton btn;
     public Animator animatorBall;
-
+    public GameObject lockObj;
     public Action<ItemShopBall> ItemShopBall_CallBack = delegate (ItemShopBall itemShopBall) { };
     // Start is called before the first frame update
     void Start()
@@ -30,6 +30,7 @@ public class ItemShopBall : MonoBehaviour
         infoBall = _infoBall;
 
         animatorBall.runtimeAnimatorController = infoBall.animatorImgOverrideController;
+        ShowLockObject();
     }
 
     public void InitCallBack(Action<ItemShopBall> _itemShopBall_CallBack) {
@@ -37,6 +38,7 @@ public class ItemShopBall : MonoBehaviour
     }
 
     public void TouchBall() {
+        Debug.Log("TouchBallTouchBallTouchBall");
         ItemShopBall_CallBack.Invoke(this);
     }
 
@@ -47,5 +49,25 @@ public class ItemShopBall : MonoBehaviour
     public void SetUnSelected()
     {
         img.sprite = unselect;
+    }
+
+    public void ShowLockObject()
+    {
+        if (infoBall.id == Config.GetBallActive())
+        {
+            lockObj.SetActive(false);
+        }
+        else if (infoBall.ballType == Config.BALL_TYPE.PREMIUM && Config.GetBuyIAP(Config.IAP_ID.premium_pack))
+        {
+            lockObj.SetActive(false);
+        }
+        else if (Config.GetInfoBallUnlock(infoBall.id))
+        {
+            lockObj.SetActive(false);
+        }
+        else
+        {
+            lockObj.SetActive(true);
+        }
     }
 }

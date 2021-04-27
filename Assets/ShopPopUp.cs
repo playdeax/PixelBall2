@@ -105,19 +105,19 @@ public class ShopPopUp : MonoBehaviour
         {
             premiumPanel.gameObject.SetActive(true);
             previewPanel.gameObject.SetActive(true);
-            previewPanel.SetInfoBallPreview(Config.GetInfoBallFromID(premiumPanel.listBallIDs[0]), SHOP_TYPE.PREMIUM);
+            previewPanel.SetInfoBallPreview(Config.GetInfoBallFromID(premiumPanel.listBallIDs[0]));
         }
         else if (index == 2)
         {
             rescuePanel.gameObject.SetActive(true);
             previewPanel.gameObject.SetActive(true);
-            previewPanel.SetInfoBallPreview(Config.GetInfoBallFromID(rescuePanel.listBallIDs[0]), SHOP_TYPE.RESCUE);
+            previewPanel.SetInfoBallPreview(Config.GetInfoBallFromID(rescuePanel.listBallIDs[0]));
         }
         else if (index == 3)
         {
             coinPanel.gameObject.SetActive(true);
             previewPanel.gameObject.SetActive(true);
-            previewPanel.SetInfoBallPreview(Config.GetInfoBallFromID(coinPanel.listBallIDs[0]), SHOP_TYPE.COIN);
+            previewPanel.SetInfoBallPreview(Config.GetInfoBallFromID(coinPanel.listBallIDs[0]));
         }
         else if (index == 0) {
             packPanel.gameObject.SetActive(true);

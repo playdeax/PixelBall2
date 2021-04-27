@@ -12,6 +12,7 @@ public class ConfigInfoBalls : ScriptableObject
 [Serializable]
 public class InfoBall
 {
+    public Config.BALL_TYPE ballType;
     public int id;
     public string name;
     public AnimatorOverrideController animatorOverrideController;

@@ -15,7 +15,8 @@ public class HomeManager : MonoBehaviour
     }
     public BBUIButton btnPlay;
     public BBUIButton btnShop;
-    public ShopPopUp shopPopup;
+    public BBUIButton btnShopSkin;
+    public ShopNewPopup shopPopup;
     public Animator ballAnimator;
 
     public BBUIButton btnFreeCoin;
@@ -37,14 +38,16 @@ public class HomeManager : MonoBehaviour
     public BBUIButton btnActiveBallPreview;
 
     public GameObject lockObj;
-
+    public SceneTransitionController sceneTransitionController;
     // Start is called before the first frame update
 
 
     void Start()
     {
+        sceneTransitionController.gameObject.SetActive(false);
         btnPlay.OnPointerClickCallBack_Completed.AddListener(TouchPlay);
         btnShop.OnPointerClickCallBack_Completed.AddListener(TouchOpenShopPopup);
+        btnShopSkin.OnPointerClickCallBack_Completed.AddListener(TouchOpenShopSkin);
         txtLevel.text = "LEVEL " + Config.GetLevel();
         btnChest.OnPointerClickCallBack_Completed.AddListener(TouchChest);
         btnDailyReward.OnPointerClickCallBack_Completed.AddListener(TouchDailyReward);
@@ -54,6 +57,8 @@ public class HomeManager : MonoBehaviour
         btnShopHeart.OnPointerClickCallBack_Completed.AddListener(TouchShopHeart);
         btnNextBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchNextBallPreview);
         btnBackBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchBackBallPreview);
+        btnTryBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchTryBallPreview);
+        btnActiveBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchActiveBallPreview);
             
         ShowBallPreview();
         StartCoroutine(Start_IEnumerator());
@@ -66,6 +71,7 @@ public class HomeManager : MonoBehaviour
     public IEnumerator Start_IEnumerator() {
         btnPlay.gameObject.SetActive(false);
         btnShop.gameObject.SetActive(false);
+        btnShopSkin.gameObject.SetActive(false);
         ballAnimator.gameObject.SetActive(false);
         btnFreeCoin.gameObject.SetActive(false);
         btnDailyReward.gameObject.SetActive(false);
@@ -75,7 +81,7 @@ public class HomeManager : MonoBehaviour
         btnShopCoin.gameObject.SetActive(false);
         txtLevel.gameObject.SetActive(false);
         btnNextBallPreview.gameObject.SetActive(false);
-        btnActiveBallPreview.gameObject.SetActive(false);
+        btnBackBallPreview.gameObject.SetActive(false);
         btnTryBallPreview.gameObject.SetActive(false);
         btnActiveBallPreview.gameObject.SetActive(false);
 
@@ -97,10 +103,12 @@ public class HomeManager : MonoBehaviour
         btnShopHeart.GetComponent<BBUIView>().ShowView();
         btnFreeHeart.gameObject.SetActive(true);
         btnFreeHeart.GetComponent<BBUIView>().ShowView();
-        btnShop.gameObject.SetActive(true);
-        btnShop.GetComponent<BBUIView>().ShowView();
+        btnShopSkin.gameObject.SetActive(true);
+        btnShopSkin.GetComponent<BBUIView>().ShowView();
 
         yield return new WaitForSeconds(0.2f);
+        btnShop.gameObject.SetActive(true);
+        btnShop.GetComponent<BBUIView>().ShowView();
         ballAnimator.gameObject.SetActive(true);
         ballAnimator.GetComponent<BBUIView>().ShowView();
         /*btnDailyReward.gameObject.SetActive(true);
@@ -131,21 +139,36 @@ public class HomeManager : MonoBehaviour
     private void TouchPlay() {
         if(!Config.isFinished_AddCoin) return;
         
-        if (forceLevel > 0)
+        ShowLoadingToGame();
+
+    }
+
+
+    private void ShowLoadingToGame()
+    {
+        sceneTransitionController.gameObject.SetActive(true);
+        sceneTransitionController.ShowLoading_In(() =>
         {
-            SceneManager.LoadScene("Level" + forceLevel);
-        }
-        else
-        {
-            SceneManager.LoadScene("Level" + Config.GetLevel());
-        }
-        
+            if (forceLevel > 0)
+            {
+                SceneManager.LoadScene("Level" + forceLevel);
+            }
+            else
+            {
+                SceneManager.LoadScene("Level" + Config.GetLevel());
+            }
+        });
     }
 
 
     private void TouchOpenShopPopup()
     {
-        shopPopup.OpenShop();
+        
+    }
+    
+    private void TouchOpenShopSkin()
+    {
+        shopPopup.ShowPopup();
     }
 
 
@@ -198,6 +221,24 @@ public class HomeManager : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         ShowBallPreview_ID(idBall);
         ballAnimator.gameObject.GetComponent<BBUIView>().ShowView();
+
+        if (Config.GetBallActive() == idBall)
+        {
+            btnTryBallPreview.gameObject.SetActive(false);
+            btnActiveBallPreview.gameObject.SetActive(false);
+        }
+        else if (Config.GetInfoBallUnlock(idBall))
+        {
+            btnTryBallPreview.gameObject.SetActive(false);
+            btnActiveBallPreview.gameObject.SetActive(true);
+            btnActiveBallPreview.GetComponent<BBUIView>().ShowView();
+        }
+        else
+        {
+            btnActiveBallPreview.gameObject.SetActive(false);
+            btnTryBallPreview.gameObject.SetActive(true);
+            btnTryBallPreview.GetComponent<BBUIView>().ShowView();
+        }
     }
 
     private void ShowBallPreview_ID(int idBall)
@@ -205,6 +246,17 @@ public class HomeManager : MonoBehaviour
         ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(idBall).animatorImgOverrideController;
     }
 
+    private void TouchTryBallPreview()
+    {
+        Config.currInfoBall_Try = Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]);
+        ShowLoadingToGame();
+    }
+    private void TouchActiveBallPreview()
+    {
+        Config.SetBallActive(listIDBallPreviews[indexBallPreview]);
+        
+        ShopNewPopup.Ins.SetUpdateListBalls();
+    }
 
     #endregion
 
