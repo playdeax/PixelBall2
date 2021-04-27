@@ -21,9 +21,14 @@ public class EnemyBasicShoot : EnemyBase2
     {
         
     }
-
+    public override void SetEnemyBeHit(Vector2 _forceAddBall2)
+    {
+        base.SetEnemyBeHit(_forceAddBall2);
+        isDead = true;
+    }
+    bool isDead = false;
     public IEnumerator InitBasicShoot_IEnumerator() {
-        while (true)
+        while (!isDead)
         {
             yield return new WaitForSeconds(timeWaitBullet);
             animator.SetTrigger("shoot");
