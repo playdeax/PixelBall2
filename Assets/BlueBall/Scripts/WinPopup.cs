@@ -173,7 +173,6 @@ public class WinPopup : MonoBehaviour
         {
             AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {
-                Config.interstitialAd_countWin++;
                 SetNextLevel();
             });
         }
@@ -181,7 +180,7 @@ public class WinPopup : MonoBehaviour
         {
             SetNextLevel();
         }
-       
+        Config.interstitialAd_countWin++;
     }
 
     public void TouchReward() {

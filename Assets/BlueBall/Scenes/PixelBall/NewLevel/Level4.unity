@@ -530,7 +530,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 186395927}
   speedAddBall: {x: -20, y: 20}
-  damage: 1
 --- !u!114 &186395926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,7 +846,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 189213899}
   speedAddBall: {x: -20, y: 20}
-  damage: 1
 --- !u!114 &189213904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8555,6 +8553,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4057138874358909057, guid: ea5da5488554fb140827e54a316ca469,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.15
+      objectReference: {fileID: 0}
     - target: {fileID: 4057138874420164256, guid: ea5da5488554fb140827e54a316ca469,
         type: 3}
       propertyPath: m_LocalPosition.x
