@@ -16,7 +16,11 @@ public class HeartGroup : MonoBehaviour
         Config.OnChangeActiveBall += OnChangeActiveBall;
         ShowHeart();
 
-        ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+        if (ballAnimator != null)
+        {
+            ballAnimator.runtimeAnimatorController =
+                Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+        }
     }
 
     private void OnDestroy()
@@ -46,6 +50,10 @@ public class HeartGroup : MonoBehaviour
     }
 
     public void OnChangeActiveBall() {
-        ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+        if (ballAnimator != null)
+        {
+            ballAnimator.runtimeAnimatorController =
+                Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+        }
     }
 }
