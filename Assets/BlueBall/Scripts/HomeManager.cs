@@ -17,6 +17,7 @@ public class HomeManager : MonoBehaviour
     public BBUIButton btnShop;
     public BBUIButton btnShopSkin;
     public ShopNewPopup shopPopup;
+    public ShopCoinPopup shopCoinPopup;
     public Animator ballAnimator;
 
     public BBUIButton btnFreeCoin;
@@ -48,7 +49,7 @@ public class HomeManager : MonoBehaviour
         btnPlay.OnPointerClickCallBack_Completed.AddListener(TouchPlay);
         btnShop.OnPointerClickCallBack_Completed.AddListener(TouchOpenShopPopup);
         btnShopSkin.OnPointerClickCallBack_Completed.AddListener(TouchOpenShopSkin);
-        txtLevel.text = "LEVEL " + Config.GetLevel();
+        
         btnChest.OnPointerClickCallBack_Completed.AddListener(TouchChest);
         btnDailyReward.OnPointerClickCallBack_Completed.AddListener(TouchDailyReward);
         btnFreeCoin.OnPointerClickCallBack_Completed.AddListener(TouchFreeCoin);
@@ -61,6 +62,7 @@ public class HomeManager : MonoBehaviour
         btnActiveBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchActiveBallPreview);
             
         ShowBallPreview();
+        txtLevel.text = "LEVEL " + Config.GetLevel();
         StartCoroutine(Start_IEnumerator());
         if (Config.currLevel == 0)
         {
@@ -111,8 +113,8 @@ public class HomeManager : MonoBehaviour
         btnShop.GetComponent<BBUIView>().ShowView();
         ballAnimator.gameObject.SetActive(true);
         ballAnimator.GetComponent<BBUIView>().ShowView();
-        /*btnDailyReward.gameObject.SetActive(true);
-        btnDailyReward.GetComponent<BBUIView>().ShowView();*/
+        btnDailyReward.gameObject.SetActive(true);
+        btnDailyReward.GetComponent<BBUIView>().ShowView();
         btnPlay.gameObject.SetActive(true);
         btnPlay.GetComponent<BBUIView>().ShowView();
         
@@ -163,7 +165,7 @@ public class HomeManager : MonoBehaviour
 
     private void TouchOpenShopPopup()
     {
-        
+        shopCoinPopup.ShowPopup();
     }
     
     private void TouchOpenShopSkin()
@@ -462,11 +464,11 @@ public class HomeManager : MonoBehaviour
 
     private void TouchShopCoin()
     {
-        
+        shopCoinPopup.ShowPopup();
     }
 
     private void TouchShopHeart()
     {
-        
+        shopCoinPopup.ShowPopup();
     }
 }
