@@ -77,6 +77,10 @@ public class WinPopup : MonoBehaviour
 
         txtReward.text = "+" + coinReward;
         txtLevel.text = "LEVEL " + Config.GetLevel();
+        if(Config.GetLevel() == 0)
+        {
+            txtLevel.text = "TUTORIAL";
+        }
 
         FirebaseManager.instance.LogLevelWin(_level);
 

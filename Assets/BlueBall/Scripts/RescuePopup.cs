@@ -121,9 +121,34 @@ public class RescuePopup : MonoBehaviour
     }
 
     public void TouchReward() {
+        if (AdmobManager.instance.isRewardAds_Avaiable())
+        {
+            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                {
+                    ClaimSkin();
+                    ClosePopup();
+                }
+                else
+                {
+                    ClosePopup();
+                }
+            });
+        }
+        else
+        {
+            NotificationPopup.instance.AddNotification("No Video Available!");
+        }
+
+        
+    }
+
+
+    void ClaimSkin()
+    {
         Config.SetInfoBallUnlock(Config.currIDBallRescue);
         Config.SetBallActive(Config.currIDBallRescue);
         Config.currInfoBall = Config.GetInfoBallFromID(Config.currIDBallRescue);
     }
-
 }

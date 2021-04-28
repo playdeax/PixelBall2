@@ -363,7 +363,7 @@ public class Config
 
 
     #region LEVEL
-    public static int currLevel = 1;
+    public static int currLevel = 0;
     public const string LEVEL = "level";
     public static void SetLevel(int _level)
     {
@@ -373,7 +373,7 @@ public class Config
     }
 
     public static int GetLevel() {
-        currLevel = PlayerPrefs.GetInt(LEVEL, 1);
+        currLevel = PlayerPrefs.GetInt(LEVEL, 0);
         return currLevel;
     }
     #endregion

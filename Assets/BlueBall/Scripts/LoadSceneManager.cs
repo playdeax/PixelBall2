@@ -42,15 +42,7 @@ public class LoadSceneManager : MonoBehaviour
         if (!isLoadMenu)
         {
             isLoadMenu = true;
-            if (Config.currLevel == 1)
-            {
-                SceneManager.LoadSceneAsync("Home");
-
-            }
-            else
-            {
-                SceneManager.LoadSceneAsync("Home");
-            }
+            SceneManager.LoadSceneAsync("Home");
         }
     }
 }

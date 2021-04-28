@@ -15,11 +15,11 @@ public class Fish : EnemyBase
     {
         
     }
-
+    public int damage = 3;
     public override void CollisionWithBall()
     {
         base.CollisionWithBall();
-        GameLevelManager.Ins.SetBallFall();
+        GameLevelManager.Ins.SetBallFall(damage, speedAddBall);
     }
 
 
