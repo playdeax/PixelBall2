@@ -155,10 +155,14 @@ public class PremiumPreview : MonoBehaviour
                     Debug.Log("AddHeartAddHeartAddHeartAddHeartAddHeart");
                     lockPopup.gameObject.SetActive(false);
                     Config.currInfoBall_Try = currPreviewInfoBall;
-                    ShopPopUp.Ins.CloseShop();
 
-                    if (HomeManager.Ins != null) {
-                        HomeManager.Ins.ShowBallPreview();
+                    if (HomeManager.Ins != null)
+                    {
+                        HomeManager.Ins.ShowLoadingToGame();
+                    }
+                    else if (GamePlayManager.Ins != null)
+                    {
+                        GamePlayManager.Ins.ShowLoadingNextGame();
                     }
                 }
                 else

@@ -146,7 +146,7 @@ public class HomeManager : MonoBehaviour
     }
 
 
-    private void ShowLoadingToGame()
+    public void ShowLoadingToGame()
     {
         sceneTransitionController.gameObject.SetActive(true);
         sceneTransitionController.ShowLoading_In(() =>

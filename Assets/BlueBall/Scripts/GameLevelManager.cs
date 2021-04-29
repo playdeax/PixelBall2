@@ -95,11 +95,8 @@ public class GameLevelManager : MonoBehaviour
 
     public void ShowEffectFinish_Finished() {
         //Debug.Log("ShowEffectFinish_Finished");
-        if (Config.currGameState != Config.GAMESTATE.FINISH)
-        {
-            Config.currGameState = Config.GAMESTATE.FINISH;
-            GamePlayManager.Ins.ShowWinPopup(level);
-        }
+        Config.currGameState = Config.GAMESTATE.FINISH;
+        GamePlayManager.Ins.ShowWinPopup(level);
     }
     #endregion
 

@@ -129,7 +129,9 @@ public class LosePopup : MonoBehaviour
         btnBackBallPreview.gameObject.SetActive(false);
         btnTryBallPreview.gameObject.SetActive(false);
         btnActiveBallPreview.gameObject.SetActive(false);
-
+        btnShop.gameObject.SetActive(false);
+        btnShopHeart.gameObject.SetActive(false);
+        
         yield return new WaitForSeconds(0.1f);
         bg.gameObject.SetActive(true);
         bg.ShowView();

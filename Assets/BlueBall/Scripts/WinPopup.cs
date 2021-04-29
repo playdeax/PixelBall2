@@ -140,6 +140,8 @@ public class WinPopup : MonoBehaviour
         btnBackBallPreview.gameObject.SetActive(false);
         btnTryBallPreview.gameObject.SetActive(false);
         btnActiveBallPreview.gameObject.SetActive(false);
+        btnShop.gameObject.SetActive(false);
+        btnShopHeart.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(0.1f);
         bg.gameObject.SetActive(true);
@@ -153,7 +155,7 @@ public class WinPopup : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         
-        if (Config.GetLevel() >= 2){
+        if (Config.GetLevel() > 2){
             
             btnReward.gameObject.SetActive(true);
             btnReward.GetComponent<BBUIView>().ShowView();
