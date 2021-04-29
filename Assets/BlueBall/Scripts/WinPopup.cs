@@ -71,6 +71,25 @@ public class WinPopup : MonoBehaviour
         btnTryBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchTryBallPreview);
         btnActiveBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchActiveBallPreview);
 
+        bg.gameObject.SetActive(false);
+        btnNoThank.gameObject.SetActive(false);
+        btnReward.gameObject.SetActive(false);
+        btnNextLevel.gameObject.SetActive(false);
+        btnFreeCoin.gameObject.SetActive(false);
+        btnChest.gameObject.SetActive(false);
+        btnDailyReward.gameObject.SetActive(false);
+        btnFreeHeart.gameObject.SetActive(false);
+        btnShopCoin.gameObject.SetActive(false);
+        btnShopSkin.gameObject.SetActive(false);
+        ballAnimator.gameObject.SetActive(false);
+        efxWin.gameObject.SetActive(false);
+        txtLevel.gameObject.SetActive(false);
+        txtCompeted.gameObject.SetActive(false);
+        btnNextBallPreview.gameObject.SetActive(false);
+        btnBackBallPreview.gameObject.SetActive(false);
+        btnTryBallPreview.gameObject.SetActive(false);
+        btnActiveBallPreview.gameObject.SetActive(false);
+
         ShowBallPreview();
     }
 
@@ -112,11 +131,9 @@ public class WinPopup : MonoBehaviour
         {
             txtLevel.text = "TUTORIAL";
         }
-
+        StartCoroutine(ShowPopup_IEnumerator(coinReward));
         FirebaseManager.instance.LogLevelWin(_level);
 
-        StartCoroutine(ShowPopup_IEnumerator(coinReward));
-        
     }
 
     public IEnumerator ShowPopup_IEnumerator(int coinReward)
