@@ -22,6 +22,7 @@ public class PixelPlayerAnimation : PlayerAnimation
             animator.runtimeAnimatorController = Config.currInfoBall.animatorOverrideController;
         }
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -93,5 +94,13 @@ public class PixelPlayerAnimation : PlayerAnimation
     public override void StopAutoRotate() {
         base.StopAutoRotate();
         DOTween.Kill(animator.gameObject.transform);
+    }
+
+    public override void SetUpdateTrySkinInGame()
+    {
+        if (Config.currInfoBall_Try != null)
+        {
+            animator.runtimeAnimatorController = Config.currInfoBall_Try.animatorOverrideController;
+        }
     }
 }

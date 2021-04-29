@@ -281,6 +281,7 @@ public class Config
 
     public static int GetHeart()
     {
+        if (Config.GetBuyIAP(Config.IAP_ID.remove_ad_heart)) return 9;
         return PlayerPrefs.GetInt(HEART, 3);
     }
     #endregion
@@ -333,7 +334,9 @@ public class Config
     {
         blueball_starter_pack,
         premium_pack,
-        remove_ad
+        remove_ad,
+        remove_ad_coin,
+        remove_ad_heart
     }
 
     public static void SetBuyIAP(IAP_ID idPack) {

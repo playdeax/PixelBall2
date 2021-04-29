@@ -14,7 +14,6 @@ public class ItemShopPack : MonoBehaviour
 
         if (Config.GetBuyIAP(packID)) {
             btnBuy.Interactable = false;
-            gameObject.SetActive(false);
         }
     }
 
@@ -28,12 +27,27 @@ public class ItemShopPack : MonoBehaviour
         if (PurchaserManager.instance.IsInitialized())
         {
             txtPrice.text = PurchaserManager.instance.GetLocalizedPriceString(packID.ToString());
-            btnBuy.Interactable = true;
         }
         else
         {
             txtPrice.text = "";
+        }
+
+        if (packID == Config.IAP_ID.remove_ad)
+        {
+            if (Config.GetBuyIAP(Config.IAP_ID.premium_pack) || Config.GetBuyIAP(Config.IAP_ID.remove_ad_coin) ||
+                Config.GetBuyIAP(Config.IAP_ID.remove_ad_heart))
+            {
+                btnBuy.Interactable = false;
+            }
+        }
+        else if (Config.GetBuyIAP(packID))
+        {
             btnBuy.Interactable = false;
+        }
+        else
+        {
+            btnBuy.Interactable = true;
         }
     }
 
@@ -44,6 +58,13 @@ public class ItemShopPack : MonoBehaviour
     }
 
     public void TouchBuy() {
-        PackPanel.Ins.TouchBuyIAP(this);
+        if (PurchaserManager.instance.IsInitialized())
+        {
+            ShopCoinPopup.Ins.TouchBuyIAP(this);
+        }
+        else
+        {
+            NotificationPopup.instance.AddNotification("Init IAP Fail!");
+        }
     }
 }

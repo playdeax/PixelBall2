@@ -56,4 +56,9 @@ public class PlayerAnimation : MonoBehaviour
     {
 
     }
+
+    public virtual void SetUpdateTrySkinInGame()
+    {
+        
+    }
 }
