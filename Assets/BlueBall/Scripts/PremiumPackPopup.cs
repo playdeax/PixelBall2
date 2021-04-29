@@ -130,8 +130,8 @@ public class PremiumPackPopup : MonoBehaviour
                         });
                     }
 
-                    if (ShopPopUp.Ins != null) {
-                        ShopPopUp.Ins.SetBuySuccess();
+                    if (ShopNewPopup.Ins != null) {
+                        ShopNewPopup.Ins.SetUpdateListBalls();
                     }
 
                 }

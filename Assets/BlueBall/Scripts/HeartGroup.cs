@@ -9,6 +9,7 @@ public class HeartGroup : MonoBehaviour
 {
     public TextMeshProUGUI txtHeart;
     public Animator ballAnimator;
+    public GameObject iconCountHeart;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,11 @@ public class HeartGroup : MonoBehaviour
         Config.OnChangeActiveBall += OnChangeActiveBall;
         ShowHeart();
 
-        ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+        if (ballAnimator != null)
+        {
+            ballAnimator.runtimeAnimatorController =
+                Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+        }
     }
 
     private void OnDestroy()
@@ -42,10 +47,25 @@ public class HeartGroup : MonoBehaviour
         txtHeart.transform.localScale = Vector3.one;
         txtHeart.transform.DOPunchScale(Vector3.one * 0.3f, 0.2f, 10, 2f).SetEase(Ease.InOutBack).SetRelative(true).SetLoops(3, LoopType.Restart);
         //txtCoin.transform.DOShakeScale(0.3f,0.5f,10).SetEase(Ease.InOutBack).SetRelative(true);
-        txtHeart.text = $"{Mathf.FloorToInt(Config.currHeart)}";
+        if (Config.GetBuyIAP(Config.IAP_ID.remove_ad_heart))
+        {
+            txtHeart.text = "Unlimited";
+            if (iconCountHeart != null)
+            {
+                iconCountHeart.SetActive(false);
+            }
+        }
+        else
+        {
+            txtHeart.text = $"{Mathf.FloorToInt(Config.currHeart)}";
+        }
     }
 
     public void OnChangeActiveBall() {
-        ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+        if (ballAnimator != null)
+        {
+            ballAnimator.runtimeAnimatorController =
+                Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+        }
     }
 }

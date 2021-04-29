@@ -8,6 +8,7 @@ public class PremiumPreview : MonoBehaviour
     public Animator animator;
     public BBUIButton btnTry;
     public BBUIButton btnBuy;
+    public BBUIButton btnBuyPremium;
     public BBUIButton btnActive;
     public BBUIButton btnVideo;
     public TextMeshProUGUI txtActived;
@@ -22,8 +23,11 @@ public class PremiumPreview : MonoBehaviour
     {
         btnTry.OnPointerClickCallBack_Completed.AddListener(TouchTry);
         btnBuy.OnPointerClickCallBack_Completed.AddListener(TouchBuy);
+        btnBuyPremium.OnPointerClickCallBack_Completed.AddListener(TouchBuyPremium);
         btnActive.OnPointerClickCallBack_Completed.AddListener(TouchActive);
         btnVideo.OnPointerClickCallBack_Completed.AddListener(TouchVideo);
+
+        SetInfoBallPreview(Config.GetInfoBallFromID(Config.GetBallActive()));
     }
 
 
@@ -31,6 +35,7 @@ public class PremiumPreview : MonoBehaviour
     {
         btnTry.OnPointerClickCallBack_Completed.RemoveAllListeners();
         btnBuy.OnPointerClickCallBack_Completed.RemoveAllListeners();
+        btnBuyPremium.OnPointerClickCallBack_Completed.RemoveAllListeners();
         btnActive.OnPointerClickCallBack_Completed.RemoveAllListeners();
         btnVideo.OnPointerClickCallBack_Completed.RemoveAllListeners();
     }
@@ -42,11 +47,10 @@ public class PremiumPreview : MonoBehaviour
     }
     bool isShowVideo = false;
     public InfoBall currPreviewInfoBall;
-    ShopPopUp.SHOP_TYPE shopType;
     public Transform posCenter;
     public Transform posCoin;
-    public void SetInfoBallPreview(InfoBall _infoBall,ShopPopUp.SHOP_TYPE _typeShop) {
-        shopType = _typeShop;
+    public void SetInfoBallPreview(InfoBall _infoBall) {
+        Debug.Log("SetInfoBallPreview:"+_infoBall.id);
         currPreviewInfoBall = _infoBall;
 
         animator.runtimeAnimatorController = _infoBall.animatorImgOverrideController;
@@ -84,7 +88,7 @@ public class PremiumPreview : MonoBehaviour
             btnVideo.gameObject.SetActive(true);
         }
         else {
-            if (Config.GetInfoBallUnlock(currPreviewInfoBall.id) || currPreviewInfoBall.price == 0 || (shopType == ShopPopUp.SHOP_TYPE.PREMIUM && Config.GetBuyIAP(Config.IAP_ID.premium_pack)))
+            if (Config.GetInfoBallUnlock(currPreviewInfoBall.id) || currPreviewInfoBall.price == 0 || (currPreviewInfoBall.ballType == Config.BALL_TYPE.PREMIUM && Config.GetBuyIAP(Config.IAP_ID.premium_pack)))
             {
                 Debug.Log("2222222222222222222222");
                 groupLock.gameObject.SetActive(false);
@@ -97,7 +101,7 @@ public class PremiumPreview : MonoBehaviour
             }
             else {
                 btnVideo.gameObject.SetActive(false);
-                if (shopType == ShopPopUp.SHOP_TYPE.RESCUE)
+                if (currPreviewInfoBall.ballType == Config.BALL_TYPE.RESCUE)
                 {
                     Debug.Log("333333333333333");
                     groupLock.gameObject.SetActive(false);
@@ -109,23 +113,25 @@ public class PremiumPreview : MonoBehaviour
                     txtUnlockLevel.gameObject.SetActive(true);
                     txtUnlockLevel.text = "Unlock Level " + currPreviewInfoBall.levelUnlock;
                 }
-                else if (shopType == ShopPopUp.SHOP_TYPE.PREMIUM)
+                else if (currPreviewInfoBall.ballType == Config.BALL_TYPE.PREMIUM)
                 {
                     Debug.Log("44444444444444");
                     groupLock.gameObject.SetActive(true);
                     groupUnLock.gameObject.SetActive(false);
 
-                    btnBuy.gameObject.SetActive(true);
+                    btnBuyPremium.gameObject.SetActive(true);
+                    btnBuy.gameObject.SetActive(false);
                     btnTry.gameObject.SetActive(true);
                     txtPrice.text = "" + currPreviewInfoBall.price;
                     txtPrice.gameObject.SetActive(false);
                 }
-                else if (shopType == ShopPopUp.SHOP_TYPE.COIN) {
+                else if (currPreviewInfoBall.ballType == Config.BALL_TYPE.COIN) {
                     Debug.Log("5555555555555555555555");
                     groupLock.gameObject.SetActive(true);
                     groupUnLock.gameObject.SetActive(false);
 
                     btnBuy.gameObject.SetActive(true);
+                    btnBuyPremium.gameObject.SetActive(false);
                     btnTry.gameObject.SetActive(true);
                     txtUnlockLevel.gameObject.SetActive(false);
                     txtActived.gameObject.SetActive(false);
@@ -169,16 +175,34 @@ public class PremiumPreview : MonoBehaviour
 
     public void TouchBuy()
     {
-        Debug.Log("TouchBuyTouchBuyTouchBuy");
-        //Config.SetInfoBallUnlock(currPreviewInfoBall.id);
-        //ShowInfo();
-
-        if (HomeManager.Ins != null)
+        if (currPreviewInfoBall.ballType == Config.BALL_TYPE.COIN)
         {
-            HomeManager.Ins.OpenPremiumPackPopup();
+            if (Config.currCoin >= currPreviewInfoBall.price)
+            {
+                Config.SetCoin(Config.currCoin - currPreviewInfoBall.price);
+                Config.SetInfoBallUnlock(currPreviewInfoBall.id);
+                ShopNewPopup.Ins.SetUpdateListBalls();
+                ShowInfo();
+            }
+            else
+            {
+                NotificationPopup.instance.AddNotification("Not enough Coin!");
+            }
         }
-        else if (GamePlayManager.Ins != null) {
-            GamePlayManager.Ins.OpenPremiumPackPopup();
+    }
+
+    public void TouchBuyPremium()
+    {
+        if (currPreviewInfoBall.ballType == Config.BALL_TYPE.PREMIUM)
+        {
+            if (HomeManager.Ins != null)
+            {
+                HomeManager.Ins.OpenPremiumPackPopup();
+            }
+            else if (GamePlayManager.Ins != null)
+            {
+                GamePlayManager.Ins.OpenPremiumPackPopup();
+            }
         }
     }
 
@@ -186,7 +210,7 @@ public class PremiumPreview : MonoBehaviour
         Config.SetBallActive(currPreviewInfoBall.id);
         Config.currBallID = Config.GetBallActive();
         Config.currInfoBall = Config.GetInfoBallFromID(Config.currBallID);
-
+        ShopNewPopup.Ins.SetUpdateListBalls();
         ShowInfo();
 
         if (HomeManager.Ins != null)

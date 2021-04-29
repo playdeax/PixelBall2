@@ -131,6 +131,13 @@ public class Config
         BALL,
         HEART
     }
+    
+    public enum BALL_TYPE
+    {
+        COIN,
+        RESCUE,
+        PREMIUM
+    }
 
 
     #region BALL
@@ -219,9 +226,9 @@ public class Config
     public static event Action<float> OnChangeCoin = delegate (float _coin) { };
     public static float currCoin;
     public static bool isFinished_AddCoin = true;
-    public static void SetCoin(int coinValue)
+    public static void SetCoin(float coinValue)
     {
-        PlayerPrefs.SetInt(COIN, coinValue);
+        PlayerPrefs.SetFloat(COIN, coinValue);
         PlayerPrefs.Save();
         currCoin = coinValue;
         OnChangeCoin(coinValue);
@@ -274,6 +281,7 @@ public class Config
 
     public static int GetHeart()
     {
+        if (Config.GetBuyIAP(Config.IAP_ID.remove_ad_heart)) return 9;
         return PlayerPrefs.GetInt(HEART, 3);
     }
     #endregion
@@ -326,7 +334,9 @@ public class Config
     {
         blueball_starter_pack,
         premium_pack,
-        remove_ad
+        remove_ad,
+        remove_ad_coin,
+        remove_ad_heart
     }
 
     public static void SetBuyIAP(IAP_ID idPack) {

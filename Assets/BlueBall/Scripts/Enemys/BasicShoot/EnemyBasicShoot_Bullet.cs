@@ -64,6 +64,7 @@ public class EnemyBasicShoot_Bullet : MonoBehaviour
 
         efxBulletExplosion.gameObject.SetActive(true);
         efxBulletExplosion.Play();
+        bulletCollider2D.enabled = false;
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }

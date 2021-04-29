@@ -383,6 +383,13 @@ public class GamePlayManager : MonoBehaviour
 
 
     #endregion
-    
+    public void ShowLoadingNextGame()
+    {
+        sceneTransitionController.gameObject.SetActive(true);
+        sceneTransitionController.ShowLoading_In(() =>
+        {
+            SceneManager.LoadScene("Level" + Config.GetLevel());
+        });
+    }
     
 }
