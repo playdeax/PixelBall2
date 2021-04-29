@@ -153,7 +153,7 @@ public class WinPopup : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         
-        if (Config.GetLevel() != 1 || Config.GetLevel() != 2){
+        if (Config.GetLevel() >= 2){
             
             btnReward.gameObject.SetActive(true);
             btnReward.GetComponent<BBUIView>().ShowView();
@@ -205,7 +205,7 @@ public class WinPopup : MonoBehaviour
         });
 
         yield return new WaitForSeconds(3f);
-        if (Config.GetLevel() == 1 || Config.GetLevel() == 2)
+        if (Config.GetLevel() <= 2)
         {
             btnNextLevel.gameObject.SetActive(true);
             btnNextLevel.GetComponent<BBUIView>().ShowView();
@@ -441,9 +441,30 @@ public class WinPopup : MonoBehaviour
 
     private void TouchTryBallPreview()
     {
-        Config.currInfoBall_Try = Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]);
-        Config.SetLevel(Config.GetLevel() + 1);
-        GamePlayManager.Ins.ShowLoadingNextGame();
+        if (AdmobManager.instance.isRewardAds_Avaiable())
+        {
+            lockPopup.gameObject.SetActive(true);
+            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                {
+                    lockPopup.gameObject.SetActive(false);
+                    Config.currInfoBall_Try = Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]);
+                    Config.SetLevel(Config.GetLevel() + 1);
+                    GamePlayManager.Ins.ShowLoadingNextGame();
+
+                }
+                else
+                {
+                    lockPopup.gameObject.SetActive(false);
+                }
+            });
+        }
+        else
+        {
+            NotificationPopup.instance.AddNotification("No Video Available!");
+        }
+        
     }
     private void TouchActiveBallPreview()
     {

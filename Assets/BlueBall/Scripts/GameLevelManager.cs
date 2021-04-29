@@ -244,4 +244,9 @@ public class GameLevelManager : MonoBehaviour
 
     #endregion
 
+    public void UpdateTrySkin()
+    {
+        playerMovement.gameObject.GetComponent<PlayerAnimation>().SetUpdateTrySkinInGame();
+    }
+
 }
