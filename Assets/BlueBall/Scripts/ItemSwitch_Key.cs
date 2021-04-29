@@ -18,14 +18,20 @@ public class ItemSwitch_Key : ItemBase
     {
         
     }
-
+    bool isBoxOn = false;
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         //base.OnTriggerEnter2D(collision);
         if (CheckTagCollision(collision.tag)) {
+
+            if(collision.tag == "Box")
+            {
+                isBoxOn = true;
+            }
             SetKey_Open();
 
             itemSwitch.SetSwitch_ON();
+            
         }
     }
 
@@ -33,9 +39,21 @@ public class ItemSwitch_Key : ItemBase
     {
         if (CheckTagCollision(collision.tag))
         {
-            SetKey_Close();
+            if (collision.tag == "Box")
+            {
+                isBoxOn = false;
+            }
 
-            itemSwitch.SetSwitch_OFF();
+            if (collision.tag == "Ball" && isBoxOn)
+            {
+                //do nothing
+            }
+            else
+            {
+                SetKey_Close();
+                itemSwitch.SetSwitch_OFF();
+            }
+
         }
     }
 
