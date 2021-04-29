@@ -6,6 +6,8 @@ using UnityEngine;
 public class ItemMagnet : ItemBase
 {
     public Animator anim;
+
+    public bool isAd = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,24 @@ public class ItemMagnet : ItemBase
         SetCollier_Enable(false);
 
         SoundManager.instance.SFX_CoinCollect();
-        ShowEfx();
+
+        if (AdmobManager.instance.isRewardAds_Avaiable() && isAd)
+        {
+            Time.timeScale = 0f;
+            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                {
+                    ShowEfx();
+                }
+                Time.timeScale = 1f;
+            });
+        }
+        else
+        {
+            ShowEfx();
+        }
+       
     }
 
     public void ShowEfx()
