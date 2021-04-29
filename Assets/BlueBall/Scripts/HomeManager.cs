@@ -250,8 +250,29 @@ public class HomeManager : MonoBehaviour
 
     private void TouchTryBallPreview()
     {
-        Config.currInfoBall_Try = Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]);
-        ShowLoadingToGame();
+        if (AdmobManager.instance.isRewardAds_Avaiable())
+        {
+            lockObj.gameObject.SetActive(true);
+            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                {
+                    lockObj.gameObject.SetActive(false);
+                    Config.currInfoBall_Try = Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]);
+                    ShowLoadingToGame();
+
+                }
+                else
+                {
+                    lockObj.gameObject.SetActive(false);
+                }
+            });
+        }
+        else
+        {
+            NotificationPopup.instance.AddNotification("No Video Avaiable!");
+        }
+        
     }
     private void TouchActiveBallPreview()
     {
