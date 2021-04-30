@@ -10,7 +10,12 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
       <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+      
     </activity>
+    <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9179752697212712~5678973914"/>
     <service android:name="com.google.firebase.messaging.MessageForwardingService" android:exported="false" />
+    
   </application>
 </manifest>
