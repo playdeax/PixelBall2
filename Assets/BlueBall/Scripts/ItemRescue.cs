@@ -10,6 +10,7 @@ public class ItemRescue : ItemBase
     public ParticleSystem efxBallRescue;
     public ParticleSystem efxCollision;
     public GameObject colliderObj;
+    public List<ExplosionEfx> listThanhChans = new List<ExplosionEfx>();
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,9 @@ public class ItemRescue : ItemBase
     public void InitBallRescue() {
         infoBallRescue = Config.GetInfoBallFromID(idBallRescue);
         ballRescueAnimator.runtimeAnimatorController = infoBallRescue.animatorOverrideController;
-        ballRescueAnimator.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
-        ballRescueAnimator.transform.DOScale(0f, 0f);
-        ballRescueAnimator.transform.DOLocalMoveY(-1f, 0f);
+        // ballRescueAnimator.GetComponent<SpriteRenderer>().DOFade(0f, 0f);
+        // ballRescueAnimator.transform.DOScale(0f, 0f);
+        // ballRescueAnimator.transform.DOLocalMoveY(-1f, 0f);
         ballRescueAnimator.gameObject.SetActive(true);
     }
 
@@ -45,7 +46,11 @@ public class ItemRescue : ItemBase
 
     public IEnumerator ShowEfxResuce_Success() {
         yield return new WaitForSeconds(0.1f);
-        iconResuce.DOFade(0f, 0.2f);
+        // iconResuce.DOFade(0f, 0.2f);
+        for (int i = 0; i < listThanhChans.Count; i++)
+        {
+            listThanhChans[i].PlayExplosion();
+        }
 
         yield return new WaitForSeconds(0.15f);
         ballRescueAnimator.gameObject.SetActive(true);

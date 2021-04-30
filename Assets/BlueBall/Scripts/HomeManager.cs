@@ -64,20 +64,12 @@ public class HomeManager : MonoBehaviour
         ShowBallPreview();
         txtLevel.text = "LEVEL " + Config.GetLevel();
         StartCoroutine(Start_IEnumerator());
-
-        if (forceLevel > 0)
+        if (Config.currLevel == 0)
         {
+            SceneManager.LoadSceneAsync("Level0");
+        }
 
-            SceneManager.LoadScene("Level" + forceLevel);
-        }
-        else
-        {
-            if (Config.currLevel == 0)
-            {
-                SceneManager.LoadSceneAsync("Level0");
-            }
-        }
-       
+        InitBallPreview();
     }
 
     public IEnumerator Start_IEnumerator() {
@@ -156,7 +148,7 @@ public class HomeManager : MonoBehaviour
     }
 
 
-    private void ShowLoadingToGame()
+    public void ShowLoadingToGame()
     {
         sceneTransitionController.gameObject.SetActive(true);
         sceneTransitionController.ShowLoading_In(() =>
@@ -239,6 +231,12 @@ public class HomeManager : MonoBehaviour
             btnTryBallPreview.gameObject.SetActive(false);
             btnActiveBallPreview.gameObject.SetActive(false);
         }
+        else if (Config.GetInfoBallFromID(idBall).ballType == Config.BALL_TYPE.PREMIUM && Config.GetBuyIAP(Config.IAP_ID.premium_pack))
+        {
+            btnTryBallPreview.gameObject.SetActive(false);
+            btnActiveBallPreview.gameObject.SetActive(true);
+            btnActiveBallPreview.GetComponent<BBUIView>().ShowView();
+        }
         else if (Config.GetInfoBallUnlock(idBall))
         {
             btnTryBallPreview.gameObject.SetActive(false);
@@ -286,9 +284,13 @@ public class HomeManager : MonoBehaviour
     }
     private void TouchActiveBallPreview()
     {
-        Config.SetBallActive(listIDBallPreviews[indexBallPreview]);
+        btnActiveBallPreview.gameObject.SetActive(false);
         
-        ShopNewPopup.Ins.SetUpdateListBalls();
+        Config.SetBallActive(listIDBallPreviews[indexBallPreview]);
+        if (ShopNewPopup.Ins != null && ShopNewPopup.Ins.isActiveAndEnabled)
+        {
+            ShopNewPopup.Ins.SetUpdateListBalls();
+        }
     }
 
     #endregion

@@ -71,25 +71,6 @@ public class WinPopup : MonoBehaviour
         btnTryBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchTryBallPreview);
         btnActiveBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchActiveBallPreview);
 
-        bg.gameObject.SetActive(false);
-        btnNoThank.gameObject.SetActive(false);
-        btnReward.gameObject.SetActive(false);
-        btnNextLevel.gameObject.SetActive(false);
-        btnFreeCoin.gameObject.SetActive(false);
-        btnChest.gameObject.SetActive(false);
-        btnDailyReward.gameObject.SetActive(false);
-        btnFreeHeart.gameObject.SetActive(false);
-        btnShopCoin.gameObject.SetActive(false);
-        btnShopSkin.gameObject.SetActive(false);
-        ballAnimator.gameObject.SetActive(false);
-        efxWin.gameObject.SetActive(false);
-        txtLevel.gameObject.SetActive(false);
-        txtCompeted.gameObject.SetActive(false);
-        btnNextBallPreview.gameObject.SetActive(false);
-        btnBackBallPreview.gameObject.SetActive(false);
-        btnTryBallPreview.gameObject.SetActive(false);
-        btnActiveBallPreview.gameObject.SetActive(false);
-
         ShowBallPreview();
     }
 
@@ -131,9 +112,11 @@ public class WinPopup : MonoBehaviour
         {
             txtLevel.text = "TUTORIAL";
         }
-        StartCoroutine(ShowPopup_IEnumerator(coinReward));
+
         FirebaseManager.instance.LogLevelWin(_level);
 
+        StartCoroutine(ShowPopup_IEnumerator(coinReward));
+        InitBallPreview();
     }
 
     public IEnumerator ShowPopup_IEnumerator(int coinReward)
@@ -157,6 +140,8 @@ public class WinPopup : MonoBehaviour
         btnBackBallPreview.gameObject.SetActive(false);
         btnTryBallPreview.gameObject.SetActive(false);
         btnActiveBallPreview.gameObject.SetActive(false);
+        btnShop.gameObject.SetActive(false);
+        btnShopHeart.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(0.1f);
         bg.gameObject.SetActive(true);
@@ -170,7 +155,7 @@ public class WinPopup : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         
-        if (Config.GetLevel() >= 2){
+        if (Config.GetLevel() > 2){
             
             btnReward.gameObject.SetActive(true);
             btnReward.GetComponent<BBUIView>().ShowView();
@@ -437,6 +422,12 @@ public class WinPopup : MonoBehaviour
             btnTryBallPreview.gameObject.SetActive(false);
             btnActiveBallPreview.gameObject.SetActive(false);
         }
+        else if (Config.GetInfoBallFromID(idBall).ballType == Config.BALL_TYPE.PREMIUM && Config.GetBuyIAP(Config.IAP_ID.premium_pack))
+        {
+            btnTryBallPreview.gameObject.SetActive(false);
+            btnActiveBallPreview.gameObject.SetActive(true);
+            btnActiveBallPreview.GetComponent<BBUIView>().ShowView();
+        }
         else if (Config.GetInfoBallUnlock(idBall))
         {
             btnTryBallPreview.gameObject.SetActive(false);
@@ -485,9 +476,13 @@ public class WinPopup : MonoBehaviour
     }
     private void TouchActiveBallPreview()
     {
+        btnActiveBallPreview.gameObject.SetActive(false);
         Config.SetBallActive(listIDBallPreviews[indexBallPreview]);
         
-        ShopNewPopup.Ins.SetUpdateListBalls();
+        if (ShopNewPopup.Ins != null && ShopNewPopup.Ins.isActiveAndEnabled)
+        {
+            ShopNewPopup.Ins.SetUpdateListBalls();
+        }
     }
 
     #endregion

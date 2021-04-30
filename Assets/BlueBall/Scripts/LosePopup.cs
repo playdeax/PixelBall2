@@ -107,7 +107,7 @@ public class LosePopup : MonoBehaviour
         FirebaseManager.instance.LogLevelWin(_level);
 
         StartCoroutine(ShowPopup_IEnumerator());
-        
+        InitBallPreview();
     }
 
     public IEnumerator ShowPopup_IEnumerator()
@@ -129,7 +129,9 @@ public class LosePopup : MonoBehaviour
         btnBackBallPreview.gameObject.SetActive(false);
         btnTryBallPreview.gameObject.SetActive(false);
         btnActiveBallPreview.gameObject.SetActive(false);
-
+        btnShop.gameObject.SetActive(false);
+        btnShopHeart.gameObject.SetActive(false);
+        
         yield return new WaitForSeconds(0.1f);
         bg.gameObject.SetActive(true);
         bg.ShowView();
@@ -391,6 +393,12 @@ public class LosePopup : MonoBehaviour
             btnTryBallPreview.gameObject.SetActive(false);
             btnActiveBallPreview.gameObject.SetActive(false);
         }
+        else if (Config.GetInfoBallFromID(idBall).ballType == Config.BALL_TYPE.PREMIUM && Config.GetBuyIAP(Config.IAP_ID.premium_pack))
+        {
+            btnTryBallPreview.gameObject.SetActive(false);
+            btnActiveBallPreview.gameObject.SetActive(true);
+            btnActiveBallPreview.GetComponent<BBUIView>().ShowView();
+        }
         else if (Config.GetInfoBallUnlock(idBall))
         {
             btnTryBallPreview.gameObject.SetActive(false);
@@ -418,9 +426,13 @@ public class LosePopup : MonoBehaviour
     }
     private void TouchActiveBallPreview()
     {
+        btnActiveBallPreview.gameObject.SetActive(false);
         Config.SetBallActive(listIDBallPreviews[indexBallPreview]);
         
-        ShopNewPopup.Ins.SetUpdateListBalls();
+        if (ShopNewPopup.Ins != null && ShopNewPopup.Ins.isActiveAndEnabled)
+        {
+            ShopNewPopup.Ins.SetUpdateListBalls();
+        }
     }
 
     #endregion
