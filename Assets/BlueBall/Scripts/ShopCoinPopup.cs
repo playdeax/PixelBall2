@@ -21,6 +21,7 @@ public class ShopCoinPopup : MonoBehaviour
     {
         btnBack.OnPointerClickCallBack_Completed.AddListener(TouchBack);
         PurchaserManager.InitializeSucceeded += PurchaserManager_InitializeSucceeded;
+        InitIAP();
     }
     
     private void OnDestroy()
