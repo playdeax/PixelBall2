@@ -185,7 +185,11 @@ public class PremiumPreview : MonoBehaviour
             {
                 Config.SetCoin(Config.currCoin - currPreviewInfoBall.price);
                 Config.SetInfoBallUnlock(currPreviewInfoBall.id);
-                ShopNewPopup.Ins.SetUpdateListBalls();
+                if (ShopNewPopup.Ins != null && ShopNewPopup.Ins.isActiveAndEnabled)
+                {
+                    ShopNewPopup.Ins.SetUpdateListBalls();
+                }
+
                 ShowInfo();
             }
             else
@@ -214,7 +218,11 @@ public class PremiumPreview : MonoBehaviour
         Config.SetBallActive(currPreviewInfoBall.id);
         Config.currBallID = Config.GetBallActive();
         Config.currInfoBall = Config.GetInfoBallFromID(Config.currBallID);
-        ShopNewPopup.Ins.SetUpdateListBalls();
+        if (ShopNewPopup.Ins != null && ShopNewPopup.Ins.isActiveAndEnabled)
+        {
+            ShopNewPopup.Ins.SetUpdateListBalls();
+        }
+
         ShowInfo();
 
         if (HomeManager.Ins != null)

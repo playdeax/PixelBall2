@@ -2601,6 +2601,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtHeart: {fileID: 8733983177911049398}
   ballAnimator: {fileID: 0}
+  iconCountHeart: {fileID: 0}
 --- !u!1 &8733983176383192279
 GameObject:
   m_ObjectHideFlags: 0
@@ -5267,6 +5268,7 @@ MonoBehaviour:
     animatorImgOverrideController: {fileID: 0}
     price: 0
     levelUnlock: 2
+    efxBall: {fileID: 0}
   posCenter: {fileID: 8733983177020108749}
   posCoin: {fileID: 8733983177701764415}
 --- !u!1 &8733983177387401401
@@ -6577,7 +6579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e1abce7008e2647a0ba5eb460e8dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listBallIDs: 6400000065000000660000006700000068000000
+  listBallIDs: 640000006500000066000000670000006800000069000000
   itemShopBallPrefab: {fileID: 7624601009897391832, guid: 822874c095d14cc45a9f2ef2eab39d34,
     type: 3}
   ballTranform: {fileID: 8733983175932622663}

@@ -175,8 +175,9 @@ public class Config
 
     public static event Action OnChangeActiveBall = delegate () { };
     public const string BALL_ACTIVE = "ball_active";
-    public static void SetBallActive(int idBall) {
-        
+    public static void SetBallActive(int idBall)
+    {
+        currInfoBall = GetInfoBallFromID(idBall);
         PlayerPrefs.SetInt(BALL_ACTIVE, idBall);
         PlayerPrefs.Save();
 

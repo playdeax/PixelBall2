@@ -22,6 +22,7 @@ MonoBehaviour:
       type: 2}
     price: 0
     levelUnlock: 2
+    efxBall: {fileID: 0}
   - ballType: 1
     id: 2
     name: ball blue
@@ -31,6 +32,7 @@ MonoBehaviour:
       type: 2}
     price: 10000
     levelUnlock: 2
+    efxBall: {fileID: 0}
   - ballType: 0
     id: 3
     name: ball cat
@@ -40,6 +42,7 @@ MonoBehaviour:
       type: 2}
     price: 20000
     levelUnlock: 2
+    efxBall: {fileID: 0}
   - ballType: 0
     id: 4
     name: ball imposter
@@ -49,6 +52,7 @@ MonoBehaviour:
       type: 2}
     price: 30000
     levelUnlock: 2
+    efxBall: {fileID: 0}
   - ballType: 2
     id: 100
     name: amongus
@@ -58,6 +62,7 @@ MonoBehaviour:
       type: 2}
     price: 1000
     levelUnlock: 2
+    efxBall: {fileID: 0}
   - ballType: 2
     id: 101
     name: captain
@@ -67,6 +72,8 @@ MonoBehaviour:
       type: 2}
     price: 50000
     levelUnlock: 2
+    efxBall: {fileID: 1258454405450740883, guid: 50379032d8b312147afd366a9b12e891,
+      type: 3}
   - ballType: 2
     id: 102
     name: cop
@@ -76,6 +83,8 @@ MonoBehaviour:
       type: 2}
     price: 50000
     levelUnlock: 2
+    efxBall: {fileID: 7745532277918424935, guid: 73d2285523572394a99c4c4ff2b31ad8,
+      type: 3}
   - ballType: 2
     id: 103
     name: ironman
@@ -85,6 +94,7 @@ MonoBehaviour:
       type: 2}
     price: 50000
     levelUnlock: 2
+    efxBall: {fileID: 0}
   - ballType: 2
     id: 104
     name: panther
@@ -94,3 +104,16 @@ MonoBehaviour:
       type: 2}
     price: 50000
     levelUnlock: 2
+    efxBall: {fileID: 8317131945125382789, guid: 9578482a5e3c44a418f3beb444d0a988,
+      type: 3}
+  - ballType: 2
+    id: 105
+    name: thor
+    animatorOverrideController: {fileID: 22100000, guid: 721e314499f97974ca70aa222b9f408d,
+      type: 2}
+    animatorImgOverrideController: {fileID: 22100000, guid: 897a876ccbd4a484cac9fc56cde40107,
+      type: 2}
+    price: 0
+    levelUnlock: 2
+    efxBall: {fileID: 6595457205254592507, guid: 3d85b6a2ac724ef4fa07aeee190edb3c,
+      type: 3}
