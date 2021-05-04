@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
+
 public class ItemShopBall : MonoBehaviour
 {
     public Sprite unselect;
@@ -13,6 +15,7 @@ public class ItemShopBall : MonoBehaviour
     public Animator animatorBall;
     public GameObject lockObj;
     public Action<ItemShopBall> ItemShopBall_CallBack = delegate (ItemShopBall itemShopBall) { };
+
     // Start is called before the first frame update
     void Start()
     {

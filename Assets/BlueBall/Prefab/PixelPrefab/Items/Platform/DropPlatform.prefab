@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1962057365}
   - component: {fileID: 8770420169664101864}
   - component: {fileID: 3214839978441291554}
+  - component: {fileID: 3472640968676868113}
   m_Layer: 13
   m_Name: DropPlatform
   m_TagString: MovingPlatform
@@ -186,4 +187,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBack: 1
   timeBack: 2
-  timeHold: 0.5
+  timeHold: 1
+--- !u!61 &3472640968676868113
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3214839977024498099}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03694725, y: 0.6604972}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 1.25}
+    newSize: {x: 2, y: 0.625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.6859398, y: 0.07699776}
+  m_EdgeRadius: 0

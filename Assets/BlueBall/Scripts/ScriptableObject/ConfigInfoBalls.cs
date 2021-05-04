@@ -19,4 +19,5 @@ public class InfoBall
     public AnimatorOverrideController animatorImgOverrideController;
     public int price;
     public int levelUnlock = 2;
+    public GameObject efxBall;
 }

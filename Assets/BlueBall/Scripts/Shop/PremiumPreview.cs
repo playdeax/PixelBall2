@@ -155,10 +155,14 @@ public class PremiumPreview : MonoBehaviour
                     Debug.Log("AddHeartAddHeartAddHeartAddHeartAddHeart");
                     lockPopup.gameObject.SetActive(false);
                     Config.currInfoBall_Try = currPreviewInfoBall;
-                    ShopPopUp.Ins.CloseShop();
 
-                    if (HomeManager.Ins != null) {
-                        HomeManager.Ins.ShowBallPreview();
+                    if (HomeManager.Ins != null)
+                    {
+                        HomeManager.Ins.ShowLoadingToGame();
+                    }
+                    else if (GamePlayManager.Ins != null)
+                    {
+                        GamePlayManager.Ins.ShowLoadingNextGame();
                     }
                 }
                 else
@@ -181,7 +185,11 @@ public class PremiumPreview : MonoBehaviour
             {
                 Config.SetCoin(Config.currCoin - currPreviewInfoBall.price);
                 Config.SetInfoBallUnlock(currPreviewInfoBall.id);
-                ShopNewPopup.Ins.SetUpdateListBalls();
+                if (ShopNewPopup.Ins != null && ShopNewPopup.Ins.isActiveAndEnabled)
+                {
+                    ShopNewPopup.Ins.SetUpdateListBalls();
+                }
+
                 ShowInfo();
             }
             else
@@ -210,7 +218,11 @@ public class PremiumPreview : MonoBehaviour
         Config.SetBallActive(currPreviewInfoBall.id);
         Config.currBallID = Config.GetBallActive();
         Config.currInfoBall = Config.GetInfoBallFromID(Config.currBallID);
-        ShopNewPopup.Ins.SetUpdateListBalls();
+        if (ShopNewPopup.Ins != null && ShopNewPopup.Ins.isActiveAndEnabled)
+        {
+            ShopNewPopup.Ins.SetUpdateListBalls();
+        }
+
         ShowInfo();
 
         if (HomeManager.Ins != null)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Tuan\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Tuan\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_PixelBall2.-1328806592.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Tuan\Desktop\PixelBall\CodePixelBall\PixelBall2" t="IncludeRecursive">
+    <e p="C:\Users\tavan\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\tavan\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_PixelBall2.-474714559.00" t="ExcludeRecursive" />
+    <e p="E:\Projects\UnityProjects\WorkSpace\PixelBall2" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
@@ -74,6 +74,7 @@
                 <e p="EnemySpike.cs" t="Include" />
               </e>
             </e>
+            <e p="ExplosionEfx.cs" t="Include" />
             <e p="FinishPoint.cs" t="Include" />
             <e p="FinishPoint_Finish.cs" t="Include" />
             <e p="FinishPoint_Key.cs" t="Include" />
@@ -113,12 +114,14 @@
             <e p="MovingPlatformer.cs" t="Include" />
             <e p="MusicManager.cs" t="Include" />
             <e p="NotificationPopup.cs" t="Include" />
+            <e p="ObjectNotRotate.cs" t="Include" />
             <e p="ParallaxBackground.cs" t="Include" />
             <e p="PausePopup.cs" t="Include" />
             <e p="PixelPlayerAnimation.cs" t="Include" />
             <e p="PlayerAnimation.cs" t="Include" />
             <e p="PlayerCheck_MovingPlatform.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
+            <e p="PreLoadScene.cs" t="Include" />
             <e p="PremiumPackPopup.cs" t="Include" />
             <e p="RescuePopup.cs" t="Include" />
             <e p="ScriptableObject" t="Include">
@@ -1147,32 +1150,6 @@
             <e p="GoogleRegistries.xml" t="Include" />
           </e>
         </e>
-        <e p="Firebase" t="Include">
-          <e p="Editor" t="Include">
-            <e p="AnalyticsDependencies.xml" t="Include" />
-            <e p="AppDependencies.xml" t="Include" />
-            <e p="FirebaseAnalytics_version-6.15.2_manifest.txt" t="Include" />
-            <e p="FirebaseMessaging_version-6.15.2_manifest.txt" t="Include" />
-            <e p="MessagingDependencies.xml" t="Include" />
-          </e>
-          <e p="m2repository" t="Include">
-            <e p="com" t="Include">
-              <e p="google" t="Include">
-                <e p="Firebase" t="Include">
-                  <e p="firebase-analytics-unity" t="Include">
-                    <e p="maven-metadata.xml" t="Include" />
-                  </e>
-                  <e p="firebase-app-unity" t="Include">
-                    <e p="maven-metadata.xml" t="Include" />
-                  </e>
-                  <e p="firebase-messaging-unity" t="Include">
-                    <e p="maven-metadata.xml" t="Include" />
-                  </e>
-                </e>
-              </e>
-            </e>
-          </e>
-        </e>
         <e p="FirebaseManager.cs" t="Include" />
         <e p="GoogleMobileAds" t="Include">
           <e p="Api" t="Include">
@@ -1431,14 +1408,6 @@
         <e p="Plugins" t="Include">
           <e p="Android" t="Include">
             <e p="AndroidManifest.xml" t="Include" />
-            <e p="Firebase" t="Include">
-              <e p="AndroidManifest.xml" t="Include" />
-              <e p="res" t="Include">
-                <e p="values" t="Include">
-                  <e p="google-services.xml" t="Include" />
-                </e>
-              </e>
-            </e>
             <e p="FirebaseApp.androidlib" t="Include">
               <e p="AndroidManifest.xml" t="Include" />
               <e p="res" t="Include">

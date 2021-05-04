@@ -9,6 +9,8 @@ public class PixelPlayerAnimation : PlayerAnimation
     public ParticleSystem efxBehit;
     public ParticleSystem efxMagic;
     public ParticleSystem efxBallDead;
+
+    private GameObject efx;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,7 @@ public class PixelPlayerAnimation : PlayerAnimation
         {
             animator.runtimeAnimatorController = Config.currInfoBall.animatorOverrideController;
         }
+        UpdateEfxBall();
     }
     
 
@@ -65,6 +68,11 @@ public class PixelPlayerAnimation : PlayerAnimation
         StopAutoRotate();
         animator.gameObject.GetComponent<SpriteRenderer>().DOFade(0f, 0.5f);
         animator.gameObject.transform.DOLocalRotate(new Vector3(0f,0f,0f),0.5f).SetEase(Ease.OutQuad);
+        
+        if (efx != null)
+        {
+            efx.SetActive(false);
+        }
     }
 
 
@@ -76,6 +84,11 @@ public class PixelPlayerAnimation : PlayerAnimation
         animator.gameObject.transform.DOLocalRotate(new Vector3(0f, 0f, 0f), 0.2f);
         efxBehit.gameObject.SetActive(true);
         efxBehit.Play();
+        
+        if (efx != null)
+        {
+            efx.SetActive(true);
+        }
     }
 
 
@@ -101,6 +114,30 @@ public class PixelPlayerAnimation : PlayerAnimation
         if (Config.currInfoBall_Try != null)
         {
             animator.runtimeAnimatorController = Config.currInfoBall_Try.animatorOverrideController;
+            UpdateEfxBall();
         }
+    }
+
+    private void UpdateEfxBall()
+    {
+        if (efx != null)
+        {
+            Destroy(efx.gameObject);   
+        }
+        
+        if (Config.currInfoBall_Try != null)
+        {
+            if (Config.currInfoBall_Try.efxBall != null)
+            {
+                efx = Instantiate(Config.currInfoBall_Try.efxBall, animator.transform);
+            }
+        }
+        else
+        {
+            if (Config.currInfoBall.efxBall != null)
+            {
+                 efx = Instantiate(Config.currInfoBall.efxBall, animator.transform);
+            }
+        }        
     }
 }

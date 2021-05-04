@@ -13,12 +13,14 @@ public class DropPlatform : MonoBehaviour
         oldPos = transform.position;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.collider.tag.EndsWith("Ball")) {
+        if (collision.tag.EndsWith("Ball"))
+        {
             StartCoroutine(WaitAndDrop(timeHold));
         }
     }
+  
     void Update()
     {
         

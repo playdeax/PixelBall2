@@ -165,9 +165,18 @@ public class Config
         PlayerPrefs.Save();
     }
 
-    public static bool GetInfoBallUnlock(int idBall) {
+    public static bool GetInfoBallUnlock(int idBall)
+    {
+        if (idBall == 1) return true;
         int ballUnlock = PlayerPrefs.GetInt(BALL + idBall, 0);
         if (ballUnlock == 1) {
+            return true;
+        }
+
+        if (GetInfoBallFromID(idBall).ballType == BALL_TYPE.PREMIUM &&
+            GetBuyIAP(IAP_ID.premium_pack))
+        {
+            SetInfoBallUnlock(idBall);
             return true;
         }
         return false;
@@ -175,8 +184,9 @@ public class Config
 
     public static event Action OnChangeActiveBall = delegate () { };
     public const string BALL_ACTIVE = "ball_active";
-    public static void SetBallActive(int idBall) {
-        
+    public static void SetBallActive(int idBall)
+    {
+        currInfoBall = GetInfoBallFromID(idBall);
         PlayerPrefs.SetInt(BALL_ACTIVE, idBall);
         PlayerPrefs.Save();
 
