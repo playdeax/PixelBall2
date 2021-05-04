@@ -173,6 +173,7 @@ public class Config
             return true;
         }
 
+        
         if (GetInfoBallFromID(idBall).ballType == BALL_TYPE.PREMIUM &&
             GetBuyIAP(IAP_ID.premium_pack))
         {
