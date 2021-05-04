@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using System;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class HomeManager : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class HomeManager : MonoBehaviour
         btnBackBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchBackBallPreview);
         btnTryBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchTryBallPreview);
         btnActiveBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchActiveBallPreview);
-            
+        InitBallPreview();
         ShowBallPreview();
         txtLevel.text = "LEVEL " + Config.GetLevel();
         StartCoroutine(Start_IEnumerator());
@@ -69,7 +70,7 @@ public class HomeManager : MonoBehaviour
             SceneManager.LoadSceneAsync("Level0");
         }
 
-        InitBallPreview();
+        
     }
 
     public IEnumerator Start_IEnumerator() {
@@ -127,6 +128,30 @@ public class HomeManager : MonoBehaviour
         btnBackBallPreview.GetComponent<BBUIView>().ShowView();
 
 
+        // bổ sung hiện tryball ở đây
+        if (Config.GetBallActive() == listIDBallPreviews[indexBallPreview])
+        {
+            btnTryBallPreview.gameObject.SetActive(false);
+            btnActiveBallPreview.gameObject.SetActive(false);
+        }
+        else if (Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]).ballType == Config.BALL_TYPE.PREMIUM && Config.GetBuyIAP(Config.IAP_ID.premium_pack))
+        {
+            btnTryBallPreview.gameObject.SetActive(false);
+            btnActiveBallPreview.gameObject.SetActive(true);
+            btnActiveBallPreview.GetComponent<BBUIView>().ShowView();
+        }
+        else if (Config.GetInfoBallUnlock(listIDBallPreviews[indexBallPreview]))
+        {
+            btnTryBallPreview.gameObject.SetActive(false);
+            btnActiveBallPreview.gameObject.SetActive(true);
+            btnActiveBallPreview.GetComponent<BBUIView>().ShowView();
+        }
+        else
+        {
+            btnActiveBallPreview.gameObject.SetActive(false);
+            btnTryBallPreview.gameObject.SetActive(true);
+            btnTryBallPreview.GetComponent<BBUIView>().ShowView();
+        }
         if (Config.CheckDailyReward())
         {
             OpenDailyRewardPopup();
@@ -183,7 +208,8 @@ public class HomeManager : MonoBehaviour
             ballAnimator.runtimeAnimatorController = Config.currInfoBall_Try.animatorImgOverrideController;
         }
         else {
-            ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+//            ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
+            ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]).animatorImgOverrideController;
         }
 
 
@@ -192,16 +218,46 @@ public class HomeManager : MonoBehaviour
     private int indexBallPreview;
     private InfoBall infoBallPreview;
 
+    private void CheckActiveBall()
+    {
+        
+    }
     private void InitBallPreview()
     {
+//        for (int i = 0; i < listIDBallPreviews.Count; i++)
+//        {
+//            if (listIDBallPreviews[i] == Config.GetBallActive())
+//            {
+//                indexBallPreview = i;
+//                return;
+//            }
+//        }
+        
+        // Get ball not active here
+
+        var lockedIds = new List<int>();
         for (int i = 0; i < listIDBallPreviews.Count; i++)
         {
-            if (listIDBallPreviews[i] == Config.GetBallActive())
+            if (!Config.GetInfoBallUnlock(listIDBallPreviews[i]))
             {
-                indexBallPreview = i;
-                return;
+                lockedIds.Add(listIDBallPreviews[i]);
             }
         }
+        
+        Debug.Log("lockedIds.Count = "+lockedIds.Count);
+        var percent = Random.Range(0, 100f);
+        if (lockedIds.Count > 0)
+        {
+            var randomId = Random.Range(0, lockedIds.Count);
+            var index = listIDBallPreviews.IndexOf(lockedIds[randomId]);
+            indexBallPreview = index;
+        }
+        else
+        {
+            var index = listIDBallPreviews.IndexOf(Config.GetBallActive());
+            indexBallPreview = index;
+        }
+        Debug.Log("indexBallPreview ="+indexBallPreview);
     }
     private void TouchNextBallPreview()
     {
