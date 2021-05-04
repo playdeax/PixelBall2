@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7471347144275641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 5.52, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_Children:
   - {fileID: 7471348409211929}
   - {fileID: 2444436932623093380}
@@ -180,7 +180,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   delay: 0
-  duration: 10
+  duration: 8
   easeType: 1
   easeCurve:
     serializedVersion: 2
@@ -228,37 +228,25 @@ MonoBehaviour:
   wps:
   - {x: 7.7655864, y: 6.515198, z: 0}
   - {x: 13.508768, y: 4.8881974, z: 0}
-  - {x: 8.163234, y: 0.93400645, z: 0}
-  - {x: 1.319874, y: 0.91695666, z: 0}
-  - {x: 0, y: 5.52, z: 0}
   fullWps: []
   path:
     wpLengths:
     - 0
-    - 7.8290963
+    - 54.182198
     - 5.9691935
-    - 6.6490874
-    - 6.8433814
-    - 4.788536
     type: 0
     subdivisionsXSegment: 10
-    subdivisions: 60
+    subdivisions: 30
     wps:
-    - {x: 0, y: 5.52, z: 0}
+    - {x: 13.036611, y: -47.41, z: 0}
     - {x: 7.7655864, y: 6.515198, z: 0}
     - {x: 13.508768, y: 4.8881974, z: 0}
-    - {x: 8.163234, y: 0.93400645, z: 0}
-    - {x: 1.319874, y: 0.91695666, z: 0}
-    - {x: 0, y: 5.52, z: 0}
     controlPoints: []
-    length: 32.079296
+    length: 60.15139
     isFinalized: 1
     timesTable:
     - 0
-    - 0.2440545
-    - 0.4301307
-    - 0.6374011
-    - 0.85072815
+    - 0.90076387
     - 1
     lengthsTable: []
   inspectorMode: 0
@@ -270,7 +258,7 @@ MonoBehaviour:
   showIndexes: 1
   showWpLength: 0
   pathColor: {r: 1, g: 1, b: 1, a: 0.5}
-  lastSrcPosition: {x: 0, y: 5.52, z: 0}
+  lastSrcPosition: {x: 13.036611, y: -47.41, z: 0}
   lastSrcRotation: {x: -0, y: -0, z: -0, w: 1}
   wpsDropdown: 1
   dropToFloorOffset: 0
