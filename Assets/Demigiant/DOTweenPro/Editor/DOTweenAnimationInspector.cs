@@ -1,4 +1,4 @@
-// Author: Daniele Giardini - http://www.demigiant.com
+﻿// Author: Daniele Giardini - http://www.demigiant.com
 // Created: 2015/03/12 16:03
 
 using System;
@@ -67,7 +67,7 @@ namespace DG.DOTweenEditor
                 typeof(SpriteRenderer),
 #endif
 #if true // UI_MARKER
-                typeof(Image), typeof(Text), typeof(RawImage),
+                typeof(Image), typeof(Text), typeof(RawImage), typeof(Graphic),
 #endif
                 typeof(Renderer),
             }},
@@ -77,7 +77,7 @@ namespace DG.DOTweenEditor
                 typeof(SpriteRenderer),
 #endif
 #if true // UI_MARKER
-                typeof(Image), typeof(Text), typeof(CanvasGroup), typeof(RawImage),
+                typeof(Image), typeof(Text), typeof(CanvasGroup), typeof(RawImage), typeof(Graphic),
 #endif
                 typeof(Renderer),
             }},
