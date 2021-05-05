@@ -227,7 +227,7 @@ public class GameLevelManager : MonoBehaviour
     #endregion
 
     #region KILLENEMY
-    public void SetBall_KillEnemy(Vector2 _speedAddBall)
+    public void SetBall_JumpOnEnemy(Vector2 _speedAddBall)
     {
         playerMovement.SetBall_KillEnemy(_speedAddBall);
     }

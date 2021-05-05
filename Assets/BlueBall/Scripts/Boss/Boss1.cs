@@ -1,54 +1,120 @@
 ﻿using System.Collections;
-using Sirenix.OdinInspector;
+using Com.LuisPedroFonseca.ProCamera2D;
+using DG.Tweening;
 using UnityEngine;
 
 namespace BlueBall.Scripts.Boss
 {
-    public class Boss1 : EnemyBase
+    public class Boss1 : BossBase
     {
-        [SerializeField] private int healthPoint;
-        [SerializeField] private float jumpDelay = 1.5f;
-        [SerializeField,MinMaxSlider(1, 10, true)] private Vector2 jumpDistance;
-        [SerializeField] private EnemyBaseBeHit beHit;
-        [SerializeField] private SpriteRenderer spriteEnemy;
-        [SerializeField] private ParticleSystem efxBeHit;
-        
-        private void Start()
+        [SerializeField] private Animator animator;
+        [SerializeField] private int attackCountToStun = 2;
+        [SerializeField] private float attackDelay = 1.5f;
+        [SerializeField] private float stunDuration = 2f;
+
+        [SerializeField, Sirenix.OdinInspector.MinMaxSlider(1, 10, true)]
+        private Vector2 jumpDistance;
+
+        [SerializeField, Sirenix.OdinInspector.MinMaxSlider(-100, 100, true)]
+        private Vector2 moveRange;
+
+        [SerializeField] private GameObject jumpEfx;
+
+        private int countAttack = 0;
+
+        public override void Action()
         {
-            beHit.gameObject.SetActive(false);
+            if (healthPoint <= 0) return;
+            jumpEfx.SetActive(false);
+            isHurt = false;
+            base.Action();
+            animator.SetTrigger("Attack");
         }
 
-        public override void CollisionWithBall()
+        public void StartJump()
         {
-            base.CollisionWithBall();
-            GameLevelManager.Ins.SetBallBeHit(speedAddBall);
+            var player = BallManager.Ins.gameObject;
+            var jumpLength = Random.Range(jumpDistance.x, jumpDistance.y);
+            if (player.transform.position.x < transform.position.x) // move left
+            {
+                var endPos = transform.position.x - jumpLength;
+                if (endPos < moveRange.x)
+                {
+                    endPos = moveRange.x;
+                }
+
+                transform.DOMoveX(endPos, 0.8f).SetEase(Ease.OutQuint);
+            }
+            else // move right
+            {
+                var endPos = transform.position.x + jumpLength;
+                if (endPos > moveRange.y)
+                {
+                    endPos = moveRange.y;
+                }
+
+                transform.DOMoveX(endPos, 0.8f).SetEase(Ease.OutQuint);
+            }
         }
-        
-        public override void SetEnemyBeHit(Vector2 _forceAddBall2)
+
+        public void OnStopJump()
         {
-            base.SetEnemyBeHit(_forceAddBall2);
-            healthPoint--;
-            if(healthPoint>0)
-                StartCoroutine(SetEnemyBeHit_IEnumerator());
+            ProCamera2DShake.Instance.ConstantShake("EarthquakeHard");
+            Invoke(nameof(StopShake),0.5f);
+            jumpEfx.SetActive(true);
+        }
+
+        void StopShake()
+        {
+            ProCamera2DShake.Instance.StopConstantShaking(0f);
+        }
+        public void OnAttackFinish()
+        {
+            countAttack++;
+            if (countAttack % attackCountToStun == 0)
+                Stun();
             else
-                GameLevelManager.Ins.SetBall_KillEnemy(_forceAddBall2);
+
+                StartCoroutine(CallFunctionDelay(attackDelay, Action));
         }
 
-        public IEnumerator SetEnemyBeHit_IEnumerator()
+        public override void Stun()
         {
-            SetCollier_Enable(false);
-            //spriteEnemy.DOFade(0f, 0.2f).SetEase(Ease.OutQuart);
-
-            efxBeHit.gameObject.SetActive(true);
-            efxBeHit.Play();
-            yield return new WaitForSeconds(2f);
-            Destroy(gameObject);
+            base.Stun();
+            StartCoroutine(CallFunctionDelay(stunDuration, Action, isHurt));
         }
 
-        private void SetBossStun()
+        private bool isHurt;
+
+        public override void OnBossHurt()
         {
-            SetCollier_Enable(false);
-            
+            base.OnBossHurt();
+            isHurt = true;
+            if (BallManager.Ins.gameObject.transform.position.x >= transform.position.x)
+            {
+                transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y,
+                    transform.localScale.z);
+            }
+
+            animator.SetTrigger("Hurt");
+        }
+
+        public void OnHurtEnd()
+        {
+            if (healthPoint > 0)
+                StartCoroutine(CallFunctionDelay(0.2f, Action, isHurt));
+            if (healthPoint <= 0)
+            {
+                animator.SetTrigger("Die");
+
+                OnBossDie();
+            }
+        }
+
+        public void OnBossDiedEnd()
+        {
+            BossHPGroup.Instance.OnBossDie();
+            BallManager.Ins.magnetCollider.SetActive(true);
         }
     }
 }

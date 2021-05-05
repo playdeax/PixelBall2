@@ -18,7 +18,7 @@ public class EnemyBase2 : EnemyBase
     {
         base.SetEnemyBeHit(_forceAddBall2);
         StartCoroutine(SetEnemyBeHit_IEnumerator());
-        GameLevelManager.Ins.SetBall_KillEnemy(_forceAddBall2);
+        GameLevelManager.Ins.SetBall_JumpOnEnemy(_forceAddBall2);
     }
 
     public IEnumerator SetEnemyBeHit_IEnumerator()
