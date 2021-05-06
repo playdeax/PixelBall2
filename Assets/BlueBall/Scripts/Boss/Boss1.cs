@@ -95,20 +95,19 @@ namespace BlueBall.Scripts.Boss
                 transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y,
                     transform.localScale.z);
             }
-
-            animator.SetTrigger("Hurt");
-        }
-
-        public void OnHurtEnd()
-        {
             if (healthPoint > 0)
-                StartCoroutine(CallFunctionDelay(0.2f, Action, isHurt));
+                StartCoroutine(CallFunctionDelay(0.2f, Action));
             if (healthPoint <= 0)
             {
                 animator.SetTrigger("Die");
 
                 OnBossDie();
             }
+        }
+
+        public void OnHurtEnd()
+        {
+           
         }
 
         public void OnBossDiedEnd()

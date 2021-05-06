@@ -72,6 +72,7 @@ namespace BlueBall.Scripts.Boss
             isAction = true;
             SetCollier_Enable(true);
             stunObj.SetActive(false);
+            beHit.SetCollier_Enable(false);
         }
 
         public virtual void OnBossHurt()
@@ -84,6 +85,11 @@ namespace BlueBall.Scripts.Boss
             stunObj.SetActive(false);
             SetCollier_Enable(false);
             beHit.SetCollier_Enable(false);
+        }
+
+        public void SetBossCanHit(bool isHit)
+        {
+            beHit.SetCollier_Enable(isHit);
         }
     }
 }
