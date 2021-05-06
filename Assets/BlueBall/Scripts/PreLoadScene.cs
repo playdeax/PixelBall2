@@ -8,6 +8,7 @@ public class PreLoadScene : MonoBehaviour
     void Start()
     {
         SceneManager.LoadSceneAsync("Loading");
+        
     }
 
     // Update is called once per frame
