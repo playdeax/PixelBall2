@@ -199,7 +199,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 2617486976459683697, guid: 5097357ed5003004396f1168520a2194,
+  m_Sprite: {fileID: 2617486976459683697, guid: 5b9a21ca467c2db42ab7c7c30af07c47,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -224,9 +224,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.10777417, y: -0.6543422}
+  m_Offset: {x: 0.034910522, y: -0.13563363}
   serializedVersion: 2
-  m_Radius: 0.43294334
+  m_Radius: 0.77300423
 --- !u!95 &1390463691480180710
 Animator:
   serializedVersion: 3
@@ -339,15 +339,15 @@ MonoBehaviour:
   path:
     wpLengths:
     - 0
-    - 22.051888
+    - 14.741301
+    wps:
+    - {x: 16.69, y: -1.49, z: 0}
+    - {x: 2.0784996, y: 0.46192232, z: 0}
     type: 0
     subdivisionsXSegment: 10
     subdivisions: 20
-    wps:
-    - {x: 53.949356, y: -36.80759, z: 0}
-    - {x: 75.999275, y: -37.102192, z: 0}
     controlPoints: []
-    length: 22.051888
+    length: 14.741301
     isFinalized: 1
     timesTable:
     - 0
@@ -362,7 +362,7 @@ MonoBehaviour:
   showIndexes: 1
   showWpLength: 0
   pathColor: {r: 1, g: 1, b: 1, a: 0.5}
-  lastSrcPosition: {x: 53.949356, y: -36.80759, z: 0}
+  lastSrcPosition: {x: 16.69, y: -1.49, z: 0}
   lastSrcRotation: {x: -0, y: -0, z: -0, w: 1}
   wpsDropdown: 1
   dropToFloorOffset: 0
