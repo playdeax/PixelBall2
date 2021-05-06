@@ -837,7 +837,7 @@ PrefabInstance:
     - target: {fileID: 5344524821675065595, guid: b5cecfddcbd16734dae2c5326a8ea662,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -52.160545
+      value: -52.95
       objectReference: {fileID: 0}
     - target: {fileID: 5344524821675065595, guid: b5cecfddcbd16734dae2c5326a8ea662,
         type: 3}
@@ -1067,7 +1067,6 @@ GameObject:
   m_Component:
   - component: {fileID: 348553154}
   - component: {fileID: 348553158}
-  - component: {fileID: 348553157}
   - component: {fileID: 348553156}
   - component: {fileID: 348553155}
   m_Layer: 0
@@ -1115,7 +1114,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL 48
+  m_text: LEVEL 62
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e41e41ee48a1b704eb20410fdfa035ec, type: 2}
   m_sharedMaterial: {fileID: -3907043889062053264, guid: e41e41ee48a1b704eb20410fdfa035ec,
@@ -1137,13 +1136,12 @@ MonoBehaviour:
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_outlineColor:
-    serializedVersion: 2
-    rgba: 4278190080
   m_fontSize: 2
   m_fontSizeBase: 2
   m_fontWeight: 400
@@ -1151,7 +1149,9 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -1161,10 +1161,8 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
-  m_isLinkedTextComponent: 0
-  m_isTextTruncated: 0
+  parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
@@ -1172,42 +1170,23 @@ MonoBehaviour:
   m_parseCtrlCharacters: 1
   m_isOrthographic: 0
   m_isCullingEnabled: 0
-  m_ignoreRectMaskCulling: 0
-  m_ignoreCulling: 1
   m_horizontalMapping: 0
   m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
   m_VertexBufferAutoSizeReduction: 1
-  m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
   m_margin: {x: 0.6014137, y: -0.08844336, z: 0.47436973, w: 0.53950346}
-  m_textInfo:
-    textComponent: {fileID: 348553155}
-    characterCount: 8
-    spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
-    linkCount: 0
-    lineCount: 1
-    pageCount: 1
-    materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_spriteAnimator: {fileID: 0}
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 348553158}
-  m_subTextObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   m_maskType: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
 --- !u!222 &348553156
 CanvasRenderer:
   m_ObjectHideFlags: 2
@@ -1216,14 +1195,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348553153}
   m_CullTransparentMesh: 0
---- !u!33 &348553157
-MeshFilter:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348553153}
-  m_Mesh: {fileID: 0}
 --- !u!23 &348553158
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1328,7 +1299,7 @@ PrefabInstance:
     - target: {fileID: 2663980670521149039, guid: 063f2570ed69a45a38c7bb76fa45efde,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2663980670521149039, guid: 063f2570ed69a45a38c7bb76fa45efde,
         type: 3}
@@ -1829,7 +1800,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513537699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.57, y: -38.8, z: -10}
+  m_LocalPosition: {x: -19.08, y: -44.37, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -34799,8 +34770,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
+      propertyPath: wps.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.wpLengths.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.wps.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.timesTable.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
       propertyPath: path.wpLengths.Array.data[1]
-      value: 9.954497
+      value: 50.448997
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -34815,22 +34806,22 @@ PrefabInstance:
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.length
-      value: 60.16595
+      value: 105.067215
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[1]
-      value: 0.16545068
+      value: 0.48015928
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[2]
-      value: 0.37686318
+      value: 0.96144015
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[3]
-      value: 0.5825919
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -34850,62 +34841,62 @@ PrefabInstance:
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[0].x
-      value: 2.3909492
+      value: 62.363697
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[0].y
-      value: -39.41353
+      value: -45.905758
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wpLengths.Array.data[2]
-      value: 12.719834
+      value: 50.566845
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[1].x
-      value: 2.3909492
+      value: 62.363697
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[1].y
-      value: -39.41353
+      value: -45.905758
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[1].x
-      value: 0.8050804
+      value: 11.796869
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[1].y
-      value: -52.034115
+      value: -45.863285
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wpLengths.Array.data[3]
-      value: 12.377866
+      value: 4.051377
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[2].x
-      value: 0.8050804
+      value: 11.796869
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[2].y
-      value: -52.034115
+      value: -45.863285
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[2].x
-      value: 13.171424
+      value: 11.993309
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[2].y
-      value: -52.568077
+      value: -41.816673
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -34915,12 +34906,12 @@ PrefabInstance:
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[3].x
-      value: 13.171424
+      value: 11.993309
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[3].y
-      value: -52.568077
+      value: -41.816673
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -34966,6 +34957,11 @@ PrefabInstance:
         type: 3}
       propertyPath: path.wps.Array.data[5].y
       value: -41.874535
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.subdivisions
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5b44010651f7a145a3af0c8b7ef13c6, type: 3}
@@ -35792,7 +35788,7 @@ PrefabInstance:
     - target: {fileID: 7098814193442532611, guid: 29d4b2adc3e9a3e4da1f37379a759ad5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7098814193442532611, guid: 29d4b2adc3e9a3e4da1f37379a759ad5,
         type: 3}
@@ -36975,8 +36971,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
+      propertyPath: wps.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.wpLengths.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.wps.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.timesTable.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
       propertyPath: path.wpLengths.Array.data[1]
-      value: 8.809967
+      value: 11.342067
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -36991,27 +37007,27 @@ PrefabInstance:
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.length
-      value: 66.06371
+      value: 120.211044
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[1]
-      value: 0.13335562
+      value: 0.094351284
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[2]
-      value: 0.34223667
+      value: 0.14887664
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[3]
-      value: 0.601557
+      value: 0.30680975
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.timesTable.Array.data[4]
-      value: 0.844962
+      value: 0.6162983
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
@@ -37026,122 +37042,132 @@ PrefabInstance:
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[0].x
-      value: 18.412373
+      value: 16.022816
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[0].y
-      value: -36.548378
+      value: -39.46065
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wpLengths.Array.data[2]
-      value: 13.799458
+      value: 6.554549
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[1].x
-      value: 18.412373
+      value: 16.022816
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[1].y
-      value: -36.548378
+      value: -39.46065
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[1].x
-      value: 15.832475
+      value: 16.50454
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[1].y
-      value: -50.104527
+      value: -45.997475
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wpLengths.Array.data[3]
-      value: 17.131662
+      value: 18.985306
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[2].x
-      value: 15.832475
+      value: 16.50454
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[2].y
-      value: -50.104527
+      value: -45.997475
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[2].x
-      value: 32.759663
+      value: 35.466576
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[2].y
-      value: -52.743492
+      value: -46.937183
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wpLengths.Array.data[4]
-      value: 16.08024
+      value: 37.20394
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[3].x
-      value: 32.759663
+      value: 35.466576
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[3].y
-      value: -52.743492
+      value: -46.937183
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[3].x
-      value: 37.483376
+      value: 72.64715
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[3].y
-      value: -37.37272
+      value: -45.618725
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wpLengths.Array.data[5]
-      value: 10.242387
+      value: 46.125187
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[4].x
-      value: 37.483376
+      value: 72.64715
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[4].y
-      value: -37.37272
+      value: -45.618725
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[4].x
-      value: 27.242481
+      value: 27.160278
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: wps.Array.data[4].y
-      value: -37.547577
+      value: -37.971653
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[5].x
-      value: 27.242481
+      value: 27.160278
       objectReference: {fileID: 0}
     - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
         type: 3}
       propertyPath: path.wps.Array.data[5].y
-      value: -37.547577
+      value: -37.971653
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.subdivisions
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4042681812011884321, guid: b5b44010651f7a145a3af0c8b7ef13c6,
+        type: 3}
+      propertyPath: path.timesTable.Array.data[5]
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5b44010651f7a145a3af0c8b7ef13c6, type: 3}
@@ -37461,7 +37487,7 @@ PrefabInstance:
     - target: {fileID: 4217321302026906092, guid: dd20be29531ed6e45b3cf1202935a087,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4217321302026906092, guid: dd20be29531ed6e45b3cf1202935a087,
         type: 3}
