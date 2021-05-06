@@ -50,6 +50,7 @@ SpriteShapeRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -106,6 +107,7 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+      m_CornerMode: 0
     - position: {x: 3, y: 0, z: 0}
       leftTangent: {x: 0, y: 0, z: 0}
       rightTangent: {x: 0, y: 0, z: 0}
@@ -115,6 +117,7 @@ MonoBehaviour:
       bevelSize: 0
       spriteIndex: 0
       corner: 1
+      m_CornerMode: 0
   m_SpriteShape: {fileID: 0}
   m_FillPixelPerUnit: 100
   m_StretchTiling: 1
@@ -130,6 +133,7 @@ MonoBehaviour:
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
+  m_UTess2D: 0
 --- !u!68 &2448430648898835289
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -149,6 +153,10 @@ EdgeCollider2D:
   - {x: -0.125, y: 0.22500002}
   - {x: 3, y: 0.22500002}
   - {x: 3.125, y: 0.22500002}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!251 &1498262481
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -182,3 +190,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformType: 0
   points: []
+  speed: 1

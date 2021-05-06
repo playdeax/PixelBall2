@@ -1,4 +1,5 @@
-﻿using Com.LuisPedroFonseca.ProCamera2D;
+﻿using System.Collections.Generic;
+using Com.LuisPedroFonseca.ProCamera2D;
 using DG.Tweening;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace BlueBall.Scripts.Boss
         [SerializeField, Sirenix.OdinInspector.MinMaxSlider(-100, 100, true)]
         private Vector2 moveRange;
         private int countAttack = 0;
-        
+        [SerializeField] private List<Gun> guns;
         
         public override void Action()
         {
@@ -52,6 +53,7 @@ namespace BlueBall.Scripts.Boss
         }
         public void OnAttackFinish()
         {
+            Shoot();
             countAttack++;
             if (countAttack == attackCountToStun)
             {
@@ -85,6 +87,9 @@ namespace BlueBall.Scripts.Boss
 
         public void OnHurtEnd()
         {
+            if(transform.localScale.x<0)
+                transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y,
+                transform.localScale.z);
             if (healthPoint > 0)
                 StartCoroutine(CallFunctionDelay(0.2f, Action, isHurt));
             if (healthPoint <= 0)
@@ -99,6 +104,14 @@ namespace BlueBall.Scripts.Boss
         {
             BossHPGroup.Instance.OnBossDie();
             BallManager.Ins.magnetCollider.SetActive(true);
+        }
+
+        public void Shoot()
+        {
+            for (var i = 0; i < guns.Count; i++)
+            {
+                guns[i].Shoot();
+            }
         }
     }
 }
