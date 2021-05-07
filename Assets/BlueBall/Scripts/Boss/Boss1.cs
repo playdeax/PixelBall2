@@ -43,7 +43,7 @@ namespace BlueBall.Scripts.Boss
                     endPos = moveRange.x;
                 }
 
-                transform.DOMoveX(endPos, 0.8f).SetEase(Ease.OutQuint);
+                transform.DOMoveX(endPos, 1.2f).SetEase(Ease.OutQuart);
             }
             else // move right
             {
@@ -53,13 +53,14 @@ namespace BlueBall.Scripts.Boss
                     endPos = moveRange.y;
                 }
 
-                transform.DOMoveX(endPos, 0.8f).SetEase(Ease.OutQuint);
+                transform.DOMoveX(endPos, 1.2f).SetEase(Ease.OutQuart);
             }
         }
 
         public void OnStopJump()
         {
             ProCamera2DShake.Instance.ConstantShake("EarthquakeHard");
+            SoundManager.instance.SFX_Boss1_Attack();
             Invoke(nameof(StopShake),0.5f);
             jumpEfx.SetActive(true);
         }
