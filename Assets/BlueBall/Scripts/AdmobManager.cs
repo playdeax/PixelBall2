@@ -14,10 +14,10 @@ public class AdmobManager : MonoBehaviour
     public static AdmobManager instance;
     [Header("COnfig")]
     [Header("Interstitial ADS")]
-    private string InterstitialAd_Android_ID = "ca-app-pub-9179752697212712/1739728907";
+    private string InterstitialAd_Android_ID = "/6485410/Ball5_Pixel_Interstitial";
     private string InterstitialAd_IOS_ID = "ca-app-pub-9179752697212712/6636601519";
     [Header("Reward ADS")]
-    private string RewardedAd_Android_ID = "ca-app-pub-9179752697212712/4174320554";
+    private string RewardedAd_Android_ID = "/6485410/Ball5_Pixel_Reward";
     private string RewardedAd_IOS_ID = "ca-app-pub-9179752697212712/9070181442";
     [Header("Native ADS")]
     private string NativeAd_Android_ID = "ca-app-pub-9179752697212712/4654027937";
@@ -238,7 +238,7 @@ public class AdmobManager : MonoBehaviour
 
 
     #region REWARDED ADS
-    public const int TIME_SHOWREWARD_NOT_SHOWINTERTITIAL = 30;
+    public const int TIME_SHOWREWARD_NOT_SHOWINTERTITIAL = 60;
     public long timeLastShowReward = 0;
 
     public void InitLoadRewardedAd()
