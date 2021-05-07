@@ -158,6 +158,7 @@ public class AdmobManager : MonoBehaviour
         if (interstitialAd.IsLoaded())
         {
             interstitialAd.Show();
+            FirebaseManager.instance.LogShowInter(Config.currLevel);
             //FirebaseManager.instance.LogShowInter(Config.currLevel);
         }
         else
@@ -308,6 +309,7 @@ public class AdmobManager : MonoBehaviour
         if (rewardedAd != null && isRewardAd_Loaded)
         {
             rewardedAd.Show();
+            
         }
         else
         {
@@ -363,6 +365,7 @@ public class AdmobManager : MonoBehaviour
 
         timeLastShowReward = Config.GetTimeStamp();
         RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
+        FirebaseManager.instance.LogRewarded();
         //RequestAndLoadRewardedAd();
     }
 
