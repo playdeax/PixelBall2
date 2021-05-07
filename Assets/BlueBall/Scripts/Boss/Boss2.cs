@@ -61,13 +61,13 @@ namespace BlueBall.Scripts.Boss
                 countAttack = 0;
             }
             else
-                StartCoroutine(CallFunctionDelay(attackDelay, CheckAttack));
+                Invoke(nameof(CheckAttack),attackDelay);
         }
 
         public override void Stun()
         {
             base.Stun();
-            StartCoroutine(CallFunctionDelay(stunDuration, Action, isHurt));
+            Invoke(nameof(Action),stunDuration);
         }
 
         private bool isHurt;
@@ -75,14 +75,9 @@ namespace BlueBall.Scripts.Boss
         public override void OnBossHurt()
         {
             base.OnBossHurt();
-            if (BallManager.Ins.gameObject.transform.position.x >= transform.position.x)
-            {
-                transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y,
-                    transform.localScale.z);
-            }
-
+            CancelInvoke();
             if (healthPoint > 0)
-                StartCoroutine(CallFunctionDelay(0.2f, Action));
+                Invoke(nameof(Action),0.5f);
             if (healthPoint <= 0)
             {
                 animator.SetTrigger("Die");

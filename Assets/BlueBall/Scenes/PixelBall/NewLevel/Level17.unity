@@ -1960,7 +1960,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 513537699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.78, y: 2.45, z: -10}
+  m_LocalPosition: {x: -13.47, y: 2.45, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2170,24 +2170,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 656214074}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &666789261 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4217321302026906086, guid: dd20be29531ed6e45b3cf1202935a087,
-    type: 3}
-  m_PrefabInstance: {fileID: 4217321302876315744}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &666789267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666789261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5718b9afc0fe56843b26269fee7aede1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &681020338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14407,7 +14389,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4217321302876315744}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666789261}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0946fdf63a0147918d48e6d38a7ca1b, type: 3}
@@ -16799,30 +16781,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4217321301575934569, guid: dd20be29531ed6e45b3cf1202935a087,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4217321302026906086, guid: dd20be29531ed6e45b3cf1202935a087,
         type: 3}
       propertyPath: m_Name
       value: Ball
-      objectReference: {fileID: 0}
-    - target: {fileID: 4217321302026906088, guid: dd20be29531ed6e45b3cf1202935a087,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4217321302026906090, guid: dd20be29531ed6e45b3cf1202935a087,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0.0094714165
-      objectReference: {fileID: 0}
-    - target: {fileID: 4217321302026906090, guid: dd20be29531ed6e45b3cf1202935a087,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.78581476
       objectReference: {fileID: 0}
     - target: {fileID: 4217321302026906092, guid: dd20be29531ed6e45b3cf1202935a087,
         type: 3}
