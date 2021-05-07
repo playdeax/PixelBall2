@@ -29,14 +29,25 @@ namespace BlueBall.Scripts.Boss
             isHurt = false;
             base.Action();
             animator.SetTrigger("Attack");
+            var player = BallManager.Ins.gameObject;
+            if (player.transform.position.x < transform.position.x) // move left
+            {
+                transform.localScale = new Vector3(1,1,1);
+            }
+            else // move right
+            {
+                transform.localScale = new Vector3(-1,1,1);
+            }
         }
 
         public void StartJump()
         {
+            
             var player = BallManager.Ins.gameObject;
             var jumpLength = Random.Range(jumpDistance.x, jumpDistance.y);
             if (player.transform.position.x < transform.position.x) // move left
             {
+                transform.localScale = new Vector3(1,1,1);
                 var endPos = transform.position.x - jumpLength;
                 if (endPos < moveRange.x)
                 {
@@ -47,6 +58,8 @@ namespace BlueBall.Scripts.Boss
             }
             else // move right
             {
+            
+                transform.localScale = new Vector3(-1,1,1);
                 var endPos = transform.position.x + jumpLength;
                 if (endPos > moveRange.y)
                 {
