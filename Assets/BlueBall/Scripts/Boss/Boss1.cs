@@ -24,6 +24,7 @@ namespace BlueBall.Scripts.Boss
 
         public override void Action()
         {
+            ProCamera2DShake.Instance.StopConstantShaking(0f);
             if (healthPoint <= 0) return;
             jumpEfx.SetActive(false);
             isHurt = false;
@@ -121,6 +122,7 @@ namespace BlueBall.Scripts.Boss
         public void OnBossDiedEnd()
         {
             BossHPGroup.Instance.OnBossDie();
+            ProCamera2DShake.Instance.StopConstantShaking(0f);
             BallManager.Ins.magnetCollider.SetActive(true);
         }
     }
