@@ -29,37 +29,51 @@ namespace BlueBall.Scripts.Boss
             isHurt = false;
             base.Action();
             animator.SetTrigger("Attack");
+            var player = BallManager.Ins.gameObject;
+            if (player.transform.position.x < transform.position.x) // move left
+            {
+                transform.localScale = new Vector3(1,1,1);
+            }
+            else // move right
+            {
+                transform.localScale = new Vector3(-1,1,1);
+            }
         }
 
         public void StartJump()
         {
+            
             var player = BallManager.Ins.gameObject;
             var jumpLength = Random.Range(jumpDistance.x, jumpDistance.y);
             if (player.transform.position.x < transform.position.x) // move left
             {
+                transform.localScale = new Vector3(1,1,1);
                 var endPos = transform.position.x - jumpLength;
                 if (endPos < moveRange.x)
                 {
                     endPos = moveRange.x;
                 }
 
-                transform.DOMoveX(endPos, 0.8f).SetEase(Ease.OutQuint);
+                transform.DOMoveX(endPos, 1.2f).SetEase(Ease.OutQuart);
             }
             else // move right
             {
+            
+                transform.localScale = new Vector3(-1,1,1);
                 var endPos = transform.position.x + jumpLength;
                 if (endPos > moveRange.y)
                 {
                     endPos = moveRange.y;
                 }
 
-                transform.DOMoveX(endPos, 0.8f).SetEase(Ease.OutQuint);
+                transform.DOMoveX(endPos, 1.2f).SetEase(Ease.OutQuart);
             }
         }
 
         public void OnStopJump()
         {
             ProCamera2DShake.Instance.ConstantShake("EarthquakeHard");
+            SoundManager.instance.SFX_Boss1_Attack();
             Invoke(nameof(StopShake),0.5f);
             jumpEfx.SetActive(true);
         }
