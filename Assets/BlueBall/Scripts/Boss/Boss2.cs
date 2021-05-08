@@ -15,7 +15,7 @@ namespace BlueBall.Scripts.Boss
         private Vector2 moveRange;
         private int countAttack = 0;
         [SerializeField] private List<Gun> guns;
-        
+        public AudioSource source;
         public override void Action()
         {
             if (healthPoint <= 0) return;
@@ -27,6 +27,7 @@ namespace BlueBall.Scripts.Boss
 
         public void StartMove()
         {
+            source.Play();
             if (transform.position.x - moveRange.x > moveRange.y - transform.position.x) // dang o ben phai
             {
                 transform.DOMoveX(moveRange.x, 3f).SetEase(Ease.Linear).OnComplete(StopMove);
@@ -39,6 +40,7 @@ namespace BlueBall.Scripts.Boss
         }
         void StopMove()
         {
+            source.Stop();
             animator.SetBool("Move",false);
             ProCamera2DShake.Instance.StopConstantShaking(0f);
             CheckAttack();

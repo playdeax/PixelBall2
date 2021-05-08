@@ -346,6 +346,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetBallBeHit(Vector2 _speedAddBall)
     {
         Debug.Log("Player SetBallBeHit");
+        
         SoundManager.instance.SFX_Hurt();
         if (CheckMoveLeft())
         {
