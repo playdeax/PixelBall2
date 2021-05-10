@@ -149,8 +149,8 @@ public class AdmobManager : MonoBehaviour
     }
     public void RequestAndLoadInterstitialAd()
     {
-        // Load an interstitial ad
-        interstitialAd.LoadAd(CreateAdRequest());
+        interstitialAd.Destroy();
+        Init_InterstitialAd();
     }
     private void ShowInterstitialAd()
     {
