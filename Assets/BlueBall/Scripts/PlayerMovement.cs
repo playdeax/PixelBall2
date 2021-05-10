@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -400,4 +401,26 @@ public class PlayerMovement : MonoBehaviour
         isSpecialMoveX = true;
     }
     #endregion
+
+    public bool collisionGround;
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            Debug.Log(contact.collider.gameObject.name);
+            if (contact.collider.gameObject.layer==8)
+            {
+                collisionGround = true;
+                return;
+            }
+        }
+        collisionGround = false;
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer==8)
+        {
+            collisionGround = false;
+        }
+    }
 }

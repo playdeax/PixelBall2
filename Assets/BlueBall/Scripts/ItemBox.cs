@@ -28,7 +28,7 @@ public class ItemBox : MonoBehaviour
     BALL_ROLL_TYPE typeBall = BALL_ROLL_TYPE.NONE;
 
     private float countRunTime = 0f;
-    private const float RUN_TIME_TO_PUSH_BOX = 0.5f;
+    private const float RUN_TIME_TO_PUSH_BOX = 0.0f;
     void Update()
     {
         if (isCollisionBall)
@@ -79,10 +79,13 @@ public class ItemBox : MonoBehaviour
     bool isCollisionBall = false;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ball") && collision.gameObject.transform.position.y> transform.position.y)
+        if (collision.gameObject.CompareTag("Ball") && collision.gameObject.transform.position.y> transform.position.y && _playerMovement.collisionGround)
         {
-            Debug.Log("here");
             isCollisionBall = true;
+        }
+        else
+        {
+            isCollisionBall = false;
         }
     }
 
