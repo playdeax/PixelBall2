@@ -28,7 +28,7 @@ public class ItemBox : MonoBehaviour
     BALL_ROLL_TYPE typeBall = BALL_ROLL_TYPE.NONE;
 
     private float countRunTime = 0f;
-    private const float RUN_TIME_TO_PUSH_BOX = 0.75f;
+    private const float RUN_TIME_TO_PUSH_BOX = 0.5f;
     void Update()
     {
         if (isCollisionBall)
@@ -47,7 +47,7 @@ public class ItemBox : MonoBehaviour
                 {
                     if (transform.position.y < _playerMovement.transform.position.y)
                     {
-                        boxRigidBody2D.velocity = new Vector2(-4f, 0f);
+                        boxRigidBody2D.velocity = new Vector2(-5f, 0f);
                     }
                 }
             }
@@ -64,7 +64,7 @@ public class ItemBox : MonoBehaviour
                 {
                     if (transform.position.y < _playerMovement.transform.position.y)
                     {
-                        boxRigidBody2D.velocity = new Vector2(4f, 0f);
+                        boxRigidBody2D.velocity = new Vector2(5f, 0f);
                         
                     }
                 }

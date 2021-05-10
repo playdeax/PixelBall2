@@ -26,6 +26,7 @@ public class FinishPoint_Key : MonoBehaviour
             finishPoint.SetOpenFinishOpen();
             //finishPoint2.SetOpenDoor();
             gameObject.SetActive(false);
+            GameLevelManager.Ins.playerMovement.SetBallJump();
         }
     }
 }
