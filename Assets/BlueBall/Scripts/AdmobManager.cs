@@ -353,6 +353,7 @@ public class AdmobManager : MonoBehaviour
         Debug.Log("HandleRewardedAdClosed event received");
 
         RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.FAIL);
+        GamePlayManager.Ins.ReleaseAllControl();
         RequestAndLoadRewardedAd();
     }
 
