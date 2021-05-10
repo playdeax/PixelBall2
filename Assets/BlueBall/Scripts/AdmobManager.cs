@@ -200,6 +200,7 @@ public class AdmobManager : MonoBehaviour
         Debug.Log("HandleOnAdClosed_InterstitialAd event received");
         InterstitialAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
         RequestAndLoadInterstitialAd();
+        timeLastShowReward = Config.GetTimeStamp();
     }
 
     public void HandleOnAdLeavingApplication_InterstitialAd(object sender, EventArgs args)
