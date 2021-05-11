@@ -97,10 +97,10 @@ public class PixelPlayerAnimation : PlayerAnimation
         base.SetAutoRotate(_isRight);
         if (_isRight)
         {
-            animator.gameObject.transform.DORotate(new Vector3(0f, 0f, -360f), 1f).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
+            animator.gameObject.transform.DORotate(new Vector3(0f, 0f, -360f), 0.8f).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
         }
         else {
-            animator.gameObject.transform.DORotate(new Vector3(0f, 0f, 360f), 1f).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
+            animator.gameObject.transform.DORotate(new Vector3(0f, 0f, 360f), 0.8f).SetRelative(true).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental);
         }
     }
 

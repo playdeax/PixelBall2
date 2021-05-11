@@ -143,14 +143,14 @@ public class PlayerMovement : MonoBehaviour
         typeBall = BALL_ROLL_TYPE.NONE;
         if (isMoveRight)
         {
-            if (playerRigidbody2D.velocity.x < MOVE_MAX_SPEED && Mathf.Abs(playerRigidbody2D.velocity.y) < 0.5f)
+            // if (playerRigidbody2D.velocity.x < MOVE_MAX_SPEED && Mathf.Abs(playerRigidbody2D.velocity.y) < 0.5f)
             {
                 typeBall = BALL_ROLL_TYPE.RIGHT;
             }
         }
         else if (isMoveLeft)
         {
-            if (playerRigidbody2D.velocity.x > -MOVE_MAX_SPEED && Mathf.Abs(playerRigidbody2D.velocity.y) < 0.5f)
+            // if (playerRigidbody2D.velocity.x > -MOVE_MAX_SPEED && Mathf.Abs(playerRigidbody2D.velocity.y) < 0.5f)
             {
                 typeBall = BALL_ROLL_TYPE.LEFT;
 
@@ -407,7 +407,6 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach (ContactPoint2D contact in collision.contacts)
         {
-            Debug.Log(contact.collider.gameObject.name);
             if (contact.collider.gameObject.layer==8)
             {
                 collisionGround = true;
@@ -415,6 +414,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         collisionGround = false;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.layer==8)
+        {
+            collisionGround = true;
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
