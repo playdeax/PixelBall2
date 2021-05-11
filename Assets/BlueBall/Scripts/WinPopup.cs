@@ -73,7 +73,7 @@ public class WinPopup : MonoBehaviour
         InitBallPreview();
         ShowBallPreview();
     }
-
+    
     private void OnDestroy()
     {
         btnNoThank.OnPointerClickCallBack_Completed.RemoveAllListeners();
@@ -406,6 +406,12 @@ public class WinPopup : MonoBehaviour
 
     private int indexBallPreview;
     private InfoBall infoBallPreview;
+
+    public void ReInitBallPreview()
+    {
+        InitBallPreview();
+        ShowBallPreview();
+    }
 
     private void InitBallPreview()
     {

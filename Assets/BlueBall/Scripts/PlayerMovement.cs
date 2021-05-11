@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
@@ -142,14 +143,14 @@ public class PlayerMovement : MonoBehaviour
         typeBall = BALL_ROLL_TYPE.NONE;
         if (isMoveRight)
         {
-            if (playerRigidbody2D.velocity.x < MOVE_MAX_SPEED && Mathf.Abs(playerRigidbody2D.velocity.y) < 0.5f)
+            // if (playerRigidbody2D.velocity.x < MOVE_MAX_SPEED && Mathf.Abs(playerRigidbody2D.velocity.y) < 0.5f)
             {
                 typeBall = BALL_ROLL_TYPE.RIGHT;
             }
         }
         else if (isMoveLeft)
         {
-            if (playerRigidbody2D.velocity.x > -MOVE_MAX_SPEED && Mathf.Abs(playerRigidbody2D.velocity.y) < 0.5f)
+            // if (playerRigidbody2D.velocity.x > -MOVE_MAX_SPEED && Mathf.Abs(playerRigidbody2D.velocity.y) < 0.5f)
             {
                 typeBall = BALL_ROLL_TYPE.LEFT;
 
@@ -400,4 +401,32 @@ public class PlayerMovement : MonoBehaviour
         isSpecialMoveX = true;
     }
     #endregion
+
+    public bool collisionGround;
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        foreach (ContactPoint2D contact in collision.contacts)
+        {
+            if (contact.collider.gameObject.layer==8)
+            {
+                collisionGround = true;
+                return;
+            }
+        }
+        collisionGround = false;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.layer==8)
+        {
+            collisionGround = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer==8)
+        {
+            collisionGround = false;
+        }
+    }
 }

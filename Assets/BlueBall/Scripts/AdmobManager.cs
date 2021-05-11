@@ -149,8 +149,8 @@ public class AdmobManager : MonoBehaviour
     }
     public void RequestAndLoadInterstitialAd()
     {
-        // Load an interstitial ad
-        interstitialAd.LoadAd(CreateAdRequest());
+        interstitialAd.Destroy();
+        Init_InterstitialAd();
     }
     private void ShowInterstitialAd()
     {
@@ -353,6 +353,7 @@ public class AdmobManager : MonoBehaviour
         Debug.Log("HandleRewardedAdClosed event received");
 
         RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.FAIL);
+        GamePlayManager.Ins.ReleaseAllControl();
         RequestAndLoadRewardedAd();
     }
 
