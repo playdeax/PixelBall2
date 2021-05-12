@@ -209,8 +209,11 @@ public class AdmobManager : MonoBehaviour
     }
 
 
-    public bool isInterstititalAds_Avaiable()
+    private int interstitialCount;
+    public bool isInterstitialAds_Available()
     {
+        if (Config.currLevel < 2) return false;
+        if (interstitialCount % 2 != 0) return false;
         if (Config.GetRemoveAd()) return false;
         if (Config.GetTimeStamp() - timeLastShowReward <= TIME_SHOWREWARD_NOT_SHOWINTERTITIAL)
         {
@@ -232,6 +235,7 @@ public class AdmobManager : MonoBehaviour
     public void ShowInterstitialAd_CallBack(Action<ADS_CALLBACK_STATE> _interstitialAd_CallBack) {
         InterstitialAd_CallBack = _interstitialAd_CallBack;
         ShowInterstitialAd();
+        interstitialCount++;
 #if UNITY_EDITOR
         InterstitialAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
 #endif
