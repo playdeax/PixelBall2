@@ -259,7 +259,7 @@ public class WinPopup : MonoBehaviour
 
         if(!Config.isFinished_AddCoin) return;
         
-        if ( AdmobManager.instance.isInterstititalAds_Avaiable())
+        if ( AdmobManager.instance.isInterstitialAds_Available())
         {
             AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {
@@ -270,7 +270,6 @@ public class WinPopup : MonoBehaviour
         {
             SetNextLevel();
         }
-        Config.interstitialAd_countWin++;
     }
 
     public void TouchReward() {
