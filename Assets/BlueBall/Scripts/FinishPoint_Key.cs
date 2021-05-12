@@ -25,8 +25,7 @@ public class FinishPoint_Key : MonoBehaviour
         if (collision.CompareTag("Ball")) {
             finishPoint.SetOpenFinishOpen();
             //finishPoint2.SetOpenDoor();
-            GameLevelManager.Ins.playerMovement.SetBallJump();
-            // gameObject.SetActive(false);/**/
+            gameObject.SetActive(false);
         }
     }
 }

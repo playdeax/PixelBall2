@@ -172,14 +172,6 @@ public class Config
         if (ballUnlock == 1) {
             return true;
         }
-
-        
-        if (GetInfoBallFromID(idBall).ballType == BALL_TYPE.PREMIUM &&
-            GetBuyIAP(IAP_ID.premium_pack))
-        {
-            SetInfoBallUnlock(idBall);
-            return true;
-        }
         return false;
     }
 
@@ -363,6 +355,7 @@ public class Config
     #endregion
 
     public static float TIME_START_PACK = 2 * 60 * 60 + 30 * 60 + 30f;
+    public static int interstitialAd_countWin = 1;
 
     public static string FormatTime(int time)
     {

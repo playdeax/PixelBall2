@@ -244,22 +244,4 @@ public class SoundManager : MonoBehaviour
             audioSound.PlayOneShot(ballExplosion);
         }
     }
-    [Header("Boss 1")]
-    public AudioClip boss1Attack;
-    public void SFX_Boss1_Attack()
-    {
-        if (Config.isSound)
-        {
-            audioSound.PlayOneShot(boss1Attack);
-        }
-    }
-    [Header("Boss 2")]
-    public AudioClip boss2Move;
-    public void SFX_Boss2_Move()
-    {
-        if (Config.isSound)
-        {
-            audioSound.PlayOneShot(boss2Move);
-        }
-    }
 }

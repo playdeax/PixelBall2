@@ -150,6 +150,5 @@ public class RescuePopup : MonoBehaviour
         Config.SetInfoBallUnlock(Config.currIDBallRescue);
         Config.SetBallActive(Config.currIDBallRescue);
         Config.currInfoBall = Config.GetInfoBallFromID(Config.currIDBallRescue);
-        GamePlayManager.Ins.winPopup.ReInitBallPreview();
     }
 }

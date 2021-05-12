@@ -149,8 +149,8 @@ public class AdmobManager : MonoBehaviour
     }
     public void RequestAndLoadInterstitialAd()
     {
-        interstitialAd.Destroy();
-        Init_InterstitialAd();
+        // Load an interstitial ad
+        interstitialAd.LoadAd(CreateAdRequest());
     }
     private void ShowInterstitialAd()
     {
@@ -158,7 +158,6 @@ public class AdmobManager : MonoBehaviour
         if (interstitialAd.IsLoaded())
         {
             interstitialAd.Show();
-            FirebaseManager.instance.LogShowInter(Config.currLevel);
             //FirebaseManager.instance.LogShowInter(Config.currLevel);
         }
         else
@@ -200,7 +199,6 @@ public class AdmobManager : MonoBehaviour
         Debug.Log("HandleOnAdClosed_InterstitialAd event received");
         InterstitialAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
         RequestAndLoadInterstitialAd();
-        timeLastShowReward = Config.GetTimeStamp();
     }
 
     public void HandleOnAdLeavingApplication_InterstitialAd(object sender, EventArgs args)
@@ -209,11 +207,8 @@ public class AdmobManager : MonoBehaviour
     }
 
 
-    private int interstitialCount;
-    public bool isInterstitialAds_Available()
+    public bool isInterstititalAds_Avaiable()
     {
-        if (Config.currLevel < 2) return false;
-        if (interstitialCount % 2 != 0) return false;
         if (Config.GetRemoveAd()) return false;
         if (Config.GetTimeStamp() - timeLastShowReward <= TIME_SHOWREWARD_NOT_SHOWINTERTITIAL)
         {
@@ -235,7 +230,6 @@ public class AdmobManager : MonoBehaviour
     public void ShowInterstitialAd_CallBack(Action<ADS_CALLBACK_STATE> _interstitialAd_CallBack) {
         InterstitialAd_CallBack = _interstitialAd_CallBack;
         ShowInterstitialAd();
-        interstitialCount++;
 #if UNITY_EDITOR
         InterstitialAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
 #endif
@@ -244,7 +238,7 @@ public class AdmobManager : MonoBehaviour
 
 
     #region REWARDED ADS
-    public const int TIME_SHOWREWARD_NOT_SHOWINTERTITIAL = 60;
+    public const int TIME_SHOWREWARD_NOT_SHOWINTERTITIAL = 30;
     public long timeLastShowReward = 0;
 
     public void InitLoadRewardedAd()
@@ -314,7 +308,6 @@ public class AdmobManager : MonoBehaviour
         if (rewardedAd != null && isRewardAd_Loaded)
         {
             rewardedAd.Show();
-            
         }
         else
         {
@@ -357,7 +350,6 @@ public class AdmobManager : MonoBehaviour
         Debug.Log("HandleRewardedAdClosed event received");
 
         RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.FAIL);
-        GamePlayManager.Ins.ReleaseAllControl();
         RequestAndLoadRewardedAd();
     }
 
@@ -371,7 +363,6 @@ public class AdmobManager : MonoBehaviour
 
         timeLastShowReward = Config.GetTimeStamp();
         RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
-        FirebaseManager.instance.LogRewarded();
         //RequestAndLoadRewardedAd();
     }
 

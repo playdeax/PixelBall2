@@ -70,10 +70,10 @@ public class WinPopup : MonoBehaviour
         btnBackBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchBackBallPreview);
         btnTryBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchTryBallPreview);
         btnActiveBallPreview.OnPointerClickCallBack_Completed.AddListener(TouchActiveBallPreview);
-        InitBallPreview();
+
         ShowBallPreview();
     }
-    
+
     private void OnDestroy()
     {
         btnNoThank.OnPointerClickCallBack_Completed.RemoveAllListeners();
@@ -116,7 +116,7 @@ public class WinPopup : MonoBehaviour
         FirebaseManager.instance.LogLevelWin(_level);
 
         StartCoroutine(ShowPopup_IEnumerator(coinReward));
-        //InitBallPreview();
+        InitBallPreview();
     }
 
     public IEnumerator ShowPopup_IEnumerator(int coinReward)
@@ -194,29 +194,7 @@ public class WinPopup : MonoBehaviour
         
         btnBackBallPreview.gameObject.SetActive(true);
         btnBackBallPreview.GetComponent<BBUIView>().ShowView();
-        if (Config.GetBallActive() == listIDBallPreviews[indexBallPreview])
-        {
-            btnTryBallPreview.gameObject.SetActive(false);
-            btnActiveBallPreview.gameObject.SetActive(false);
-        }
-        else if (Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]).ballType == Config.BALL_TYPE.PREMIUM && Config.GetBuyIAP(Config.IAP_ID.premium_pack))
-        {
-            btnTryBallPreview.gameObject.SetActive(false);
-            btnActiveBallPreview.gameObject.SetActive(true);
-            btnActiveBallPreview.GetComponent<BBUIView>().ShowView();
-        }
-        else if (Config.GetInfoBallUnlock(listIDBallPreviews[indexBallPreview]))
-        {
-            btnTryBallPreview.gameObject.SetActive(false);
-            btnActiveBallPreview.gameObject.SetActive(true);
-            btnActiveBallPreview.GetComponent<BBUIView>().ShowView();
-        }
-        else
-        {
-            btnActiveBallPreview.gameObject.SetActive(false);
-            btnTryBallPreview.gameObject.SetActive(true);
-            btnTryBallPreview.GetComponent<BBUIView>().ShowView();
-        }
+
         yield return new WaitForSeconds(0.5f);
         SoundManager.instance.SFX_PhaoHoa();
         efxWin.gameObject.SetActive(true);
@@ -259,7 +237,7 @@ public class WinPopup : MonoBehaviour
 
         if(!Config.isFinished_AddCoin) return;
         
-        if ( AdmobManager.instance.isInterstitialAds_Available())
+        if (Config.interstitialAd_countWin % 2 == 0 && AdmobManager.instance.isInterstititalAds_Avaiable())
         {
             AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {
@@ -270,6 +248,7 @@ public class WinPopup : MonoBehaviour
         {
             SetNextLevel();
         }
+        Config.interstitialAd_countWin++;
     }
 
     public void TouchReward() {
@@ -390,14 +369,12 @@ public class WinPopup : MonoBehaviour
     
     #region BALL PREVIEW
     public void ShowBallPreview() {
-        
         if (Config.currInfoBall_Try != null)
         {
             ballAnimator.runtimeAnimatorController = Config.currInfoBall_Try.animatorImgOverrideController;
         }
         else {
-//            ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
-            ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]).animatorImgOverrideController;
+            ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
         }
 
 
@@ -406,35 +383,15 @@ public class WinPopup : MonoBehaviour
     private int indexBallPreview;
     private InfoBall infoBallPreview;
 
-    public void ReInitBallPreview()
-    {
-        InitBallPreview();
-        ShowBallPreview();
-    }
-
     private void InitBallPreview()
     {
-        var lockedIds = new List<int>();
         for (int i = 0; i < listIDBallPreviews.Count; i++)
         {
-            if (!Config.GetInfoBallUnlock(listIDBallPreviews[i]))
+            if (listIDBallPreviews[i] == Config.GetBallActive())
             {
-                lockedIds.Add(listIDBallPreviews[i]);
+                indexBallPreview = i;
+                return;
             }
-        }
-        
-        Debug.Log("lockedIds.Count = "+lockedIds.Count);
-        var percent = Random.Range(0, 100f);
-        if (lockedIds.Count > 0)
-        {
-            var randomId = Random.Range(0, lockedIds.Count);
-            var index = listIDBallPreviews.IndexOf(lockedIds[randomId]);
-            indexBallPreview = index;
-        }
-        else
-        {
-            var index = listIDBallPreviews.IndexOf(Config.GetBallActive());
-            indexBallPreview = index;
         }
     }
     private void TouchNextBallPreview()

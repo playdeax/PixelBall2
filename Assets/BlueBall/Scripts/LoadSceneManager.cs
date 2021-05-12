@@ -23,10 +23,6 @@ public class LoadSceneManager : MonoBehaviour
         //Config.SetLevel(6);
         Debug.Log("Config.currLevel");
         Debug.Log(Config.currLevel);
-        if (Config.currLevel == 0)
-        {
-            SceneManager.LoadSceneAsync("Level0");
-        }
         StartCoroutine(LoadMenuScene_IEnumerator());
     }
 

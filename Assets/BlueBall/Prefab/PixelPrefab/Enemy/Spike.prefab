@@ -153,7 +153,7 @@ Transform:
   m_GameObject: {fileID: 1390463691480180698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.97, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1390463690488843642}
   - {fileID: 3656080717548249063}
@@ -199,7 +199,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 2617486976459683697, guid: 5b9a21ca467c2db42ab7c7c30af07c47,
+  m_Sprite: {fileID: 2617486976459683697, guid: 5097357ed5003004396f1168520a2194,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -224,9 +224,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.034910522, y: -0.13563363}
+  m_Offset: {x: 0.10777417, y: -0.6543422}
   serializedVersion: 2
-  m_Radius: 0.77300423
+  m_Radius: 0.43294334
 --- !u!95 &1390463691480180710
 Animator:
   serializedVersion: 3
@@ -317,7 +317,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   loops: -1
   id: 
-  loopType: 1
+  loopType: 0
   orientType: 0
   lookAtTransform: {fileID: 0}
   lookAtPosition: {x: 0, y: 0, z: 0}
@@ -334,23 +334,28 @@ MonoBehaviour:
   forwardDirection: {x: 0, y: 0, z: 1}
   upDirection: {x: 0, y: 1, z: 0}
   tweenRigidbody: 0
-  wps: []
+  wps:
+  - {x: 8.163234, y: 0.93400645, z: 0}
+  - {x: 2.0784996, y: 0.46192232, z: 0}
   fullWps: []
   path:
     wpLengths:
     - 0
-    - 14.741301
-    wps:
-    - {x: 16.69, y: -1.49, z: 0}
-    - {x: 2.0784996, y: 0.46192232, z: 0}
+    - 8.163313
+    - 6.1030197
     type: 0
     subdivisionsXSegment: 10
-    subdivisions: 20
+    subdivisions: 30
+    wps:
+    - {x: 0, y: 0.97, z: 0}
+    - {x: 8.163234, y: 0.93400645, z: 0}
+    - {x: 2.0784996, y: 0.46192232, z: 0}
     controlPoints: []
-    length: 14.741301
+    length: 14.266333
     isFinalized: 1
     timesTable:
     - 0
+    - 0.5722082
     - 1
     lengthsTable: []
   inspectorMode: 0
@@ -362,7 +367,7 @@ MonoBehaviour:
   showIndexes: 1
   showWpLength: 0
   pathColor: {r: 1, g: 1, b: 1, a: 0.5}
-  lastSrcPosition: {x: 16.69, y: -1.49, z: 0}
+  lastSrcPosition: {x: 0, y: 0.97, z: 0}
   lastSrcRotation: {x: -0, y: -0, z: -0, w: 1}
   wpsDropdown: 1
   dropToFloorOffset: 0

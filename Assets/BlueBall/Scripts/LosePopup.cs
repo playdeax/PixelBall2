@@ -209,7 +209,7 @@ public class LosePopup : MonoBehaviour
 
         if(!Config.isFinished_AddCoin) return;
         
-        if ( AdmobManager.instance.isInterstitialAds_Available())
+        if (Config.interstitialAd_countWin % 2 == 0 && AdmobManager.instance.isInterstititalAds_Avaiable())
         {
             AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {
@@ -220,6 +220,7 @@ public class LosePopup : MonoBehaviour
         {
             SetReplayLevel();
         }
+        Config.interstitialAd_countWin++;
     }
 
     public void TouchSkip() {

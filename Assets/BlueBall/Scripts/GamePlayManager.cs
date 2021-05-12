@@ -64,12 +64,6 @@ public class GamePlayManager : MonoBehaviour
 
 
     #region MOVE
-
-    public void ReleaseAllControl()
-    {
-        GameLevelManager.Ins.SetMoveLeft(false);
-        GameLevelManager.Ins.SetMoveRight(false);
-    }
     public void MoveLeft_Enter(Transform tut)
     {
         if (Config.currGameState == Config.GAMESTATE.PLAYING)
