@@ -75,7 +75,6 @@ public class GamePlayManager : MonoBehaviour
             }
         }
     }
-
     public void MoveLeft_Exit()
     {
         GameLevelManager.Ins.SetMoveLeft(false);

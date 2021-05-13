@@ -22,10 +22,12 @@ public class FinishPoint_Key : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(GameLevelManager.Ins.currStar<3) return;
         if (collision.CompareTag("Ball")) {
             finishPoint.SetOpenFinishOpen();
+            GameLevelManager.Ins.playerMovement.SetBallJump();
             //finishPoint2.SetOpenDoor();
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
     }
 }

@@ -36,14 +36,14 @@ public class EnemyBasicShoot_Bullet : MonoBehaviour
 
         if (enemyBasicShoot.transform.localScale.x > 0) {
             forceAddBall2 = new Vector2(forceAddBall.x, forceAddBall.y);
-            gameObject.transform.DOLocalMoveX(-distance, time).SetRelative(true).SetEase(Ease.Linear).OnComplete(() =>
+            gameObject.transform.DOLocalMoveX(-_enemyBasicShoot.shootDistance, _enemyBasicShoot.shootTime).SetRelative(true).SetEase(Ease.Linear).OnComplete(() =>
             {
                 BulletExpolsion();
             });
         }
         else {
             forceAddBall2 = new Vector2(-forceAddBall.x, forceAddBall.y);
-            gameObject.transform.DOLocalMoveX(distance, time).SetRelative(true).SetEase(Ease.Linear).OnComplete(() =>
+            gameObject.transform.DOLocalMoveX(_enemyBasicShoot.shootDistance, _enemyBasicShoot.shootTime).SetRelative(true).SetEase(Ease.Linear).OnComplete(() =>
             {
                 BulletExpolsion();
             });

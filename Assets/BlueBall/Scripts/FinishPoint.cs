@@ -19,7 +19,7 @@ public class FinishPoint : MonoBehaviour
     }
 
     public void SetOpenDoor() {
-        key.gameObject.SetActive(true);
+       // key.gameObject.SetActive(true);
     }
 
 

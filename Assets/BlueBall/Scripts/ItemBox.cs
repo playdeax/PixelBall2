@@ -26,35 +26,47 @@ public class ItemBox : MonoBehaviour
         NONE
     }
     BALL_ROLL_TYPE typeBall = BALL_ROLL_TYPE.NONE;
-    BALL_ROLL_TYPE lastTypeBall = BALL_ROLL_TYPE.NONE;
 
-    // Update is called once per frame
+    private float countRunTime = 0f;
+    private const float RUN_TIME_TO_PUSH_BOX = 0.0f;
     void Update()
     {
-        typeBall = BALL_ROLL_TYPE.NONE;
         if (isCollisionBall)
         {
+           
             if (_playerMovement.isMoveRight)
             {
+                if (typeBall != BALL_ROLL_TYPE.RIGHT)
+                {
+                    typeBall = BALL_ROLL_TYPE.RIGHT;
+                    countRunTime = 0f;
+                }
+                countRunTime += Time.deltaTime;
+                if(countRunTime<RUN_TIME_TO_PUSH_BOX) return;
                 if (_playerMovement.playerRigidbody2D.velocity.x < 10f && Mathf.Abs(_playerMovement.playerRigidbody2D.velocity.y) < 0.2f)
                 {
                     if (transform.position.y < _playerMovement.transform.position.y)
                     {
-                        boxRigidBody2D.velocity = new Vector2(-1.2f, 0f);
+                        boxRigidBody2D.velocity = new Vector2(-5f, 0f);
                     }
-                    typeBall = BALL_ROLL_TYPE.RIGHT;
                 }
             }
             else if (_playerMovement.isMoveLeft)
             {
+                if (typeBall != BALL_ROLL_TYPE.LEFT)
+                {
+                    typeBall = BALL_ROLL_TYPE.LEFT;
+                    countRunTime = 0f;
+                }
+                countRunTime += Time.deltaTime;
+                if(countRunTime<RUN_TIME_TO_PUSH_BOX) return;
                 if (_playerMovement.playerRigidbody2D.velocity.x > -10f && Mathf.Abs(_playerMovement.playerRigidbody2D.velocity.y) < 0.2f)
                 {
                     if (transform.position.y < _playerMovement.transform.position.y)
                     {
-                        boxRigidBody2D.velocity = new Vector2(1.2f, 0f);
+                        boxRigidBody2D.velocity = new Vector2(5f, 0f);
                         
                     }
-                    typeBall = BALL_ROLL_TYPE.LEFT;
                 }
             }
 
@@ -65,32 +77,15 @@ public class ItemBox : MonoBehaviour
     }
 
     bool isCollisionBall = false;
-
-    public void UpdateBallType() {
-        if (lastTypeBall != typeBall) {
-            lastTypeBall = typeBall;
-            Debug.Log("UpdateBallTypeUpdateBallTypeUpdateBallTypeUpdateBallType");
-            Debug.Log(lastTypeBall);
-            if (typeBall == BALL_ROLL_TYPE.LEFT)
-            {
-                _playerAnimation.SetAutoRotate(false);
-            }
-            else if (typeBall == BALL_ROLL_TYPE.RIGHT)
-            {
-                _playerAnimation.SetAutoRotate(true);
-            }
-            else {
-                _playerAnimation.StopAutoRotate();
-            }
-        }
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("Ball") && collision.gameObject.transform.position.y> transform.position.y && _playerMovement.collisionGround)
         {
-            Debug.Log("OnCollisionEnter2D BALLLLLLLLLLLLLLL");
             isCollisionBall = true;
+        }
+        else
+        {
+            isCollisionBall = false;
         }
     }
 
@@ -99,8 +94,8 @@ public class ItemBox : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball"))
         {
-            Debug.Log("OnCollisionExit2D BALLLLLLLLLLLLLLL");
             isCollisionBall = false;
+            countRunTime = 0f;
         }
     }
 }

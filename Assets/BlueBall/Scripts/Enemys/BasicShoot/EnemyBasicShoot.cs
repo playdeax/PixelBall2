@@ -10,6 +10,8 @@ public class EnemyBasicShoot : EnemyBase2
     public EnemyBasicShoot_Bullet bulletPrefab;
     public ParticleSystem efxBulletMuzzle;
     public Transform posStartBullet;
+    public float shootDistance = 10f;
+    public float shootTime = 0.2f;
     // Start is called before the first frame update
     void Start()
     {

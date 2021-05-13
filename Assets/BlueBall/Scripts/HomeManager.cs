@@ -64,11 +64,7 @@ public class HomeManager : MonoBehaviour
         ShowBallPreview();
         txtLevel.text = "LEVEL " + Config.GetLevel();
         StartCoroutine(Start_IEnumerator());
-        if (Config.currLevel == 0)
-        {
-            SceneManager.LoadSceneAsync("Level0");
-        }
-
+        
         InitBallPreview();
     }
 
