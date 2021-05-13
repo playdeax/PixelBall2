@@ -149,8 +149,7 @@ public class AdmobManager : MonoBehaviour
     }
     public void RequestAndLoadInterstitialAd()
     {
-        // Load an interstitial ad
-        interstitialAd.LoadAd(CreateAdRequest());
+        Init_InterstitialAd();
     }
     private void ShowInterstitialAd()
     {
@@ -158,7 +157,7 @@ public class AdmobManager : MonoBehaviour
         if (interstitialAd.IsLoaded())
         {
             interstitialAd.Show();
-            //FirebaseManager.instance.LogShowInter(Config.currLevel);
+            FirebaseManager.instance.LogShowInter(Config.currLevel);
         }
         else
         {
@@ -308,6 +307,7 @@ public class AdmobManager : MonoBehaviour
         Debug.Log("ShowRewardedAdShowRewardedAdShowRewardedAd");
         if (rewardedAd != null && isRewardAd_Loaded)
         {
+            FirebaseManager.instance.LogShowReward(Config.currLevel);
             rewardedAd.Show();
         }
         else
@@ -361,7 +361,7 @@ public class AdmobManager : MonoBehaviour
         Debug.Log(
             "HandleRewardedAdRewarded event received for "
                         + amount.ToString() + " " + type);
-
+        FirebaseManager.instance.LogRewarded();
         timeLastShowReward = Config.GetTimeStamp();
         RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
         //RequestAndLoadRewardedAd();
