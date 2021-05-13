@@ -209,7 +209,7 @@ public class LosePopup : MonoBehaviour
 
         if(!Config.isFinished_AddCoin) return;
         
-        if (Config.interstitialAd_countWin % 2 == 0 && AdmobManager.instance.isInterstititalAds_Avaiable())
+        if (AdmobManager.instance.isInterstititalAds_Avaiable())
         {
             AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {

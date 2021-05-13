@@ -210,7 +210,8 @@ public class AdmobManager : MonoBehaviour
     public bool isInterstititalAds_Avaiable()
     {
         if (Config.GetRemoveAd()) return false;
-        if (Config.GetTimeStamp() - timeLastShowReward <= TIME_SHOWREWARD_NOT_SHOWINTERTITIAL)
+        if (Config.interstitialAd_countWin % Config.NUMBER_LEVEL_PER_SHOW_INTERSTITIAL != 0) return false;
+        if (Config.GetTimeStamp() - timeLastShowReward <= Config.TIME_NO_INTERSTITIAL_AFTER_SHOW_REWARDED)
         {
             Debug.Log("NOT Show    InterstitialAd");
             return false;
