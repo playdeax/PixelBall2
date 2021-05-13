@@ -130,14 +130,47 @@ public class DailyRewardPopup : MonoBehaviour
 
 
     public void TouchClaimVideo() {
-        Config.SetDailyReward(Config.currIndexDailyReward + 1);
+        if (AdmobManager.instance.isRewardAds_Avaiable())
+        {
+            AdmobManager.instance.ShowRewardAd_CallBack(state =>
+            {
+                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                {
+                    Config.SetDailyReward(Config.currIndexDailyReward + 1);
        
-        ShowReward(true);
-        btnClaim.Interactable = false;
-        btnClaimVideo.Interactable = false;
+                    ShowReward(true);
+                    btnClaim.Interactable = false;
+                    btnClaimVideo.Interactable = false;
 
-        Config.currIndexDailyReward = Config.GetDailyReward();
-        ShowItemReward();
+                    Config.currIndexDailyReward = Config.GetDailyReward();
+                    ShowItemReward();
+
+                }
+                else
+                {
+                    Config.SetDailyReward(Config.currIndexDailyReward + 1);
+                    ShowReward(true);
+                    btnClaim.Interactable = false;
+                    btnClaimVideo.Interactable = false;
+
+                    Config.currIndexDailyReward = Config.GetDailyReward();
+                    ShowItemReward();
+                }
+            });
+        }
+        else
+        {
+            Config.SetDailyReward(Config.currIndexDailyReward + 1);
+       
+            ShowReward(true);
+            btnClaim.Interactable = false;
+            btnClaimVideo.Interactable = false;
+
+            Config.currIndexDailyReward = Config.GetDailyReward();
+            ShowItemReward();
+        }
+        
+        
     }
 
 
