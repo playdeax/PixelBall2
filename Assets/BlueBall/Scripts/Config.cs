@@ -172,6 +172,14 @@ public class Config
         if (ballUnlock == 1) {
             return true;
         }
+
+        
+        if (GetInfoBallFromID(idBall).ballType == BALL_TYPE.PREMIUM &&
+            GetBuyIAP(IAP_ID.premium_pack))
+        {
+            SetInfoBallUnlock(idBall);
+            return true;
+        }
         return false;
     }
 
