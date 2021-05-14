@@ -73,7 +73,7 @@ public class WinPopup : MonoBehaviour
         InitBallPreview();
         ShowBallPreview();
     }
-    
+
     private void OnDestroy()
     {
         btnNoThank.OnPointerClickCallBack_Completed.RemoveAllListeners();
@@ -116,7 +116,7 @@ public class WinPopup : MonoBehaviour
         FirebaseManager.instance.LogLevelWin(_level);
 
         StartCoroutine(ShowPopup_IEnumerator(coinReward));
-        //InitBallPreview();
+        InitBallPreview();
     }
 
     public IEnumerator ShowPopup_IEnumerator(int coinReward)
@@ -155,7 +155,7 @@ public class WinPopup : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         
-        if (Config.GetLevel() > 2){
+        if (Config.GetLevel() > Config.MIN_LEVEL_SHOW_REWARD_BUTTON){
             
             btnReward.gameObject.SetActive(true);
             btnReward.GetComponent<BBUIView>().ShowView();
@@ -229,7 +229,7 @@ public class WinPopup : MonoBehaviour
         });
 
         yield return new WaitForSeconds(3f);
-        if (Config.GetLevel() <= 2)
+        if (Config.GetLevel() <= Config.MIN_LEVEL_SHOW_INTERSTITIAL)
         {
             btnNextLevel.gameObject.SetActive(true);
             btnNextLevel.GetComponent<BBUIView>().ShowView();
@@ -259,7 +259,7 @@ public class WinPopup : MonoBehaviour
 
         if(!Config.isFinished_AddCoin) return;
         
-        if ( AdmobManager.instance.isInterstitialAds_Available())
+        if (AdmobManager.instance.isInterstititalAds_Avaiable())
         {
             AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {
@@ -270,6 +270,7 @@ public class WinPopup : MonoBehaviour
         {
             SetNextLevel();
         }
+        Config.interstitialAd_countWin++;
     }
 
     public void TouchReward() {
@@ -304,12 +305,6 @@ public class WinPopup : MonoBehaviour
     }
 
     public void SetNextLevel() {
-        // LoadingGamePopup.Ins.ShowLoading_OutGame(() =>
-        // {
-        //     Config.SetLevel(Config.GetLevel() + 1);
-        //     SceneManager.LoadScene("Level" + Config.GetLevel());
-        //     Config.currInfoBall_Try = null;
-        // });
         GamePlayManager.Ins.SetLoading_In(() =>
         {
             Config.SetLevel(Config.GetLevel() + 1);
@@ -322,7 +317,7 @@ public class WinPopup : MonoBehaviour
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
             lockPopup.gameObject.SetActive(true);
-            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            AdmobManager.instance.ShowRewardAd_CallBack(state =>
             {
                 if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
                 {
@@ -390,7 +385,6 @@ public class WinPopup : MonoBehaviour
     
     #region BALL PREVIEW
     public void ShowBallPreview() {
-        
         if (Config.currInfoBall_Try != null)
         {
             ballAnimator.runtimeAnimatorController = Config.currInfoBall_Try.animatorImgOverrideController;
@@ -399,18 +393,10 @@ public class WinPopup : MonoBehaviour
 //            ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(Config.GetBallActive()).animatorImgOverrideController;
             ballAnimator.runtimeAnimatorController = Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]).animatorImgOverrideController;
         }
-
-
     }
 
     private int indexBallPreview;
     private InfoBall infoBallPreview;
-
-    public void ReInitBallPreview()
-    {
-        InitBallPreview();
-        ShowBallPreview();
-    }
 
     private void InitBallPreview()
     {
@@ -548,5 +534,10 @@ public class WinPopup : MonoBehaviour
     private void TouchShopHeart()
     {
         shopCoinPopup.ShowPopup();
+    }
+    public void ReInitBallPreview()
+    {
+        InitBallPreview();
+        ShowBallPreview();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,7 +48,7 @@ public class ItemBox : MonoBehaviour
                 {
                     if (transform.position.y < _playerMovement.transform.position.y)
                     {
-                        boxRigidBody2D.velocity = new Vector2(-5f, 0f);
+                        boxRigidBody2D.velocity = new Vector2(-2.5f, 0f);
                     }
                 }
             }
@@ -64,7 +65,7 @@ public class ItemBox : MonoBehaviour
                 {
                     if (transform.position.y < _playerMovement.transform.position.y)
                     {
-                        boxRigidBody2D.velocity = new Vector2(5f, 0f);
+                        boxRigidBody2D.velocity = new Vector2(2.5f, 0f);
                         
                     }
                 }
@@ -74,6 +75,12 @@ public class ItemBox : MonoBehaviour
         }
 
         //UpdateBallType();
+    }
+
+    private void FixedUpdate()
+    {
+        if(boxRigidBody2D.velocity.x<-4f) boxRigidBody2D.velocity = new Vector2(-4f,boxRigidBody2D.velocity.y);
+        if(boxRigidBody2D.velocity.x>4f) boxRigidBody2D.velocity = new Vector2(4f,boxRigidBody2D.velocity.y);
     }
 
     bool isCollisionBall = false;

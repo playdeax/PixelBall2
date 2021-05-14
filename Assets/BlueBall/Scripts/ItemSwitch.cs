@@ -25,7 +25,6 @@ public class ItemSwitch : MonoBehaviour
 
 
     public void SetSwitch_ON() {
-        SoundManager.instance.SFX_OpenDoor();
         for (int i = 0; i < switchObjs.Count; i++)
         {
             DOTween.Kill(switchObjs[i].transform);
@@ -35,7 +34,6 @@ public class ItemSwitch : MonoBehaviour
     }
 
     public void SetSwitch_OFF() {
-        SoundManager.instance.SFX_OpenDoor();
         for (int i = 0; i < switchObjs.Count; i++)
         {
             DOTween.Kill(switchObjs[i].transform);

@@ -132,7 +132,7 @@ public class DailyRewardPopup : MonoBehaviour
     public void TouchClaimVideo() {
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
-            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            AdmobManager.instance.ShowRewardAd_CallBack(state =>
             {
                 if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
                 {
@@ -144,21 +144,16 @@ public class DailyRewardPopup : MonoBehaviour
 
                     Config.currIndexDailyReward = Config.GetDailyReward();
                     ShowItemReward();
+
                 }
-                Time.timeScale = 1f;
+                
             });
         }
         else
         {
-            Config.SetDailyReward(Config.currIndexDailyReward + 1);
-       
-            ShowReward(true);
-            btnClaim.Interactable = false;
-            btnClaimVideo.Interactable = false;
-
-            Config.currIndexDailyReward = Config.GetDailyReward();
-            ShowItemReward();
+            TouchClaim();
         }
+        
         
     }
 

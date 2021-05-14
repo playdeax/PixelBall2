@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5344524821675065596}
   - component: {fileID: 5344524821675065594}
   - component: {fileID: 325022630}
-  - component: {fileID: 7870138624930382792}
+  - component: {fileID: 6257063156292078445}
   m_Layer: 17
   m_Name: ItemBox2
   m_TagString: Box
@@ -96,7 +96,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de184dce48e919c40b551ae897d46e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &7870138624930382792
+--- !u!60 &6257063156292078445
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 5344524821675065592}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 134651f5d96d49d42be1c73c24364bb5, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -142,9 +142,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.30881676, y: 0.21322522}
-      - {x: -0.3127427, y: -0.2949364}
-      - {x: -0.28254923, y: -0.3350846}
-      - {x: 0.1505445, y: -0.33158216}
-      - {x: 0.19045973, y: -0.29341787}
-      - {x: 0.19045973, y: 0.2079717}
+    - - {x: -0.3143972, y: 0.20804286}
+      - {x: -0.3085712, y: -0.2910916}
+      - {x: -0.2658882, y: -0.33280972}
+      - {x: 0.12821946, y: -0.33333334}
+      - {x: 0.18736553, y: -0.2931233}
+      - {x: 0.190279, y: 0.20775825}
