@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Firebase.RemoteConfig;
 using UnityEngine;
 
 public class FirebaseManager : MonoBehaviour
@@ -30,6 +31,7 @@ public class FirebaseManager : MonoBehaviour
             if (task.Result == DependencyStatus.Available)
             {
                 InitializeFirebase();
+                
             }
             else
             {
@@ -48,8 +50,8 @@ public class FirebaseManager : MonoBehaviour
         Firebase.Messaging.FirebaseMessaging.MessageReceived += OnMessageReceived;
         Firebase.Messaging.FirebaseMessaging.TokenReceived += OnTokenReceived;
         Debug.Log("Firebase Messaging Initialized");
-
-
+        InitRemoteConfig();
+        Debug.Log("Firebase RemoteConfig Initialized");
         // This will display the prompt to request permission to receive
         // notifications if the prompt has not already been displayed before. (If
         // the user already responded to the prompt, thier decision is cached by
@@ -66,6 +68,89 @@ public class FirebaseManager : MonoBehaviour
         }
     }
 
+
+
+    private void InitRemoteConfig()
+    {
+        
+#if UNITY_EDITOR
+        var configSettings = new ConfigSettings();
+        configSettings.MinimumFetchInternalInMilliseconds = 0;
+        FirebaseRemoteConfig.DefaultInstance.SetConfigSettingsAsync(configSettings).ContinueWithOnMainThread(task1 =>
+        {
+            
+#endif
+            Debug.Log("start Init RemoteConfig");
+            Dictionary<string, object> defaults =
+                new Dictionary<string, object>();
+            defaults.Add("TIME_NO_INTERSTITIAL_AFTER_SHOW_REWARDED", 30);
+            defaults.Add("MIN_LEVEL_SHOW_INTERSTITIAL", 2);
+            defaults.Add("NUMBER_LEVEL_PER_SHOW_INTERSTITIAL", 2);
+
+            FirebaseRemoteConfig.DefaultInstance.SetDefaultsAsync(defaults)
+                .ContinueWithOnMainThread(task => { FetchDataAsync(); });
+
+#if UNITY_EDITOR
+
+        });
+#endif
+       
+    }
+
+    private void  FetchDataAsync() {
+        Debug.Log("Set Default finish");
+        System.Threading.Tasks.Task fetchTask =
+            Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.FetchAsync(
+                TimeSpan.Zero).ContinueWithOnMainThread(FetchComplete);
+        FirebaseRemoteConfig.DefaultInstance.FetchAndActivateAsync().ContinueWithOnMainThread(task =>
+        {
+           
+        });
+        
+    }
+    void FetchComplete(Task fetchTask) {
+        if (fetchTask.IsCanceled) {
+            Debug.Log("Fetch canceled.");
+        } else if (fetchTask.IsFaulted) {
+            Debug.Log("Fetch encountered an error.");
+        } else if (fetchTask.IsCompleted) {
+            Debug.Log("Fetch completed successfully!");
+        }
+
+        var info = Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.Info;
+        switch (info.LastFetchStatus) {
+            case Firebase.RemoteConfig.LastFetchStatus.Success:
+                Firebase.RemoteConfig.FirebaseRemoteConfig.DefaultInstance.ActivateAsync()
+                    .ContinueWithOnMainThread(task => {
+                        Debug.Log(String.Format("Remote data loaded and ready (last fetch time {0}).",
+                            info.FetchTime));
+                        var values = FirebaseRemoteConfig.DefaultInstance.AllValues;
+                        Config.TIME_NO_INTERSTITIAL_AFTER_SHOW_REWARDED = values["TIME_NO_INTERSTITIAL_AFTER_SHOW_REWARDED"].LongValue;
+                        Config.MIN_LEVEL_SHOW_INTERSTITIAL = values["MIN_LEVEL_SHOW_INTERSTITIAL"].LongValue;
+                        Config.NUMBER_LEVEL_PER_SHOW_INTERSTITIAL = values["NUMBER_LEVEL_PER_SHOW_INTERSTITIAL"].LongValue;
+                        Config.MIN_LEVEL_SHOW_REWARD_BUTTON = values["MIN_LEVEL_SHOW_REWARD_BUTTON"].LongValue;
+                        Debug.Log("fetch finish");
+                        Debug.Log("Config.TIME_NO_INTERSTITIAL_AFTER_SHOW_REWARDED = "+Config.TIME_NO_INTERSTITIAL_AFTER_SHOW_REWARDED);
+                        Debug.Log("Config.MIN_LEVEL_SHOW_INTERSTITIAL = "+Config.MIN_LEVEL_SHOW_INTERSTITIAL);
+                        Debug.Log("Config.NUMBER_LEVEL_PER_SHOW_INTERSTITIAL = "+Config.NUMBER_LEVEL_PER_SHOW_INTERSTITIAL);
+                    });
+
+                break;
+            case Firebase.RemoteConfig.LastFetchStatus.Failure:
+                switch (info.LastFetchFailureReason) {
+                    case Firebase.RemoteConfig.FetchFailureReason.Error:
+                        Debug.Log("Fetch failed for unknown reason");
+                        break;
+                    case Firebase.RemoteConfig.FetchFailureReason.Throttled:
+                        Debug.Log("Fetch throttled until " + info.ThrottledEndTime);
+                        break;
+                }
+                break;
+            case Firebase.RemoteConfig.LastFetchStatus.Pending:
+                Debug.Log("Latest Fetch call still pending.");
+                break;
+        }
+    }
     public void LogLevelStart(int level)
     {
         if (firebaseInitialized)

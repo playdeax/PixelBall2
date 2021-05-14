@@ -397,5 +397,11 @@ public class Config
         currLevel = PlayerPrefs.GetInt(LEVEL, 0);
         return currLevel;
     }
+
+    public static long TIME_NO_INTERSTITIAL_AFTER_SHOW_REWARDED = 30;
+    public static long MIN_LEVEL_SHOW_INTERSTITIAL = 2;
+    public static long NUMBER_LEVEL_PER_SHOW_INTERSTITIAL = 2;
+    public static long MIN_LEVEL_SHOW_REWARD_BUTTON = 2;
+
     #endregion
 }

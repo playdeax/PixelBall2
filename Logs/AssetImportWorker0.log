@@ -1,0 +1,554 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.6f1 (338bb68529b2) revision 3378102'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19041.928; Version 2004; 64bit' Language: 'en' Physical Memory: 16318 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+D:\Program Files\2020.3.6f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/NorthManteivStudio/PixelBall2
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+50276
+Successfully changed project path to: D:/NorthManteivStudio/PixelBall2
+D:/NorthManteivStudio/PixelBall2
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 177.98 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.6f1 (338bb68529b2)
+[Subsystems] Discovering subsystems at path D:/Program Files/2020.3.6f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/NorthManteivStudio/PixelBall2/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 (ID=0x1f02)
+    Vendor:   
+    VRAM:     8031 MB
+    Driver:   27.21.14.6589
+Initialize mono
+Mono path[0] = 'D:/Program Files/2020.3.6f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Program Files/2020.3.6f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Program Files/2020.3.6f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56440
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Program Files/2020.3.6f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.000913 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 126.89 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.341 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.015992 seconds.
+Begin MonoManager ReloadAssembly
+Error: Could not load signature of UnityEditor.Purchasing.GooglePlayProductCatalogExporter:ProductTypeString due to: Could not load file or assembly 'UnityEngine.Purchasing, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. assembly:UnityEngine.Purchasing, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null type:<unknown type> member:(null) signature:<none>
+
+CreateSerializedAsset is not supported while importing out-of-process
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+Spine.Unity.Editor.SpinePreferences:GetOrCreateSettings () (at Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Windows/SpinePreferences.cs:121)
+Spine.Unity.Editor.SpinePreferences:Load () (at Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Windows/SpinePreferences.cs:106)
+Spine.Unity.Editor.SpineEditorUtilities:Initialize () (at Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Utility/SpineEditorUtilities.cs:109)
+Spine.Unity.Editor.SpineEditorUtilities:.cctor () (at Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Utility/SpineEditorUtilities.cs:100)
+System.Reflection.MonoCMethod:InternalInvoke (object,object[])
+System.RuntimeType:CreateInstanceMono (bool)
+System.RuntimeType:CreateInstanceSlow (bool,bool,bool,System.Threading.StackCrawlMark&)
+System.RuntimeType:CreateInstanceDefaultCtor (bool,bool,bool,System.Threading.StackCrawlMark&)
+System.Activator:CreateInstance (System.Type,bool)
+System.Activator:CreateInstance (System.Type)
+UnityEditor.AssetPostprocessingInternal:GetMeshProcessorsHashString ()
+
+[Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Windows/SpinePreferences.cs line 121]
+
+UnityException: Creating asset at path Assets/Editor/SpineSettings.asset failed.
+  at (wrapper managed-to-native) UnityEditor.AssetDatabase.CreateAsset(UnityEngine.Object,string)
+  at Spine.Unity.Editor.SpinePreferences.GetOrCreateSettings () [0x00057] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:121 
+  at Spine.Unity.Editor.SpinePreferences.Load () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:106 
+  at Spine.Unity.Editor.SpineEditorUtilities.Initialize () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:109 
+  at Spine.Unity.Editor.SpineEditorUtilities..cctor () [0x0001e] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:100 
+Rethrow as TypeInitializationException: The type initializer for 'Spine.Unity.Editor.SpineEditorUtilities' threw an exception.
+  at (wrapper managed-to-native) System.Reflection.MonoCMethod.InternalInvoke(System.Reflection.MonoCMethod,object,object[],System.Exception&)
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00002] in <695d1cc93cca45069c528c15c9fdd749>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceMono (System.Boolean nonPublic) [0x000a8] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceSlow (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00009] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceDefaultCtor (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00027] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type, System.Boolean nonPublic) [0x00020] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at UnityEditor.AssetPostprocessingInternal.GetMeshProcessorsHashString () [0x00035] in <e09fc44b2b464346872ad04477f51ab1>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEditor.AssetPostprocessingInternal:GetMeshProcessorsHashString()
+
+(Filename: Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Windows/SpinePreferences.cs Line: 121)
+
+UnityException: Creating asset at path Assets/Editor/SpineSettings.asset failed.
+  at (wrapper managed-to-native) UnityEditor.AssetDatabase.CreateAsset(UnityEngine.Object,string)
+  at Spine.Unity.Editor.SpinePreferences.GetOrCreateSettings () [0x00057] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:121 
+  at Spine.Unity.Editor.SpinePreferences.Load () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:106 
+  at Spine.Unity.Editor.SpineEditorUtilities.Initialize () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:109 
+  at Spine.Unity.Editor.SpineEditorUtilities..cctor () [0x0001e] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:100 
+Rethrow as TypeInitializationException: The type initializer for 'Spine.Unity.Editor.SpineEditorUtilities' threw an exception.
+  at (wrapper managed-to-native) System.Reflection.MonoCMethod.InternalInvoke(System.Reflection.MonoCMethod,object,object[],System.Exception&)
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00002] in <695d1cc93cca45069c528c15c9fdd749>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceMono (System.Boolean nonPublic) [0x000a8] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceSlow (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00009] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceDefaultCtor (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00027] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type, System.Boolean nonPublic) [0x00020] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at UnityEditor.AssetPostprocessingInternal.GetTextureProcessorsHashString () [0x00035] in <e09fc44b2b464346872ad04477f51ab1>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEditor.AssetPostprocessingInternal:GetTextureProcessorsHashString()
+
+(Filename: Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Windows/SpinePreferences.cs Line: 121)
+
+UnityException: Creating asset at path Assets/Editor/SpineSettings.asset failed.
+  at (wrapper managed-to-native) UnityEditor.AssetDatabase.CreateAsset(UnityEngine.Object,string)
+  at Spine.Unity.Editor.SpinePreferences.GetOrCreateSettings () [0x00057] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:121 
+  at Spine.Unity.Editor.SpinePreferences.Load () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:106 
+  at Spine.Unity.Editor.SpineEditorUtilities.Initialize () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:109 
+  at Spine.Unity.Editor.SpineEditorUtilities..cctor () [0x0001e] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:100 
+Rethrow as TypeInitializationException: The type initializer for 'Spine.Unity.Editor.SpineEditorUtilities' threw an exception.
+  at (wrapper managed-to-native) System.Reflection.MonoCMethod.InternalInvoke(System.Reflection.MonoCMethod,object,object[],System.Exception&)
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00002] in <695d1cc93cca45069c528c15c9fdd749>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceMono (System.Boolean nonPublic) [0x000a8] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceSlow (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00009] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceDefaultCtor (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00027] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type, System.Boolean nonPublic) [0x00020] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at UnityEditor.AssetPostprocessingInternal.GetAudioProcessorsHashString () [0x00035] in <e09fc44b2b464346872ad04477f51ab1>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEditor.AssetPostprocessingInternal:GetAudioProcessorsHashString()
+
+(Filename: Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Windows/SpinePreferences.cs Line: 121)
+
+UnityException: Creating asset at path Assets/Editor/SpineSettings.asset failed.
+  at (wrapper managed-to-native) UnityEditor.AssetDatabase.CreateAsset(UnityEngine.Object,string)
+  at Spine.Unity.Editor.SpinePreferences.GetOrCreateSettings () [0x00057] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:121 
+  at Spine.Unity.Editor.SpinePreferences.Load () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:106 
+  at Spine.Unity.Editor.SpineEditorUtilities.Initialize () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:109 
+  at Spine.Unity.Editor.SpineEditorUtilities..cctor () [0x0001e] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:100 
+Rethrow as TypeInitializationException: The type initializer for 'Spine.Unity.Editor.SpineEditorUtilities' threw an exception.
+  at (wrapper managed-to-native) System.Reflection.MonoCMethod.InternalInvoke(System.Reflection.MonoCMethod,object,object[],System.Exception&)
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00002] in <695d1cc93cca45069c528c15c9fdd749>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceMono (System.Boolean nonPublic) [0x000a8] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceSlow (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00009] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceDefaultCtor (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00027] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type, System.Boolean nonPublic) [0x00020] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at UnityEditor.AssetPostprocessingInternal.GetSpeedTreeProcessorsHashString () [0x00035] in <e09fc44b2b464346872ad04477f51ab1>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEditor.AssetPostprocessingInternal:GetSpeedTreeProcessorsHashString()
+
+(Filename: Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Windows/SpinePreferences.cs Line: 121)
+
+UnityException: Creating asset at path Assets/Editor/SpineSettings.asset failed.
+  at (wrapper managed-to-native) UnityEditor.AssetDatabase.CreateAsset(UnityEngine.Object,string)
+  at Spine.Unity.Editor.SpinePreferences.GetOrCreateSettings () [0x00057] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:121 
+  at Spine.Unity.Editor.SpinePreferences.Load () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:106 
+  at Spine.Unity.Editor.SpineEditorUtilities.Initialize () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:109 
+  at Spine.Unity.Editor.SpineEditorUtilities..cctor () [0x0001e] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:100 
+Rethrow as TypeInitializationException: The type initializer for 'Spine.Unity.Editor.SpineEditorUtilities' threw an exception.
+  at (wrapper managed-to-native) System.Reflection.MonoCMethod.InternalInvoke(System.Reflection.MonoCMethod,object,object[],System.Exception&)
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00002] in <695d1cc93cca45069c528c15c9fdd749>:0 
+Rethrow as TargetInvocationException: Exception has been thrown by the target of an invocation.
+  at System.Reflection.MonoCMethod.InternalInvoke (System.Object obj, System.Object[] parameters) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceMono (System.Boolean nonPublic) [0x000a8] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceSlow (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00009] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.RuntimeType.CreateInstanceDefaultCtor (System.Boolean publicOnly, System.Boolean skipCheckThis, System.Boolean fillCache, System.Threading.StackCrawlMark& stackMark) [0x00027] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type, System.Boolean nonPublic) [0x00020] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.Activator.CreateInstance (System.Type type) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at UnityEditor.AssetPostprocessingInternal.GetPrefabProcessorsHashString () [0x00035] in <e09fc44b2b464346872ad04477f51ab1>:0 
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEditor.AssetPostprocessingInternal:GetPrefabProcessorsHashString()
+
+(Filename: Assets/TextMesh Pro/Spine/Editor/spine-unity/Editor/Windows/SpinePreferences.cs Line: 121)
+
+ReleaseAllScriptCaches did not release all script caches!
+
+Remaining caches:
+    spine-unity-editor:Spine.Unity.Editor:SpinePreferences
+Unloading broken assembly Assets/Plugins/UnityPurchasing/Bin/Stores.dll, this assembly can cause crashes in the runtime
+
+Unloading broken assembly Assets/Plugins/UnityPurchasing/Bin/Editor.dll, this assembly can cause crashes in the runtime
+
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 129.74 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+UnityIAP: [InitializeOnLoad] Facebook Check
+UnityIAP: Runtime [2020.3.6f1]
+System.MethodAccessException: Method `UnityEngine.Purchasing.VersionCheck.LessThan(string,string)' is inaccessible from method `UnityEditor.Purchasing.FacebookBuildControl.SetupFacebookConfig()'
+  at (wrapper managed-to-native) System.Object.__icall_wrapper_mono_throw_method_access(intptr,intptr)
+  at UnityEditor.Purchasing.FacebookBuildControl.SetupFacebookConfig () [0x00006] in <2d7779cb8f3840989e79e2ad6995b2c7>:0 
+  at UnityEditor.Purchasing.FacebookBuildControl..cctor () [0x00064] in <2d7779cb8f3840989e79e2ad6995b2c7>:0 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+UnityEngine.UnityException: Creating asset at path Assets/Editor/SpineSettings.asset failed.
+  at (wrapper managed-to-native) UnityEditor.AssetDatabase.CreateAsset(UnityEngine.Object,string)
+  at Spine.Unity.Editor.SpinePreferences.GetOrCreateSettings () [0x00057] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:121 
+  at Spine.Unity.Editor.SpinePreferences.Load () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Windows\SpinePreferences.cs:106 
+  at Spine.Unity.Editor.SpineEditorUtilities.Initialize () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:109 
+  at Spine.Unity.Editor.SpineEditorUtilities..cctor () [0x0001e] in D:\NorthManteivStudio\PixelBall2\Assets\TextMesh Pro\Spine\Editor\spine-unity\Editor\Utility\SpineEditorUtilities.cs:100 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.564 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 2.35 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3520 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 168.2 MB.
+System memory in use after: 167.0 MB.
+
+Unloading 150 unused Assets to reduce memory usage. Loaded Objects now: 3920.
+Total: 22.228000 ms (FindLiveObjects: 0.296200 ms CreateObjectMapping: 0.153000 ms MarkObjects: 20.907400 ms  DeleteObjects: 0.870100 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/1.asset
+  artifactKey: Guid(e3a84563a8619e242bc5bdc6cc88e501) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/1.asset using Guid(e3a84563a8619e242bc5bdc6cc88e501) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Diagnostics callstack to track who triggered the sub-import:
+0x00007ff7151f0622 (Unity) ImporterAssetResolver::ResolveAsset
+0x00007ff715258a92 (Unity) ResolveArtifactV2
+0x00007ff715279932 (Unity) GUIDPersistentManagerV2::PathIDToPathNameInternal
+0x00007ff713b06ff1 (Unity) PersistentManager::GetStreamNameSpaceInternal
+0x00007ff713b06535 (Unity) PersistentManager::GetSerializedFileIfObjectAvailable
+0x00007ff713b0b6a9 (Unity) PersistentManager::PreallocateObjectThreaded
+0x00007ff713a162dc (Unity) TransferPPtrToMonoObject
+0x00007ff713a9b154 (Unity) TransferField_NonArray<YAMLRead,Converter_UnityEngineObject>
+0x00007ff713abf1e2 (Unity) Transfer_UnityEngineObject<YAMLRead,0>
+0x00007ff71355ce76 (Unity) ExecuteSerializationCommands<SafeBinaryRead>
+0x00007ff7135644cc (Unity) TransferScriptingObject<YAMLRead,0>
+0x00007ff7135630cf (Unity) SerializableManagedRefTransfer::TransferMonoInstance<YAMLRead>
+0x00007ff713a340d9 (Unity) MonoBehaviour::VirtualRedirectTransfer
+0x00007ff713b4872d (Unity) SerializedFile::ReadObject
+0x00007ff713b0bd3c (Unity) PersistentManager::ReadAndActivateObjectThreaded
+0x00007ff713b0c299 (Unity) PersistentManager::ReadObjectThreaded
+0x00007ff713b0c04a (Unity) PersistentManager::ReadObject
+0x00007ff7151a5471 (Unity) WritePreviews
+0x00007ff71519f32e (Unity) PreviewImporter::GenerateAssetData
+0x00007ff7152b3cd9 (Unity) ImportToObjects
+0x00007ff7152b2b48 (Unity) AssetImportWorker::Import
+0x00007ff715211fef (Unity) <lambda_77c748ffdfab40a7d87ea62709a69e39>::operator()
+0x00007ff7152dd662 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)> >::do_complete
+0x00007ff7152df7c0 (Unity) asio::detail::win_iocp_io_service::do_one
+0x00007ff7152e2f4e (Unity) asio::io_service::run
+0x00007ff715258fd0 (Unity) RunAssetImportWorkerClientV2
+0x00007ff715259020 (Unity) RunAssetImporterV2
+0x00007ff714764266 (Unity) Application::InitializeProject
+0x00007ff7150e4bb2 (Unity) WinMain
+0x00007ff716f62a36 (Unity) __scrt_common_main_seh
+0x00007ffc0e077034 (KERNEL32) BaseThreadInitThunk
+0x00007ffc0fac2651 (ntdll) RtlUserThreadStart
+
+Requesting import of Guid(432527b1abbb7eb4ba2bd5d986cd46c6) Importer(-1,00000000000000000000000000000000), Assets/BlueBall/Textures/Tileground/1.png from editor
+Resuming Guid(432527b1abbb7eb4ba2bd5d986cd46c6) Importer(-1,00000000000000000000000000000000) -> 3a56c5a622a373267aa59847ccd7b1ca 
+Assertion failed on expression: 'state.state == kUpToDate'
+
+Assertion failed on expression: 'state.artifactID == result'
+
+ -> (artifact id: '002776dfc5fe8198408a6f6823f40599') in 4.363028 seconds
+  Import took 4.369923 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000172 seconds.
+  path: Assets/New ShakePreset.asset
+  artifactKey: Guid(a3e5f9cda7d4cca46b6f2807bd5887e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New ShakePreset.asset using Guid(a3e5f9cda7d4cca46b6f2807bd5887e7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2b410f9d15728f92b84b735d7105fcd') in 0.005336 seconds
+  Import took 0.011284 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000327 seconds.
+  path: Assets/Ground_08.asset
+  artifactKey: Guid(1c11cfcd2c25aac43aba8930dce6d3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Ground_08.asset using Guid(1c11cfcd2c25aac43aba8930dce6d3f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65257cca6323cd387710576de8aae9ba') in 0.005948 seconds
+  Import took 0.011705 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.016545 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 2.54 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+UnityIAP: [InitializeOnLoad] Facebook Check
+UnityIAP: Runtime [2020.3.6f1]
+UnityIAP: Current Build is Android:Android
+UnityIAP: stub FacebookStore.dll disabled
+System.TypeInitializationException: The type initializer for 'Doozy.Engine.Utils.DoozyPath' threw an exception. ---> System.ArgumentException: The specified path is not of a legal form (empty).
+  at System.IO.Path.InsecureGetFullPath (System.String path) [0x00025] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.Path.GetFullPathInternal (System.String path) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo.Init (System.String fileName, System.Boolean checkHost) [0x00007] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo..ctor (System.String fileName) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo..ctor(string)
+  at Doozy.Engine.Utils.DoozyPath.get_BasePath () [0x00029] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Engine\Utils\DoozyPath.cs:158 
+  at Doozy.Engine.Utils.DoozyPath..cctor () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Engine\Utils\DoozyPath.cs:62 
+   --- End of inner exception stack trace ---
+  at Doozy.Editor.Internal.ProcessorsSettings.get_Instance () [0x00013] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Editor\Internal\ProcessorsSettings.cs:23 
+  at Doozy.Editor.Internal.DoozyAssetsProcessor.ExecuteProcessor () [0x00033] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Editor\Internal\DoozyAssetsProcessor.cs:44 
+  at Doozy.Editor.Internal.DoozyAssetsProcessor..cctor () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Editor\Internal\DoozyAssetsProcessor.cs:25 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+System.TypeInitializationException: The type initializer for 'Doozy.Engine.Utils.DoozyPath' threw an exception. ---> System.ArgumentException: The specified path is not of a legal form (empty).
+  at System.IO.Path.InsecureGetFullPath (System.String path) [0x00025] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.Path.GetFullPathInternal (System.String path) [0x00000] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo.Init (System.String fileName, System.Boolean checkHost) [0x00007] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at System.IO.FileInfo..ctor (System.String fileName) [0x00014] in <695d1cc93cca45069c528c15c9fdd749>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileInfo..ctor(string)
+  at Doozy.Engine.Utils.DoozyPath.get_BasePath () [0x00029] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Engine\Utils\DoozyPath.cs:158 
+  at Doozy.Engine.Utils.DoozyPath..cctor () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Engine\Utils\DoozyPath.cs:62 
+   --- End of inner exception stack trace ---
+  at Doozy.Editor.Internal.ProcessorsSettings.get_Instance () [0x00013] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Editor\Internal\ProcessorsSettings.cs:23 
+  at Doozy.Editor.Internal.FoldersProcessor.ExecuteProcessor () [0x00008] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Editor\Internal\FoldersProcessor.cs:20 
+  at Doozy.Editor.Internal.FoldersProcessor..cctor () [0x00000] in D:\NorthManteivStudio\PixelBall2\Assets\Doozy\Editor\Internal\FoldersProcessor.cs:15 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+Mono: successfully reloaded assembly
+- Completed reload, in  1.470 seconds
+Platform modules already initialized, skipping
+Switching build target platform(5) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Refreshing native plugins compatible for Editor in 1.84 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3263 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 174.7 MB.
+System memory in use after: 173.3 MB.
+
+Unloading 433 unused Assets to reduce memory usage. Loaded Objects now: 3715.
+Total: 18.777200 ms (FindLiveObjects: 0.358300 ms CreateObjectMapping: 0.169500 ms MarkObjects: 17.205700 ms  DeleteObjects: 1.042400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+========================================================================
+Received Import Request.
+  Time since last request: 724.873036 seconds.
+  path: Assets/BuildReport
+  artifactKey: Guid(707daf2ba16b3ef4e9e1b3660c0b9600) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BuildReport using Guid(707daf2ba16b3ef4e9e1b3660c0b9600) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b7522b72701038ff3a0e0596a354b06') in 0.011600 seconds
+  Import took 0.020452 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001324 seconds.
+  path: Assets/BuildReport
+  artifactKey: Guid(707daf2ba16b3ef4e9e1b3660c0b9600) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BuildReport using Guid(707daf2ba16b3ef4e9e1b3660c0b9600) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b7522b72701038ff3a0e0596a354b06') in 0.001653 seconds
+  Import took 0.006770 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.459842 seconds.
+  path: Assets/BlueBall
+  artifactKey: Guid(7d8ddeea0d8a37541840ee410be8a80f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall using Guid(7d8ddeea0d8a37541840ee410be8a80f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfbe4b4854e62b0c178af7c61f0cfdd7') in 0.005671 seconds
+  Import took 0.010918 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.467395 seconds.
+  path: Assets/BlueBall/Materials
+  artifactKey: Guid(e7395876c8cb2dc44b026ad2d824bf49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Materials using Guid(e7395876c8cb2dc44b026ad2d824bf49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8858707408609e0f1082094776a73266') in 0.005371 seconds
+  Import took 0.011536 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.183254 seconds.
+  path: Assets/BlueBall/Prefab
+  artifactKey: Guid(188fc2bffb0894fdfba46c591bb7eb75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Prefab using Guid(188fc2bffb0894fdfba46c591bb7eb75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fb3584ac79ff5224e2e0a44359a1448') in 0.004658 seconds
+  Import took 0.010277 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.169210 seconds.
+  path: Assets/BlueBall/Resources
+  artifactKey: Guid(2c884962138a8a74ea5abce428834cd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Resources using Guid(2c884962138a8a74ea5abce428834cd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0074a7481ee49e27813d3719adacf84') in 0.005341 seconds
+  Import took 0.010561 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.171345 seconds.
+  path: Assets/BlueBall/Scenes
+  artifactKey: Guid(acb331ea39aa670488564d04fdcfea06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scenes using Guid(acb331ea39aa670488564d04fdcfea06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56695fb6932f1a9ec42af630f77b93a9') in 0.005320 seconds
+  Import took 0.010857 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.408972 seconds.
+  path: Assets/BlueBall/Scripts
+  artifactKey: Guid(b51429fd98f877e4aa54376e9222704f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts using Guid(b51429fd98f877e4aa54376e9222704f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2996573b5307b8797b14da055b55616e') in 0.005698 seconds
+  Import took 0.011359 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.644974 seconds.
+  path: Assets/BlueBall/Scripts/BBCommon
+  artifactKey: Guid(88c8d5ce80c68554c9c65ed689c0ceb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/BBCommon using Guid(88c8d5ce80c68554c9c65ed689c0ceb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed39872d1b937908ad12183d8b0cb94f') in 0.005625 seconds
+  Import took 0.012350 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.172132 seconds.
+  path: Assets/BlueBall/Scripts/Boss
+  artifactKey: Guid(26fdc0c09623463ea5b729e5b70512ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/Boss using Guid(26fdc0c09623463ea5b729e5b70512ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79ef1a88550f70cc71e3349918940421') in 0.005344 seconds
+  Import took 0.010831 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.161778 seconds.
+  path: Assets/BlueBall/Scripts/Enemys
+  artifactKey: Guid(d7d82c7f9def30441831643f438390e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/Enemys using Guid(d7d82c7f9def30441831643f438390e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89bea78dc73f49f40fdf9f16bb041d55') in 0.004682 seconds
+  Import took 0.009904 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.788776 seconds.
+  path: Assets/BlueBall/Scripts/IAP
+  artifactKey: Guid(6df7fd3bf7dcefc49800c07aa16b5c22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/IAP using Guid(6df7fd3bf7dcefc49800c07aa16b5c22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0ddcd50818f14ff8336c57ba7924a74') in 0.004666 seconds
+  Import took 0.010808 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.182126 seconds.
+  path: Assets/BlueBall/Scripts/ScriptableObject
+  artifactKey: Guid(73b6525bbb6d0d146a62c7f07ead97bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/ScriptableObject using Guid(73b6525bbb6d0d146a62c7f07ead97bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '577ab7852fd028a9c11be7df0f6a27ed') in 0.005532 seconds
+  Import took 0.010934 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.600064 seconds.
+  path: Assets/BlueBall/Scripts/Shop
+  artifactKey: Guid(c908350238e50be40ae04853bfa2a744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/Shop using Guid(c908350238e50be40ae04853bfa2a744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a84819fa99020838fd7312eda0a6c86') in 0.004932 seconds
+  Import took 0.010650 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.677892 seconds.
+  path: Assets/BlueBall/Scripts/BBCommon/BackgroundFitAll.cs
+  artifactKey: Guid(87170ab285dfd1c46a09154277f63c52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/BBCommon/BackgroundFitAll.cs using Guid(87170ab285dfd1c46a09154277f63c52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f99f4e56a6e4ef832872eec0be049a6') in 0.009376 seconds
+  Import took 0.015630 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.327455 seconds.
+  path: Assets/BlueBall/Scripts/BBCommon/BBCanvasScaler.cs
+  artifactKey: Guid(10c8e34d03c04784e9be0972a838c1e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/BBCommon/BBCanvasScaler.cs using Guid(10c8e34d03c04784e9be0972a838c1e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e57a7cd9ab6384f905b211c6e57ba37') in 0.004988 seconds
+  Import took 0.010660 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.546844 seconds.
+  path: Assets/BlueBall/Scripts/BBCommon/CameraFitWidth.cs
+  artifactKey: Guid(326b228194d9c94419cad1aec20e551a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/BBCommon/CameraFitWidth.cs using Guid(326b228194d9c94419cad1aec20e551a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31bff3c4ef9f56f8d0a2d8605ec6a379') in 0.004952 seconds
+  Import took 0.010560 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.001616 seconds.
+  path: Assets/BlueBall/Scripts/BBCommon/CameraFitWidth.cs
+  artifactKey: Guid(326b228194d9c94419cad1aec20e551a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/BBCommon/CameraFitWidth.cs using Guid(326b228194d9c94419cad1aec20e551a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31bff3c4ef9f56f8d0a2d8605ec6a379') in 0.001715 seconds
+  Import took 0.006987 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 279.693768 seconds.
+  path: Assets/BlueBall/Scripts/AdmobManager.cs
+  artifactKey: Guid(d2d5b13a408497f479f5a114a80e1cab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/AdmobManager.cs using Guid(d2d5b13a408497f479f5a114a80e1cab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07e286104e77880d4ac143ffdcf3c68b') in 0.004890 seconds
+  Import took 0.010722 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.362282 seconds.
+  path: Assets/BlueBall/Scripts/BallManager.cs
+  artifactKey: Guid(9333edc2d8f846c45b726bc5438f38d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/BallManager.cs using Guid(9333edc2d8f846c45b726bc5438f38d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4f7078359c36226dc25013b7f5dcaa5') in 0.004797 seconds
+  Import took 0.010180 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.549007 seconds.
+  path: Assets/BlueBall/Scripts/PlayerMovement.cs
+  artifactKey: Guid(f0946fdf63a0147918d48e6d38a7ca1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scripts/PlayerMovement.cs using Guid(f0946fdf63a0147918d48e6d38a7ca1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf5b78d13b538601224491dfde6f78df') in 0.005903 seconds
+  Import took 0.011546 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 1405.693019 seconds.
+  path: Assets/BlueBall/Scenes/PixelBall/NewLevel/Level3.unity
+  artifactKey: Guid(a3f5bcb6b05ae3848a4e46374f8b632c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scenes/PixelBall/NewLevel/Level3.unity using Guid(a3f5bcb6b05ae3848a4e46374f8b632c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65c8dde3b9f9984e60b3cd4f6dece874') in 0.104051 seconds
+  Import took 0.110343 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 9.680011 seconds.
+  path: Assets/BlueBall/Scenes/PixelBall/NewLevel/Level17.unity
+  artifactKey: Guid(641ee1e21cd7979488d5a33bfaf0490d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/BlueBall/Scenes/PixelBall/NewLevel/Level17.unity using Guid(641ee1e21cd7979488d5a33bfaf0490d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96226581e215cbc8f31b2b718404ae7c') in 0.005345 seconds
+  Import took 0.010540 seconds .
+

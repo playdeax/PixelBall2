@@ -38,8 +38,7 @@ public class ItemRescue : ItemBase
         base.CollisionWithBall();
         SetCollier_Enable(false);
         colliderObj.SetActive(false);
-        if(!Config.GetInfoBallUnlock(infoBallRescue.id))
-            Config.currIDBallRescue = infoBallRescue.id;
+        Config.currIDBallRescue = infoBallRescue.id;
         efxCollision.gameObject.SetActive(true);
         efxCollision.Play();
         StartCoroutine(ShowEfxResuce_Success());

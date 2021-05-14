@@ -33,7 +33,7 @@ namespace BlueBall.Scripts.Boss
             BossHPGroup.Instance.DecreaseHP(1);
             OnBossHurt();
             StartCoroutine(SetEnemyBeHit_IEnumerator());
-            GameLevelManager.Ins.SetBall_JumpOnEnemy(_forceAddBall2);
+            GameLevelManager.Ins.SetBall_KillEnemy(_forceAddBall2);
                
         }
 
