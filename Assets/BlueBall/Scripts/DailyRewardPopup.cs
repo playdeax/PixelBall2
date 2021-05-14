@@ -146,28 +146,12 @@ public class DailyRewardPopup : MonoBehaviour
                     ShowItemReward();
 
                 }
-                else
-                {
-                    Config.SetDailyReward(Config.currIndexDailyReward + 1);
-                    ShowReward(true);
-                    btnClaim.Interactable = false;
-                    btnClaimVideo.Interactable = false;
-
-                    Config.currIndexDailyReward = Config.GetDailyReward();
-                    ShowItemReward();
-                }
+                
             });
         }
         else
         {
-            Config.SetDailyReward(Config.currIndexDailyReward + 1);
-       
-            ShowReward(true);
-            btnClaim.Interactable = false;
-            btnClaimVideo.Interactable = false;
-
-            Config.currIndexDailyReward = Config.GetDailyReward();
-            ShowItemReward();
+            TouchClaim();
         }
         
         

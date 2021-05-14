@@ -6,11 +6,14 @@ public class ItemDoor_Key : ItemBase
 {
     public ItemDoor itemDoor;
     public GameObject key;
+    public bool oneTime = false;
 
+    private int count;
     // Start is called before the first frame update
     void Start()
     {
         key.transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        count = 0;
     }
 
     // Update is called once per frame
@@ -21,6 +24,8 @@ public class ItemDoor_Key : ItemBase
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
+         if(count>0 && oneTime) return;
+         count++;
         base.OnTriggerEnter2D(collision);
         Debug.Log("" + collision.name);
         // SetCollier_Enable(false);
