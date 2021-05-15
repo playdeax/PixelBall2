@@ -208,19 +208,19 @@ public class LosePopup : MonoBehaviour
     public void TouchReplay() {
 
         if(!Config.isFinished_AddCoin) return;
-        
-        if (AdmobManager.instance.isInterstititalAds_Avaiable())
-        {
-            AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
-            {
-                SetReplayLevel();
-            });
-        }
-        else
-        {
+        //
+        // if (AdmobManager.instance.isInterstititalAds_Avaiable())
+        // {
+        //     AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+        //     {
+        //         SetReplayLevel();
+        //     });
+        // }
+        // else
+        // {
             SetReplayLevel();
-        }
-        Config.interstitialAd_countWin++;
+        // }
+        // Config.interstitialAd_countWin++;
     }
 
     public void TouchSkip() {
