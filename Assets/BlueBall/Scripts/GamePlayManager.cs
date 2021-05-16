@@ -133,7 +133,20 @@ public class GamePlayManager : MonoBehaviour
 
     public void ShowWinPopup(int _level)
     {
-        winPopup.ShowPopup(1000, _level) ;
+        
+        if (AdmobManager.instance.isInterstititalAds_Avaiable())
+        {
+            AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                winPopup.ShowPopup(1000, _level) ;
+            });
+        }
+        else
+        {
+            winPopup.ShowPopup(1000, _level) ;
+        }
+        Config.interstitialAd_countWin++;
+        
     }
 
     #endregion
@@ -144,8 +157,21 @@ public class GamePlayManager : MonoBehaviour
 
     public void ShowLosePopup(int _level)
     {
-        Config.currGameState = Config.GAMESTATE.GAMEOVER;
-        losePopup.ShowPopup(_level);
+        if (AdmobManager.instance.isInterstititalAds_Avaiable())
+        {
+            AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            {
+                Config.currGameState = Config.GAMESTATE.GAMEOVER;
+                losePopup.ShowPopup(_level);
+            });
+        }
+        else
+        {
+            Config.currGameState = Config.GAMESTATE.GAMEOVER;
+            losePopup.ShowPopup(_level);
+        }
+        Config.interstitialAd_countWin++;
+       
     }
 
     #endregion

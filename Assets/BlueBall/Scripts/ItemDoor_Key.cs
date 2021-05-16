@@ -7,8 +7,7 @@ public class ItemDoor_Key : ItemBase
     public ItemDoor itemDoor;
     public GameObject key;
     public bool oneTime = false;
-
-    private int count;
+    [SerializeField]private int count;
     // Start is called before the first frame update
     void Start()
     {

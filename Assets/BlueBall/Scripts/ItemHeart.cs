@@ -7,7 +7,7 @@ public class ItemHeart : ItemBase
 {
    public bool needViewAd;
    public int healthPoint;
-
+   public ItemHeartReward itemHeartRewardPrefab;
    public override void CollisionWithBall()
    {
       if (needViewAd)
@@ -34,11 +34,16 @@ public class ItemHeart : ItemBase
       {
          IncreaseHealthPoint();
       }
-      Destroy(gameObject);
+      gameObject.SetActive(false);
    }
 
    private void IncreaseHealthPoint()
    {
-      Config.AddHeart(healthPoint);
+      //Config.AddHeart(healthPoint);
+      var pos = transform.position;
+      GamePlayManager.Ins.AddHeart(healthPoint,pos,GamePlayManager.Ins.heartGroup.txtHeart.transform.position, ()=>{
+         Destroy(gameObject);});
+     
    }
+   
 }

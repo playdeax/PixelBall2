@@ -258,19 +258,19 @@ public class WinPopup : MonoBehaviour
     public void TouchNoThank() {
 
         if(!Config.isFinished_AddCoin) return;
-        
-        if (AdmobManager.instance.isInterstititalAds_Avaiable())
-        {
-            AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
-            {
-                SetNextLevel();
-            });
-        }
-        else
-        {
+        //
+        // if (AdmobManager.instance.isInterstititalAds_Avaiable())
+        // {
+        //     AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+        //     {
+        //         SetNextLevel();
+        //     });
+        // }
+        // else
+        // {
             SetNextLevel();
-        }
-        Config.interstitialAd_countWin++;
+        // }
+        // Config.interstitialAd_countWin++;
     }
 
     public void TouchReward() {
