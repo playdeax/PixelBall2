@@ -408,6 +408,19 @@ public class GamePlayManager : MonoBehaviour
 
 
     #endregion
+
+
+    #region RatingPopup
+
+    public RatingPopup ratingPopup;
+
+    public void ShowRatingPopup(Action onClose = null)
+    {
+        ratingPopup.ShowPopup(onClose);
+    }
+    
+
+    #endregion
     public void ShowLoadingNextGame()
     {
         sceneTransitionController.gameObject.SetActive(true);

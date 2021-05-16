@@ -403,5 +403,8 @@ public class Config
     public static long NUMBER_LEVEL_PER_SHOW_INTERSTITIAL = 2;
     public static long MIN_LEVEL_SHOW_REWARD_BUTTON = 2;
 
+
+    public static int countGame;
+
     #endregion
 }

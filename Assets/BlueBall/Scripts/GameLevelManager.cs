@@ -28,10 +28,9 @@ public class GameLevelManager : MonoBehaviour
 
         GamePlayManager.Ins.InitStarGroup(maxStar);
         Config.currIDBallRescue = -1;
-
         startPoint = playerMovement.GetComponent<Transform>().position;
-
         FirebaseManager.instance.LogLevelStart(level);
+        Config.countGame++;
     }
 
     // Update is called once per frame
