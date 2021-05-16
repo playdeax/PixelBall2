@@ -252,12 +252,28 @@ public class WinPopup : MonoBehaviour
 
     private void TouchNextLevel()
     {
-        SetNextLevel();
+        if (PlayerPrefs.GetInt("rating") == 0 && Config.GetLevel() % 5 == 0&& Config.GetLevel()>0)
+        {
+            GamePlayManager.Ins.ShowRatingPopup(SetNextLevel);
+        }
+        else
+        {
+            SetNextLevel();
+        }
     }
     
     public void TouchNoThank() {
 
         if(!Config.isFinished_AddCoin) return;
+
+        if (PlayerPrefs.GetInt("rating") == 0 && Config.GetLevel() % 5 == 0&& Config.GetLevel()>0)
+        {
+            GamePlayManager.Ins.ShowRatingPopup(SetNextLevel);
+        }
+        else
+        {
+            SetNextLevel();
+        }
         //
         // if (AdmobManager.instance.isInterstititalAds_Avaiable())
         // {
@@ -268,7 +284,7 @@ public class WinPopup : MonoBehaviour
         // }
         // else
         // {
-            SetNextLevel();
+            
         // }
         // Config.interstitialAd_countWin++;
     }
@@ -287,7 +303,7 @@ public class WinPopup : MonoBehaviour
                     
                     GamePlayManager.Ins.AddCoin(coinReward, posCenter.position, posCoin.position, () => {
                         btnReward.Interactable = false;
-                        SetNextLevel();
+                        TouchNextLevel();
                     });
 
                 }
