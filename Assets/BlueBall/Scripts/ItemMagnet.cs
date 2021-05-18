@@ -27,18 +27,24 @@ public class ItemMagnet : ItemBase
 
         SoundManager.instance.SFX_CoinCollect();
 
-        if (AdmobManager.instance.isRewardAds_Avaiable() && isAd)
+        if (isAd)
         {
-            Time.timeScale = 0f;
-            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            if (AdmobManager.instance.isRewardAds_Avaiable())
             {
-                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
                 {
-                    ShowEfx();
-                }
-                Time.timeScale = 1f;
-            });
+                    if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                    {
+                        ShowEfx();
+                    }
+                });
+            }
+            else
+            {
+                NotificationPopup.instance.AddNotification("No Video Available!");
+            }
         }
+        
         else
         {
             ShowEfx();

@@ -8,6 +8,8 @@ public class ItemTrySkin : ItemBase
     public Animator ballAnimator;
 
     private int idBallTry = -1;
+
+    public bool needAd = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,22 +44,35 @@ public class ItemTrySkin : ItemBase
         SetCollier_Enable(false);
 
         SoundManager.instance.SFX_CoinCollect();
-        
-        if (AdmobManager.instance.isRewardAds_Avaiable())
+        if (needAd)
         {
-            Time.timeScale = 0f;
-            AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
+            if (AdmobManager.instance.isRewardAds_Avaiable())
             {
-                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                //Time.timeScale = 0f;
+                AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
                 {
+                    if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
+                    {
                     
-                    Config.currInfoBall_Try = Config.GetInfoBallFromID(idBallTry);
+                        Config.currInfoBall_Try = Config.GetInfoBallFromID(idBallTry);
                     
-                    GameLevelManager.Ins.UpdateTrySkin();
-                }
-                Time.timeScale = 1f;
-            });
+                        GameLevelManager.Ins.UpdateTrySkin();
+                    }
+                    //Time.timeScale = 1f;
+                });
+            }
+            else
+            {
+                NotificationPopup.instance.AddNotification("No Video Available!");
+            }
         }
+        else
+        {
+            Config.currInfoBall_Try = Config.GetInfoBallFromID(idBallTry);
+            GameLevelManager.Ins.UpdateTrySkin();
+        }
+        
+        
         
         Destroy(gameObject);
     }

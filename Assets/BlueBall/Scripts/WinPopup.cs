@@ -102,6 +102,7 @@ public class WinPopup : MonoBehaviour
     }
     private int coinReward;
     public void ShowPopup(int _coinReward, int _level) {
+        Debug.Log("show win");
         lockPopup.SetActive(true);
         coinReward = _coinReward;
         gameObject.SetActive(true);
@@ -294,12 +295,12 @@ public class WinPopup : MonoBehaviour
         if(!Config.isFinished_AddCoin) return;
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
-            lockPopup.gameObject.SetActive(true);
+            //lockPopup.gameObject.SetActive(true);
             AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {
                 if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
                 {
-                    lockPopup.gameObject.SetActive(false);
+                    //lockPopup.gameObject.SetActive(false);
                     
                     GamePlayManager.Ins.AddCoin(coinReward, posCenter.position, posCoin.position, () => {
                         btnReward.Interactable = false;
@@ -309,13 +310,14 @@ public class WinPopup : MonoBehaviour
                 }
                 else
                 {
-                    lockPopup.gameObject.SetActive(false);
+                    //lockPopup.gameObject.SetActive(false);
                 }
             });
         }
         else
         {
             NotificationPopup.instance.AddNotification("No Video Available!");
+            lockPopup.gameObject.SetActive(false);
         }
         
     }
@@ -332,12 +334,12 @@ public class WinPopup : MonoBehaviour
     public void TouchFreeCoin() {
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
-            lockPopup.gameObject.SetActive(true);
+            //lockPopup.gameObject.SetActive(true);
             AdmobManager.instance.ShowRewardAd_CallBack(state =>
             {
                 if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
                 {
-                    lockPopup.gameObject.SetActive(false);
+                    //lockPopup.gameObject.SetActive(false);
                     btnFreeCoin.Interactable = false;
                     GamePlayManager.Ins.AddCoin(Config.FREE_COIN_REWARD, posCenter.position, posCoin.position, () => {
                         btnFreeCoin.Interactable = false;
@@ -346,13 +348,14 @@ public class WinPopup : MonoBehaviour
                 }
                 else
                 {
-                    lockPopup.gameObject.SetActive(false);
+                    //lockPopup.gameObject.SetActive(false);
                 }
             });
         }
         else
         {
             NotificationPopup.instance.AddNotification("No Video Available!");
+            lockPopup.gameObject.SetActive(false);
         }
     }
 
@@ -373,12 +376,12 @@ public class WinPopup : MonoBehaviour
     public void TouchFreeHeart() {
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
-            lockPopup.gameObject.SetActive(true);
+            //lockPopup.gameObject.SetActive(true);
             AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {
                 if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
                 {
-                    lockPopup.gameObject.SetActive(false);
+                    //lockPopup.gameObject.SetActive(false);
                     btnFreeHeart.Interactable = false;
                     GamePlayManager.Ins.AddHeart(Config.FREE_HEART_REWARD, posCenter.position, posHeart.position, () => {
                         btnFreeHeart.Interactable = false;
@@ -387,13 +390,14 @@ public class WinPopup : MonoBehaviour
                 }
                 else
                 {
-                    lockPopup.gameObject.SetActive(false);
+                    //lockPopup.gameObject.SetActive(false);
                 }
             });
         }
         else
         {
             NotificationPopup.instance.AddNotification("No Video Available!");
+            lockPopup.gameObject.SetActive(false);
         }
     }
     
@@ -496,12 +500,12 @@ public class WinPopup : MonoBehaviour
     {
         if (AdmobManager.instance.isRewardAds_Avaiable())
         {
-            lockPopup.gameObject.SetActive(true);
+            //lockPopup.gameObject.SetActive(true);
             AdmobManager.instance.ShowRewardAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {
                 if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
                 {
-                    lockPopup.gameObject.SetActive(false);
+                    //lockPopup.gameObject.SetActive(false);
                     Config.currInfoBall_Try = Config.GetInfoBallFromID(listIDBallPreviews[indexBallPreview]);
                     Config.SetLevel(Config.GetLevel() + 1);
                     GamePlayManager.Ins.ShowLoadingNextGame();
@@ -509,13 +513,14 @@ public class WinPopup : MonoBehaviour
                 }
                 else
                 {
-                    lockPopup.gameObject.SetActive(false);
+                    //lockPopup.gameObject.SetActive(false);
                 }
             });
         }
         else
         {
             NotificationPopup.instance.AddNotification("No Video Available!");
+            lockPopup.gameObject.SetActive(false);
         }
         
     }

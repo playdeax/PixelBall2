@@ -1,8 +1,8 @@
 ﻿//using GoogleMobileAds.Api;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.Events;
 using GoogleMobileAds.Common;
 using UnityEngine.UI;
@@ -12,19 +12,17 @@ using GoogleMobileAds.Api;
 public class AdmobManager : MonoBehaviour
 {
     public static AdmobManager instance;
-    [Header("COnfig")]
-    [Header("Interstitial ADS")]
+
+    [Header("COnfig")] [Header("Interstitial ADS")]
     private string InterstitialAd_Android_ID = "/6485410/Ball5_Pixel_Interstitial";
+
     private string InterstitialAd_IOS_ID = "ca-app-pub-9179752697212712/6636601519";
-    [Header("Reward ADS")]
-    private string RewardedAd_Android_ID = "/6485410/Ball5_Pixel_Reward";
+    [Header("Reward ADS")] private string RewardedAd_Android_ID = "/6485410/Ball5_Pixel_Reward";
     private string RewardedAd_IOS_ID = "ca-app-pub-9179752697212712/9070181442";
-    [Header("Native ADS")]
-    private string NativeAd_Android_ID = "ca-app-pub-9179752697212712/4654027937";
+    [Header("Native ADS")] private string NativeAd_Android_ID = "ca-app-pub-9179752697212712/4654027937";
     private string NativeAd_IOS_ID = "ca-app-pub-9179752697212712/9620984391";
 
-    [Header("Banner ADS")]
-    private string Banner_Android_ID = "ca-app-pub-9179752697212712/3089676505";
+    [Header("Banner ADS")] private string Banner_Android_ID = "ca-app-pub-9179752697212712/3089676505";
     private string Banner2_Android_ID = "ca-app-pub-9179752697212712/3089676505";
 
     private string Banner_IOS_ID = "ca-app-pub-9179752697212712/1384274835";
@@ -36,26 +34,25 @@ public class AdmobManager : MonoBehaviour
     private bool isRewardAd_Loaded = false;
 
 
-
     public enum ADS_CALLBACK_STATE
     {
         SUCCESS,
         FAIL
     }
 
-   
 
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(this);
     }
+
     // Start is called before the first frame update
     void Start()
     {
         MobileAds.SetiOSAppPauseOnBackground(true);
 
-        List<String> deviceIds = new List<String>() { AdRequest.TestDeviceSimulator };
+        List<String> deviceIds = new List<String>() {AdRequest.TestDeviceSimulator};
 
         // Add some test device IDs (replace with your own device IDs).
 #if UNITY_IPHONE
@@ -71,8 +68,8 @@ public class AdmobManager : MonoBehaviour
         // Configure TagForChildDirectedTreatment and test device IDs.
         RequestConfiguration requestConfiguration =
             new RequestConfiguration.Builder()
-            .SetTagForChildDirectedTreatment(TagForChildDirectedTreatment.Unspecified)
-            .SetTestDeviceIds(deviceIds).build();
+                .SetTagForChildDirectedTreatment(TagForChildDirectedTreatment.Unspecified)
+                .SetTestDeviceIds(deviceIds).build();
 
         MobileAds.SetRequestConfiguration(requestConfiguration);
 
@@ -83,7 +80,6 @@ public class AdmobManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
 
@@ -117,6 +113,7 @@ public class AdmobManager : MonoBehaviour
 
 
     #region INTERSTITIAL ADS
+
     public void Init_InterstitialAd()
     {
 #if UNITY_EDITOR
@@ -130,11 +127,7 @@ public class AdmobManager : MonoBehaviour
 #endif
 
         // Clean up interstitial before using it
-        if (interstitialAd != null)
-        {
-            interstitialAd.Destroy();
-        }
-
+        if (interstitialAd != null) interstitialAd.Destroy();
         interstitialAd = new InterstitialAd(adUnitId);
 
         // Add Event Handlers
@@ -147,13 +140,14 @@ public class AdmobManager : MonoBehaviour
         // Load an interstitial ad
         interstitialAd.LoadAd(CreateAdRequest());
     }
+
     public void RequestAndLoadInterstitialAd()
     {
         Init_InterstitialAd();
     }
+
     private void ShowInterstitialAd()
     {
-        
         if (interstitialAd.IsLoaded())
         {
             interstitialAd.Show();
@@ -177,27 +171,29 @@ public class AdmobManager : MonoBehaviour
     public void HandleOnAdLoaded_InterstitialAd(object sender, EventArgs args)
     {
         Debug.Log("HandleOnAdLoaded_InterstitialAd event received");
-
     }
 
     public void HandleOnAdFailedToLoad_InterstitialAd(object sender, AdFailedToLoadEventArgs args)
     {
         Debug.Log("HandleOnAdFailedToLoad_InterstitialAd event received with message: "
-                            + args.Message);
+                  + args.Message);
     }
 
     public void HandleOnAdOpened_InterstitialAd(object sender, EventArgs args)
     {
         Debug.Log("HandleOnAdOpened_InterstitialAd event received");
-        
     }
 
     public void HandleOnAdClosed_InterstitialAd(object sender, EventArgs args)
     {
-
-        Debug.Log("HandleOnAdClosed_InterstitialAd event received");
-        InterstitialAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
-        RequestAndLoadInterstitialAd();
+        MobileAdsEventExecutor.ExecuteInUpdate(() =>
+        {
+            Debug.Log("HandleOnAdClosed_InterstitialAd event received");
+            InterstitialAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
+            Debug.Log("end call back");
+            RequestAndLoadInterstitialAd();
+            Debug.Log("end request");
+        });
     }
 
     public void HandleOnAdLeavingApplication_InterstitialAd(object sender, EventArgs args)
@@ -216,6 +212,7 @@ public class AdmobManager : MonoBehaviour
             Debug.Log("NOT Show    InterstitialAd");
             return false;
         }
+
         if (interstitialAd.IsLoaded())
         {
             return true;
@@ -224,21 +221,27 @@ public class AdmobManager : MonoBehaviour
         {
             RequestAndLoadInterstitialAd();
         }
+
         return false;
     }
 
-    private Action<ADS_CALLBACK_STATE> InterstitialAd_CallBack = delegate (ADS_CALLBACK_STATE _state) { };
-    public void ShowInterstitialAd_CallBack(Action<ADS_CALLBACK_STATE> _interstitialAd_CallBack) {
+    private Action<ADS_CALLBACK_STATE> InterstitialAd_CallBack = delegate(ADS_CALLBACK_STATE _state) { };
+
+    public void ShowInterstitialAd_CallBack(Action<ADS_CALLBACK_STATE> _interstitialAd_CallBack)
+    {
         InterstitialAd_CallBack = _interstitialAd_CallBack;
+        
         ShowInterstitialAd();
-#if UNITY_EDITOR
-        InterstitialAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
-#endif
+// #if UNITY_EDITOR
+//         InterstitialAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
+// #endif
     }
+
     #endregion
 
 
     #region REWARDED ADS
+
     public const int TIME_SHOWREWARD_NOT_SHOWINTERTITIAL = 30;
     public long timeLastShowReward = 0;
 
@@ -270,11 +273,11 @@ public class AdmobManager : MonoBehaviour
         // Create empty ad request
         rewardedAd.LoadAd(CreateAdRequest());
     }
+
     public void RequestAndLoadRewardedAd()
     {
-
         Debug.Log("RequestAndLoadRewardedAdRequestAndLoadRewardedAd");
-        
+
 
         isRewardAd_Loaded = false;
 #if UNITY_EDITOR
@@ -328,9 +331,12 @@ public class AdmobManager : MonoBehaviour
     {
         Debug.Log(
             "HandleRewardedAdFailedToLoad event received with message: "
-                             + args.Message);
-       
-        RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.FAIL);
+            + args.Message);
+        MobileAdsEventExecutor.ExecuteInUpdate(() =>
+        {
+            RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.FAIL);
+        });
+        
     }
 
     public void HandleRewardedAdOpening(object sender, EventArgs args)
@@ -342,35 +348,47 @@ public class AdmobManager : MonoBehaviour
     {
         Debug.Log(
             "HandleRewardedAdFailedToShow event received with message: "
-                             + args.Message);
-
-        RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.FAIL);
+            + args.Message);
+        MobileAdsEventExecutor.ExecuteInUpdate(() =>
+        {
+            RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.FAIL);
+        });
+        
     }
 
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         Debug.Log("HandleRewardedAdClosed event received");
-
-        RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.FAIL);
-        RequestAndLoadRewardedAd();
+        MobileAdsEventExecutor.ExecuteInUpdate(() =>
+        {
+            RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.FAIL);
+            RequestAndLoadRewardedAd();
+        });
+        
     }
 
     public void HandleUserEarnedReward(object sender, Reward args)
     {
-        string type = args.Type;
-        double amount = args.Amount;
-        Debug.Log(
-            "HandleRewardedAdRewarded event received for "
-                        + amount.ToString() + " " + type);
-        FirebaseManager.instance.LogRewarded();
-        timeLastShowReward = Config.GetTimeStamp();
-        RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
+        MobileAdsEventExecutor.ExecuteInUpdate(() =>
+        {
+            string type = args.Type;
+            double amount = args.Amount;
+            Debug.Log(
+                "HandleRewardedAdRewarded event received for "
+                + amount.ToString() + " " + type);
+            FirebaseManager.instance.LogRewarded();
+            timeLastShowReward = Config.GetTimeStamp();
+            RewardAd_CallBack.Invoke(ADS_CALLBACK_STATE.SUCCESS);
+        });
+
         //RequestAndLoadRewardedAd();
     }
 
-    private Action<ADS_CALLBACK_STATE> RewardAd_CallBack = delegate (ADS_CALLBACK_STATE _state) { };
+    private Action<ADS_CALLBACK_STATE> RewardAd_CallBack = delegate(ADS_CALLBACK_STATE _state) { };
+
     public void ShowRewardAd_CallBack(Action<ADS_CALLBACK_STATE> _rewardAd_CallBack, string where = "", int level = 0)
     {
+        CancelInvoke();
         RewardAd_CallBack = _rewardAd_CallBack;
         ShowRewardedAd();
 //#if UNITY_EDITOR
@@ -391,13 +409,15 @@ public class AdmobManager : MonoBehaviour
         {
             RequestAndLoadRewardedAd();
         }
+
         return false;
     }
 
     #endregion
 
-   
+
     #region BANNER_ADS
+
     public void Init_Banner()
     {
 #if UNITY_EDITOR
@@ -466,7 +486,6 @@ public class AdmobManager : MonoBehaviour
     public void HandleOnAdLoaded_BanenrAd(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleAdLoaded event received");
-        
     }
 
     public void HandleOnAdFailedToLoad_BanenrAd(object sender, AdFailedToLoadEventArgs args)
@@ -490,7 +509,8 @@ public class AdmobManager : MonoBehaviour
         MonoBehaviour.print("HandleAdLeavingApplication event received");
     }
 
-    public void ShowBannerAd() {
+    public void ShowBannerAd()
+    {
         if (bannerView != null)
         {
             bannerView.Show();
@@ -504,30 +524,37 @@ public class AdmobManager : MonoBehaviour
             bannerView.Hide();
         }
     }
+
     #endregion
 
     private void OnDestroy()
     {
-        if (bannerView != null) {
+        if (bannerView != null)
+        {
             bannerView.Destroy();
         }
+
         if (banner2View != null)
         {
             banner2View.Destroy();
         }
     }
 
-    public void DestroyBanner() {
+    public void DestroyBanner()
+    {
         if (bannerView != null)
         {
             bannerView.Destroy();
         }
+
         if (banner2View != null)
         {
             banner2View.Destroy();
         }
     }
+
     #region BANNER2_ADS
+
     public void Init_Banner2()
     {
 #if UNITY_EDITOR
@@ -591,6 +618,7 @@ public class AdmobManager : MonoBehaviour
         // Load an interstitial ad
         banner2View.LoadAd(CreateAdRequest());
     }
+
     public void ShowBanner2Ad()
     {
         if (banner2View != null)
