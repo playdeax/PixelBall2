@@ -14,7 +14,7 @@ public class ItemHeart : ItemBase
       {
          if (AdmobManager.instance.isRewardAds_Avaiable())
          {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             AdmobManager.instance.ShowRewardAd_CallBack(state =>
             {
                if (state == AdmobManager.ADS_CALLBACK_STATE.SUCCESS)
@@ -22,12 +22,12 @@ public class ItemHeart : ItemBase
 
                   IncreaseHealthPoint();
                }
-               Time.timeScale = 1f;
+               //Time.timeScale = 1f;
             });
          }
          else
          {
-            IncreaseHealthPoint();
+            NotificationPopup.instance.AddNotification("No Video Available!");
          }
       }
       else
@@ -40,8 +40,11 @@ public class ItemHeart : ItemBase
    private void IncreaseHealthPoint()
    {
       //Config.AddHeart(healthPoint);
+      // Config.currGameState = Config.GAMESTATE.PAUSE;
       var pos = transform.position;
       GamePlayManager.Ins.AddHeart(healthPoint,pos,GamePlayManager.Ins.heartGroup.txtHeart.transform.position, ()=>{
+         // Config.currGameState = Config.GAMESTATE.PLAYING;
+         GamePlayManager.Ins.ClearMove();
          Destroy(gameObject);});
      
    }
