@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5344524821675065596}
   - component: {fileID: 5344524821675065594}
   - component: {fileID: 325022630}
-  - component: {fileID: 6257063156292078445}
+  - component: {fileID: 3201370272915966956}
   m_Layer: 17
   m_Name: ItemBox2
   m_TagString: Box
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de184dce48e919c40b551ae897d46e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!60 &6257063156292078445
-PolygonCollider2D:
+--- !u!61 &3201370272915966956
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -130,7 +130,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.06385077, y: -0.06624541}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -140,11 +140,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.3143972, y: 0.20804286}
-      - {x: -0.3085712, y: -0.2910916}
-      - {x: -0.2658882, y: -0.33280972}
-      - {x: 0.12821946, y: -0.33333334}
-      - {x: 0.18736553, y: -0.2931233}
-      - {x: 0.190279, y: 0.20775825}
+  serializedVersion: 2
+  m_Size: {x: 0.5134243, y: 0.51502055}
+  m_EdgeRadius: 0

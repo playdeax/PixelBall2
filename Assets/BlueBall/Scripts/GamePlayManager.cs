@@ -106,6 +106,13 @@ public class GamePlayManager : MonoBehaviour
             tut.gameObject.SetActive(false);
         }
     }
+
+    public void ClearMove()
+    {
+        GameLevelManager.Ins.SetMoveLeft(false);
+        GameLevelManager.Ins.SetMoveRight(false);
+    }
+
     #endregion
 
 
@@ -138,6 +145,7 @@ public class GamePlayManager : MonoBehaviour
         {
             AdmobManager.instance.ShowInterstitialAd_CallBack((AdmobManager.ADS_CALLBACK_STATE state) =>
             {
+                Debug.Log("close ad roi");
                 winPopup.ShowPopup(1000, _level) ;
             });
         }
@@ -170,8 +178,8 @@ public class GamePlayManager : MonoBehaviour
             Config.currGameState = Config.GAMESTATE.GAMEOVER;
             losePopup.ShowPopup(_level);
         }
+
         Config.interstitialAd_countWin++;
-       
     }
 
     #endregion
@@ -406,6 +414,19 @@ public class GamePlayManager : MonoBehaviour
         SetLoading_Out(() => { });
     }
 
+
+    #endregion
+
+
+    #region RatingPopup
+
+    public RatingPopup ratingPopup;
+
+    public void ShowRatingPopup(Action onClose = null)
+    {
+        ratingPopup.ShowPopup(onClose);
+    }
+    
 
     #endregion
     public void ShowLoadingNextGame()
