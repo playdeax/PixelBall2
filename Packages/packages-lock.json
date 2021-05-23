@@ -7,58 +7,6 @@
       "dependencies": {},
       "hash": "f59d147fe04be6a84b3cd7eb93bce149410911be"
     },
-    "com.google.external-dependency-manager": {
-      "version": "1.2.164",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://unityregistry-pa.googleapis.com"
-    },
-    "com.google.firebase.analytics": {
-      "version": "7.1.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.google.firebase.app": "7.1.0"
-      },
-      "url": "https://unityregistry-pa.googleapis.com"
-    },
-    "com.google.firebase.app": {
-      "version": "7.1.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.google.external-dependency-manager": "1.2.164"
-      },
-      "url": "https://unityregistry-pa.googleapis.com"
-    },
-    "com.google.firebase.crashlytics": {
-      "version": "7.1.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.google.firebase.app": "7.1.0"
-      },
-      "url": "https://unityregistry-pa.googleapis.com"
-    },
-    "com.google.firebase.messaging": {
-      "version": "7.1.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.google.firebase.app": "7.1.0"
-      },
-      "url": "https://unityregistry-pa.googleapis.com"
-    },
-    "com.google.firebase.remote-config": {
-      "version": "7.1.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.google.firebase.app": "7.1.0"
-      },
-      "url": "https://unityregistry-pa.googleapis.com"
-    },
     "com.unity.2d.animation": {
       "version": "3.2.5",
       "depth": 0,
@@ -232,7 +180,8 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.modules.ui": "1.0.0"
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.imgui": "1.0.0"
       }
     },
     "com.unity.modules.ai": {

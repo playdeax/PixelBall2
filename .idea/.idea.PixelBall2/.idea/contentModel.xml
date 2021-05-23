@@ -105,6 +105,7 @@
             <e p="ItemDailyReward.cs" t="Include" />
             <e p="ItemDoor.cs" t="Include" />
             <e p="ItemDoor_Key.cs" t="Include" />
+            <e p="ItemHeart.cs" t="Include" />
             <e p="ItemHeartReward.cs" t="Include" />
             <e p="ItemMagnet.cs" t="Include" />
             <e p="ItemNotification.cs" t="Include" />
@@ -131,6 +132,9 @@
             <e p="PlayerMovement.cs" t="Include" />
             <e p="PreLoadScene.cs" t="Include" />
             <e p="PremiumPackPopup.cs" t="Include" />
+            <e p="Rating" t="Include">
+              <e p="RatingPopup.cs" t="Include" />
+            </e>
             <e p="RescuePopup.cs" t="Include" />
             <e p="ScriptableObject" t="Include">
               <e p="ConfigInfoBalls.cs" t="Include" />
@@ -1154,8 +1158,48 @@
         </e>
         <e p="ExternalDependencyManager" t="Include">
           <e p="Editor" t="Include">
-            <e p="external-dependency-manager_version-1.2.161_manifest.txt" t="Include" />
-            <e p="GoogleRegistries.xml" t="Include" />
+            <e p="external-dependency-manager_version-1.2.165_manifest.txt" t="Include" />
+          </e>
+        </e>
+        <e p="Firebase" t="Include">
+          <e p="Editor" t="Include">
+            <e p="AnalyticsDependencies.xml" t="Include" />
+            <e p="AppDependencies.xml" t="Include" />
+            <e p="CrashlyticsDependencies.xml" t="Include" />
+            <e p="FirebaseAnalytics_version-7.2.0_manifest.txt" t="Include" />
+            <e p="FirebaseCrashlytics_version-7.2.0_manifest.txt" t="Include" />
+            <e p="FirebaseMessaging_version-7.2.0_manifest.txt" t="Include" />
+            <e p="FirebaseRemoteConfig_version-7.2.0_manifest.txt" t="Include" />
+            <e p="MessagingDependencies.xml" t="Include" />
+            <e p="RemoteConfigDependencies.xml" t="Include" />
+          </e>
+          <e p="m2repository" t="Include">
+            <e p="com" t="Include">
+              <e p="google" t="Include">
+                <e p="Firebase" t="Include">
+                  <e p="firebase-analytics-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                  <e p="firebase-app-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                  <e p="firebase-config-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                  <e p="firebase-crashlytics-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                  <e p="firebase-messaging-unity" t="Include">
+                    <e p="maven-metadata.xml" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
+          </e>
+          <e p="Plugins" t="Include">
+            <e p="Crashlytics" t="Include">
+              <e p="link.xml" t="Include" />
+            </e>
           </e>
         </e>
         <e p="FirebaseManager.cs" t="Include" />
@@ -1421,6 +1465,15 @@
               <e p="res" t="Include">
                 <e p="values" t="Include">
                   <e p="google-services.xml" t="Include" />
+                </e>
+              </e>
+            </e>
+            <e p="FirebaseCrashlytics.androidlib" t="Include">
+              <e p="AndroidManifest.xml" t="Include" />
+              <e p="res" t="Include">
+                <e p="values" t="Include">
+                  <e p="crashlytics_build_id.xml" t="Include" />
+                  <e p="crashlytics_unity_version.xml" t="Include" />
                 </e>
               </e>
             </e>
