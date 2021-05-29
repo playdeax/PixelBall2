@@ -104,7 +104,7 @@ public class LosePopup : MonoBehaviour
             txtLevel.text = "TUTORIAL";
         }
 
-        FirebaseManager.instance.LogLevelWin(_level);
+        FirebaseManager.instance.LogLevelLose(_level);
 
         StartCoroutine(ShowPopup_IEnumerator());
         InitBallPreview();

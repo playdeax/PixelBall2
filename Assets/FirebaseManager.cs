@@ -172,6 +172,14 @@ public class FirebaseManager : MonoBehaviour
             Firebase.Analytics.FirebaseAnalytics.LogEvent("Lv_" + level + "_W");
         }
     }
+
+    public void LogLevelDead(int level)
+    {
+        if (firebaseInitialized)
+        {
+            Firebase.Analytics.FirebaseAnalytics.LogEvent("Lv_" + level + "_D");
+        }
+    }
     public void LogShowInter(int curentLevel)
     {
         if (firebaseInitialized)

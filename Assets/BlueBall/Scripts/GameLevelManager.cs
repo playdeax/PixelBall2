@@ -174,6 +174,8 @@ public class GameLevelManager : MonoBehaviour
     public void SetBallDead() {
         Config.currGameState = Config.GAMESTATE.GAMEOVER;
 
+        FirebaseManager.instance.LogLevelDead(level);
+
         if (Config.GetHeart() > 0)
         {
             Debug.Log("SetBallDeadSetBallDeadSetBallDead");
