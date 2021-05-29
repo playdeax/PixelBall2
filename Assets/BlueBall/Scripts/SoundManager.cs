@@ -173,15 +173,20 @@ public class SoundManager : MonoBehaviour
 
     [Header("Win")]
     public AudioClip win;
+    public AudioClip win2;
     public void SFX_Win()
     {
         if (Config.isSound)
         {
-            audioSound.PlayOneShot(win);
+            int r = Random.Range(1, 6);
+            if(r%2 == 0)
+                audioSound.PlayOneShot(win);
+            else
+                audioSound.PlayOneShot(win2);
         }
     }
 
-    [Header("Win")]
+    [Header("Cash")]
     public AudioClip cash;
     public void SFX_Cash()
     {
