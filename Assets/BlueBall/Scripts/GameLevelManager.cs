@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEngine.U2D;
+
 public class GameLevelManager : MonoBehaviour
 {
     public static GameLevelManager Ins;
@@ -21,6 +23,8 @@ public class GameLevelManager : MonoBehaviour
 
     public int level = 1;
 
+    PixelPerfectCamera cam;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,9 @@ public class GameLevelManager : MonoBehaviour
         startPoint = playerMovement.GetComponent<Transform>().position;
         FirebaseManager.instance.LogLevelStart(level);
         Config.countGame++;
+        cam = GameObject.Find("Main Camera").GetComponent<PixelPerfectCamera>();
+        float scalePPU = (float)(Screen.width) / 25.6f;
+        cam.assetsPPU = (int)(scalePPU);
     }
 
     // Update is called once per frame
