@@ -19,6 +19,13 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    public virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ball"))
+        {
+            CollisionWithBall();
+        }
+    }
 
     public virtual void CollisionWithBall()
     {
